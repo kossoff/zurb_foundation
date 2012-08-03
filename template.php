@@ -3,7 +3,7 @@
 /**
  * Preprocessor for html.tpl.php template file.
  */
-function foundation_zurb_preprocess_html(&$variables) {
+function zurb_foundation_preprocess_html(&$variables) {
   // Add conditional CSS for IE
   drupal_add_css(path_to_theme() . '/css/framework/ie.css', array('weight' => CSS_THEME, 'browsers' => array('!IE' => FALSE), 'preprocess' => FALSE));
 
@@ -60,7 +60,7 @@ function foundation_zurb_preprocess_html(&$variables) {
 /**
  * Implements hook_html_head_alter().
  */
-function foundation_zurb_html_head_alter(&$head_elements) {
+function zurb_foundation_html_head_alter(&$head_elements) {
   // HTML5 charset declaration.
   $head_elements['system_meta_content_type']['#attributes'] = array(
     'charset' => 'utf-8',
@@ -97,7 +97,7 @@ function foundation_zurb_html_head_alter(&$head_elements) {
   );
 }
 
-function foundation_zurb_preprocess_page(&$variables) {
+function zurb_foundation_preprocess_page(&$variables) {
   // Add page--node_type.tpl.php suggestions
   if (!empty($variables['node'])) {
     $variables['theme_hook_suggestions'][] = 'page__' . $variables['node']->type;
@@ -197,7 +197,7 @@ function foundation_zurb_preprocess_page(&$variables) {
  * @param $variables
  *   An array of variables to pass to the theme template.
  */
-function foundation_zurb_preprocess_node(&$variables) {
+function zurb_foundation_preprocess_node(&$variables) {
   // Add a class for the view mode.
   if (!$variables['teaser']) {
     $variables['classes_array'][] = 'view-mode-' . $variables['view_mode'];
@@ -220,7 +220,7 @@ function sasson_preprocess_block(&$vars) {
   }
 }
 
-function foundation_zurb_field($variables) {
+function zurb_foundation_field($variables) {
   $output = '';
 
   // Render the label, if it's not hidden.
@@ -241,7 +241,7 @@ function foundation_zurb_field($variables) {
 /**
  * Override or insert variables into the field template.
  */
-function foundation_zurb_preprocess_field(&$variables) {
+function zurb_foundation_preprocess_field(&$variables) {
   $variables['title_attributes_array']['class'][] = 'field-label';
 
   // Edit classes for taxonomy term reference fields.
@@ -306,7 +306,7 @@ function foundation_zurb_preprocess_field(&$variables) {
 /**
  * Implements template_breadcrumb().
  */
-function foundation_zurb_breadcrumb($variables) {
+function zurb_foundation_breadcrumb($variables) {
   $breadcrumb = $variables['breadcrumb'];
   $title = strip_tags(drupal_get_title());
 
@@ -323,7 +323,7 @@ function foundation_zurb_breadcrumb($variables) {
 /**
  * Implements hook_preprocess_block()
  */
-function foundation_zurb_preprocess_block(&$vars) {
+function zurb_foundation_preprocess_block(&$vars) {
 //  $block_id = $vars['block']->module . '-' . $vars['block']->delta;
 //  $classes = &$vars['classes_array'];
 //  $title_classes = &$vars['title_attributes_array']['class'];
@@ -353,7 +353,7 @@ function foundation_zurb_preprocess_block(&$vars) {
 /**
  * Implements theme_form_element_label()
  */
-function foundation_zurb_form_element_label($vars) {
+function zurb_foundation_form_element_label($vars) {
   if (!empty($vars['element']['#title'])) {
     $vars['element']['#title'] = '<span class="secondary label">' . $vars['element']['#title'] . '</span>';
   }
@@ -363,7 +363,7 @@ function foundation_zurb_form_element_label($vars) {
   return theme_form_element_label($vars);
 }
 
-function foundation_zurb_form_alter(&$form, &$form_state, $form_id) {
+function zurb_foundation_form_alter(&$form, &$form_state, $form_id) {
   // Sexy submit buttons
   if (!empty($form['actions']) && $form['actions']['submit']) {
     $form['actions']['submit']['#attributes'] = array('class' => array('secondary', 'button', 'radius'));
@@ -373,7 +373,7 @@ function foundation_zurb_form_alter(&$form, &$form_state, $form_id) {
 /**
  * Implements theme_field__field_type().
  */
-function foundation_zurb_field__taxonomy_term_reference($variables) {
+function zurb_foundation_field__taxonomy_term_reference($variables) {
   $output = '';
 
   // Render the label, if it's not hidden.
@@ -397,7 +397,7 @@ function foundation_zurb_field__taxonomy_term_reference($variables) {
 /**
  * Implements theme_menu_local_tasks().
  */
-function foundation_zurb_menu_local_tasks(&$variables) {
+function zurb_foundation_menu_local_tasks(&$variables) {
   $output = '';
 
   if (!empty($variables['primary'])) {
@@ -419,7 +419,7 @@ function foundation_zurb_menu_local_tasks(&$variables) {
 /**
  * Implements theme_menu_local_task().
  */
-function foundation_zurb_menu_local_task(&$variables) {
+function zurb_foundation_menu_local_task(&$variables) {
   $link = $variables['element']['#link'];
   $link_text = $link['title'];
 
