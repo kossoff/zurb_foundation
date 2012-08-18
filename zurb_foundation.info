@@ -7,20 +7,27 @@ engine = phptemplate
 screenshot = images/screenshot.png
 
 ; Foundation framework stylesheets
-stylesheets[all][] = css/framework/foundation.css 
+stylesheets[all][] = css/framework/foundation.min.css
+;stylesheets[all][] = css/framework/foundation.css ; Comment out for development or as a reference
 
 ; Base theme specific CSS
 stylesheets[all][] = css/drupal.css
 
 ; Default theme scripts.
-scripts[] = js/modernizr.foundation.js
-scripts[] = js/jquery.reveal.js
-scripts[] = js/jquery.orbit-1.4.0.js
-scripts[] = js/jquery.customforms.js
-scripts[] = js/jquery.placeholder.min.js
-scripts[] = js/jquery.tooltips.js
 scripts[] = js/app.js
-scripts[] = js/jquery.offcanvas.js
+scripts[] = js/foundation.min.js
+scripts[] = js/jquery.foundation.accordion.js
+scripts[] = js/jquery.foundation.alerts.js
+scripts[] = js/jquery.foundation.buttons.js
+scripts[] = js/jquery.foundation.forms.js
+scripts[] = js/jquery.foundation.mediaQueryToggle.js
+scripts[] = js/jquery.foundation.navigation.js
+scripts[] = js/jquery.foundation.orbit.js
+scripts[] = js/jquery.foundation.reveal.js
+scripts[] = js/jquery.foundation.tabs.js
+scripts[] = js/jquery.foundation.tooltips.js
+scripts[] = js/jquery.placeholder.js
+scripts[] = js/modernizr.foundation.js
 
 ; Regions are output in the page.tpl.php
 regions[header]          = Header

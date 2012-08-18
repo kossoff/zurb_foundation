@@ -1,15 +1,34 @@
 (function($){  
-
   $(function(){
-    $(document).foundationAlerts();
-    $(document).foundationButtons();
-    $(document).foundationAccordion();
-    $(document).foundationNavigation();
-    $(document).foundationCustomForms();
-    $(document).foundationTabs({callback:$.foundation.customForms.appendCustomMarkup});
+    $(document).foundationMediaQueryViewer();
     
+    $(document).foundationAlerts();
+    $(document).foundationAccordion();
     $(document).tooltips();
     $('input, textarea').placeholder();
+    
+    
+    
+    $(document).foundationButtons();
+    
+    
+    
+    $(document).foundationNavigation();
+    
+    
+    
+    $(document).foundationCustomForms();
+    
+    
+    
+      
+      $(document).foundationTabs({callback:$.foundation.customForms.appendCustomMarkup});
+      
+    
+    
+    
+    $("#featured").orbit();
+    
     
     // UNCOMMENT THE LINE YOU WANT BELOW IF YOU WANT IE8 SUPPORT AND ARE USING .block-grids
     // $('.block-grid.two-up>li:nth-child(2n+1)').css({clear: 'left'});
