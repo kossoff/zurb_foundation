@@ -99,14 +99,10 @@
       hide($content['field_tags']);
       print render($content);
     ?>
-  <div class="terms-links">
-    <?php if (($content['field_tags']) && !$is_front): ?>
-      <div class="tags">
-        <?php print render($content['field_tags']) ?>
-     </div>
+    <?php if (!empty($content['field_tags']) && !$is_front): ?>
+      <?php print render($content['field_tags']) ?>
     <?php endif; ?>
     <?php print render($content['links']); ?>
-  </div>
-  <?php print render($content['comments']); ?>
+    <?php print render($content['comments']); ?>
 
 </div>

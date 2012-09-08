@@ -1,7 +1,9 @@
 <?php
 
 /**
- * Preprocessor for html.tpl.php template file.
+ * Implements template_preprocess_html().
+ * 
+ * Adds additional classes
  */
 function zurb_foundation_preprocess_html(&$variables) {
   // Add conditional CSS for IE
@@ -17,11 +19,11 @@ function zurb_foundation_preprocess_html(&$variables) {
     $variables['classes_array'][] = 'lang-' . $variables['language']->language;
   }
 
-  // Custom fonts from Google web-fonts
-//  $font = str_replace(' ', '+', theme_get_setting('zurb_foundation_font'));
-//  if (theme_get_setting('zurb_foundation_font')) {
-//    drupal_add_css('http://fonts.googleapis.com/css?family=' . $font , array('type' => 'external', 'group' => CSS_THEME));
-//  }
+  //  @TODO Custom fonts from Google web-fonts
+  //  $font = str_replace(' ', '+', theme_get_setting('zurb_foundation_font'));
+  //  if (theme_get_setting('zurb_foundation_font')) {
+  //    drupal_add_css('http://fonts.googleapis.com/css?family=' . $font , array('type' => 'external', 'group' => CSS_THEME));
+  //  }
 
   // Classes for body element. Allows advanced theming based on context
   if (!$variables['is_front']) {
@@ -67,22 +69,22 @@ function zurb_foundation_html_head_alter(&$head_elements) {
   );
 
   // Optimize mobile viewport.
- $head_elements['mobile_viewport'] = array(
-	'#type' => 'html_tag',
-	'#tag' => 'meta',
-	'#attributes' => array(
-		'name' => 'viewport',
-		'content' => 'width=device-width',
-		),
- );
+  $head_elements['mobile_viewport'] = array(
+    '#type' => 'html_tag',
+    '#tag' => 'meta',
+    '#attributes' => array(
+      'name' => 'viewport',
+      'content' => 'width=device-width',
+    ),
+  );
 
   // Force IE to use Chrome Frame if installed.
   $head_elements['chrome_frame'] = array(
-  	'#type' => 'html_tag',
-  	'#tag' => 'meta',
-  	'#attributes' => array(
-  		'content' => 'ie=edge, chrome=1',
-  		'http-equiv' => 'x-ua-compatible',
+    '#type' => 'html_tag',
+    '#tag' => 'meta',
+    '#attributes' => array(
+      'content' => 'ie=edge, chrome=1',
+      'http-equiv' => 'x-ua-compatible',
     ),
   );
 
@@ -97,6 +99,11 @@ function zurb_foundation_html_head_alter(&$head_elements) {
   );
 }
 
+/**
+ * Implements template_preprocess_page
+ *
+ * Add convenience variables and template suggestions
+ */
 function zurb_foundation_preprocess_page(&$variables) {
   // Add page--node_type.tpl.php suggestions
   if (!empty($variables['node'])) {
@@ -192,33 +199,44 @@ function zurb_foundation_preprocess_page(&$variables) {
 }
 
 /**
- * Override or insert variables into the node templates.
+ * Implements template_preprocess_node
  *
- * @param $variables
- *   An array of variables to pass to the theme template.
+ * Add template suggestions and classes
  */
-function zurb_foundation_preprocess_node(&$variables) {
+function zurb_foundation_preprocess_node(&$vars) {
+  // Add node--node_type--view_mode.tpl.php suggestions
+  $vars['theme_hook_suggestions'][] = 'node__' . $vars['type'] . '__' . $vars['view_mode'];
+  
+  // Add node--view_mode.tpl.php suggestions
+  $vars['theme_hook_suggestions'][] = 'node__' . $vars['view_mode'];
+  
   // Add a class for the view mode.
-  if (!$variables['teaser']) {
-    $variables['classes_array'][] = 'view-mode-' . $variables['view_mode'];
+  if (!$vars['teaser']) {
+    $vars['classes_array'][] = 'view-mode-' . $vars['view_mode'];
   }
-  $variables['title_attributes_array']['class'][] = 'node-title';
+  $vars['title_attributes_array']['class'][] = 'node-title';
+//  // Add classes based on node type.
+//  switch ($vars['type']) {
+//    case 'news':
+//    case 'pages':
+//      $vars['attributes_array']['class'][] = 'content-wrapper';
+//      $vars['attributes_array']['class'][] = 'text-content';
+//      break;
+//  }
+//
+//  // Add classes & theme hook suggestions based on view mode.
+//  switch ($vars['view_mode']) {
+//    case 'block_display':
+//      $vars['theme_hook_suggestions'][] = 'node__aside';
+//      $vars['title_attributes_array']['class'] = array('title-block');
+//      $vars['attributes_array']['class'][] = 'block-content';
+//      $vars['attributes_array']['class'][] = 'st-spot';
+//      $vars['attributes_array']['class'][] = 'vgrid';
+//      $vars['attributes_array']['class'][] = 'clearfix';
+//      break;
+//  }
 }
 
-/**
- * Implements template_preprocess_block().
- */
-function sasson_preprocess_block(&$vars) {
-  // Add a striping class.
-  $vars['classes_array'][] = 'block-' . $vars['zebra'];
-
-  $vars['title_attributes_array']['class'][] = 'block-title';
-
-  // In the header region visually hide block titles.
-  if ($vars['block']->region == 'header') {
-    $vars['title_attributes_array']['class'][] = 'element-invisible';
-  }
-}
 
 function zurb_foundation_field($variables) {
   $output = '';
@@ -239,14 +257,14 @@ function zurb_foundation_field($variables) {
 }
 
 /**
- * Override or insert variables into the field template.
+ * Implements template_preprocess_field().
  */
-function zurb_foundation_preprocess_field(&$variables) {
-  $variables['title_attributes_array']['class'][] = 'field-label';
+function zurb_foundation_preprocess_field(&$vars) {
+  $vars['title_attributes_array']['class'][] = 'field-label';
 
   // Edit classes for taxonomy term reference fields.
-  if ($variables['field_type_css'] == 'taxonomy-term-reference') {
-    $variables['content_attributes_array']['class'][] = 'comma-separated';
+  if ($vars['field_type_css'] == 'taxonomy-term-reference') {
+    $vars['content_attributes_array']['class'][] = 'comma-separated';
   }
   /**
    * Convinence variables
@@ -301,6 +319,47 @@ function zurb_foundation_preprocess_field(&$variables) {
     $vars['item_attributes_array'][$delta]['class'] = $item_classes;
   }
    **/
+//  // add class to a specific fields across content types.
+//  switch ($vars['element']['#field_name']) {
+//    case 'body':
+//      $vars['classes_array'][] = 'text-content';
+//      break;
+//
+//    case 'field_summary':
+//      $vars['classes_array'][] = 'text-teaser';
+//      break;
+//
+//    case 'field_link':
+//    case 'field_date':
+//      // Replace classes entirely, instead of adding extra.
+//      $vars['classes_array'] = array('list-definition', 'text-content');
+//      break;
+//
+//    case 'field_image':
+//      // Replace classes entirely, instead of adding extra.
+//      $vars['classes_array'] = array('title-image');
+//      break;
+//
+//    default:
+//      break;
+//  // Add classes to body based on content type and view mode.
+//  if ($vars['element']['#field_name'] = 'body') {
+//
+//    // Add classes to Foobar content type.
+//    if ($vars['element']['#bundle'] == 'foobar') {
+//      $vars['classes_array'][] = 'text-secondary';
+//    }
+//
+//    // Add classes to other content types with view mode 'teaser';
+//    elseif ($vars['element']['#view_mode'] == 'teaser') {
+//      $vars['classes_array'][] = 'text-secondary';
+//    }
+//
+//    // The rest is text-content.
+//    else {
+//      $vars['classes_array'][] = 'text-content';
+//    }
+//  }
 }
 
 /**
@@ -324,6 +383,14 @@ function zurb_foundation_breadcrumb($variables) {
  * Implements hook_preprocess_block()
  */
 function zurb_foundation_preprocess_block(&$vars) {
+  // Add a striping class.
+  $vars['classes_array'][] = 'block-' . $vars['zebra'];
+  $vars['title_attributes_array']['class'][] = 'block-title';
+
+  // In the header region visually hide block titles.
+  if ($vars['block']->region == 'header') {
+    $vars['title_attributes_array']['class'][] = 'element-invisible';
+  }
 //  $block_id = $vars['block']->module . '-' . $vars['block']->delta;
 //  $classes = &$vars['classes_array'];
 //  $title_classes = &$vars['title_attributes_array']['class'];
@@ -347,6 +414,90 @@ function zurb_foundation_preprocess_block(&$vars) {
 //    case 'user-login':
 //      $title_classes[] = 'element-invisible';
 //      break;
+//  }
+  // Add template suggestions for block.tpl.php.
+//    // Add theme suggestion based module.
+//    switch($vars['elements']['#block']->module) {
+//      case 'menu':
+//      case 'menu_block':
+//        $vars['theme_hook_suggestions'][] = 'block__navigation';
+//        break;
+//
+//      // Render some blocks without wrapper and leave it to the module.
+//      case 'views':
+//      case 'mini_panels':
+//        $vars['theme_hook_suggestions'][] = 'block__nowrapper';
+//    }
+// /**
+//   * Add classes to blocks created by Views based on views name.
+//   */
+//  // Check if block was created by views.
+//  if ($vars['elements']['#block']->module == 'views') {
+//
+//    // Get views name from $vars['elements']['#block']->delta.
+//    $block_delta = explode('-', $vars['elements']['#block']->delta);
+//    $views_name = $block_delta[0];
+//
+//    // Add classes based on views name.
+//    switch ($views_name) {
+//      case 'view_foo':
+//      case 'view_bar':
+//        $vars['title_attributes_array']['class'][] = 'title-list';
+//        break;
+//
+//      case 'view_baz':
+//        $vars['title_attributes_array']['class'] = 'title-block';
+//        $vars['classes_array'][] = 'block-secondary';
+//        break;
+//
+//      default:
+//        $vars['title_attributes_array']['class'][] = 'title-block';
+//    }
+//  }
+//   /**
+//   * Add classes based on region.
+//   */
+//  switch ($vars['elements']['#block']->region) {
+//    case 'region_foo':
+//    case 'region_bar':
+//    case 'region_baz':
+//      $vars['title_attributes_array']['class'][] = 'title-list';
+//      break;
+//
+//    case 'region_foobar':
+//      $vars['classes_array'][] = 'block-list';
+//      break;
+//
+//    default;
+//  }
+//  /*
+//   * Add classes based on module excluding certain regions.
+//   */
+//  switch ($vars['elements']['#block']->region) {
+//
+//    // Exclude certain blocks in certain regions.
+//    case 'footer_sitemap':
+//    case 'user_first':
+//    case 'user_second':
+//    case 'menu':
+//    case 'footer_first':
+//    case 'footer_second':
+//      // Do nothing.
+//      break;
+//
+//    default:
+//      switch($vars['elements']['#block']->module) {
+//        // For the rest of the regions add classes to navigation blocks.
+//        case 'menu':
+//        case 'menu_block':
+//          $vars['attributes_array']['class'][] = 'block-style-menu';
+//          break;
+//
+//        // And style standard blocks.
+//        case 'block':
+//          $vars['attributes_array']['class'][] = 'block-secondary';
+//          break;
+//      }
 //  }
 }
 
@@ -393,6 +544,48 @@ function zurb_foundation_field__taxonomy_term_reference($variables) {
 
   return $output;
 }
+
+/**
+ * Implements template_preprocess_views_view().
+ *
+ */
+function zurb_foundation_preprocess_views_view(&$vars) {
+}
+
+/**
+ * Implements template_preprocess_panels_pane().
+ *
+ * Adds classes for styling.
+ */
+function zurb_foundation_preprocess_panels_pane(&$vars) {
+}
+
+///**
+// * Implements template_preprocess_views_views_fields().
+// *
+// * Shows/hides summary on tiles based on presence of images.
+// */
+//function THEMENAME_preprocess_views_view_fields(&$vars) {
+//  if ($vars['view']->name == 'nodequeue_1') {
+//
+//    // Check if we have both an image and a summary
+//    if (isset($vars['fields']['field_image'])) {
+//
+//      // If a combined field has been created, unset it and just show image
+//      if (isset($vars['fields']['nothing'])) {
+//        unset($vars['fields']['nothing']);
+//      }
+//
+//    } elseif (isset($vars['fields']['title'])) {
+//      unset ($vars['fields']['title']);
+//    }
+//
+//    // Always unset the separate summary if set
+//    if (isset($vars['fields']['field_summary'])) {
+//      unset($vars['fields']['field_summary']);
+//    }
+//  }
+//}
 
 /**
  * Implements theme_menu_local_tasks().
