@@ -58,4 +58,6 @@
 js .block-search .form-autocomplete {
     background: none;
 }
+
+.description {padding:5px}
 /* Foundation overrides */

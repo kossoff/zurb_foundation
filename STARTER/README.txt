@@ -20,7 +20,8 @@ sites/default/default.settings.php for more info.
 *
 * Drupal 7 also stores a cache of the data in .info files. If you modify any
 * lines in your sub-theme's .info file, you MUST refresh Drupal 7's cache by
-* simply visiting the Appearance page at admin/appearance.
+* simply visiting the Appearance page at admin/appearance or at 
+  admin/config/development/performance.
 
  1. Setup the location for your new sub-theme.
 
