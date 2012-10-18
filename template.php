@@ -148,7 +148,7 @@ function zurb_foundation_preprocess_page(&$variables) {
       'links' => $variables['main_menu'],
       'attributes' => array(
         'id' => 'main-menu',
-        'class' => array('nav-bar'),
+        'class' => array('link-list'),
       ),
       'heading' => array(
         'text' => t('Main menu'),
