@@ -3,11 +3,10 @@
 /**
  * Implements template_preprocess_html().
  * 
- * Adds additional classes
  */
 //function STARTER_preprocess_html(&$vars) {
 //  // Add conditional CSS for IE. To use uncomment below and add IE css file
-//  // drupal_add_css(path_to_theme() . '/css/ie.css', array('weight' => CSS_THEME, 'browsers' => array('!IE' => FALSE), 'preprocess' => FALSE));
+//  drupal_add_css(path_to_theme() . '/css/ie.css', array('weight' => CSS_THEME, 'browsers' => array('!IE' => FALSE), 'preprocess' => FALSE));
 //  
 //  // Need legacy support for IE downgrade to Foundation 2 or use JS file below
 //  // drupal_add_js('http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE7.js', 'external'); 
@@ -16,7 +15,6 @@
 /**
  * Implements template_preprocess_page
  *
- * Add convenience variables and template suggestions
  */
 //function STARTER_preprocess_page(&$vars) {
 //}
@@ -24,7 +22,6 @@
 /**
  * Implements template_preprocess_node
  *
- * Add template suggestions and classes
  */
 //function STARTER_preprocess_node(&$vars) {
 //}
@@ -33,6 +30,63 @@
  * Implements hook_preprocess_block()
  */
 //function STARTER_preprocess_block(&$vars) {
+//}
+
+//function STARTER_preprocess_views_view(&$vars) {
+//}
+
+/**
+ * Implements template_preprocess_panels_pane().
+ *
+ */
+//function STARTER_preprocess_panels_pane(&$vars) {
+//}
+
+/**
+ * Implements template_preprocess_views_views_fields().
+ *
+ */
+//function STARTER_preprocess_views_view_fields(&$vars) {
+//}
+
+/**
+ * Status messages in reveal modal
+ *
+ */
+//function STARTER_status_messages($vars) {
+//  $display = $vars['display'];
+//  $output = ''; 
+//
+//  $status_heading = array(
+//    'status' => t('Status message'), 
+//    'error' => t('Error message'), 
+//    'warning' => t('Warning message'),
+//  );  
+//  foreach (drupal_get_messages($display) as $type => $messages) {
+//    $output .= "<div class=\"messages $type\">\n";
+//    if (!empty($status_heading[$type])) {
+//      $output .= '<h2 class="element-invisible">' . $status_heading[$type] . "</h2>\n";
+//    }   
+//    if (count($messages) > 1) {
+//      $output .= " <ul>\n";
+//      foreach ($messages as $message) {
+//        $output .= '  <li>' . $message . "</li>\n";
+//      }   
+//      $output .= " </ul>\n";
+//    }   
+//    else {
+//      $output .= $messages[0];
+//    }   
+//    $output .= "</div>\n";
+//  }
+//  if ($output != '') {
+//    drupal_add_js("jQuery(document).ready(function() { jQuery('#status-messages').reveal(); 
+//            });", array('type' => 'inline', 'scope' => 'footer'));
+//    $output = '<div id="status-messages" class="reveal-modal expand" >'. $output;
+//    $output .= '<a class="close-reveal-modal">&#215;</a>';
+//    $output .= "</div>\n";
+//  }
+//  return $output;
 //}
 
 /**
@@ -58,23 +112,4 @@
 //  if (!empty($form['actions']) && $form['actions']['submit']) {
 //    $form['actions']['submit']['#attributes'] = array('class' => array('secondary', 'button', 'radius'));
 //  }
-//}
-
-//function STARTER_preprocess_views_view(&$vars) {
-//}
-
-/**
- * Implements template_preprocess_panels_pane().
- *
- * Adds classes for styling.
- */
-//function STARTER_preprocess_panels_pane(&$vars) {
-//}
-
-/**
- * Implements template_preprocess_views_views_fields().
- *
- * Shows/hides summary on tiles based on presence of images.
- */
-//function THEMENAME_preprocess_views_view_fields(&$vars) {
 //}
