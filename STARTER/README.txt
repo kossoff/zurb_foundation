@@ -9,6 +9,9 @@ zurb_foundation and your sub-theme will be installed in sites/all/themes/,
 but any valid theme directory is acceptable. Read the 
 sites/default/default.settings.php for more info.
 
+This theme does not support IE7. If you need it downgrade to Foundation 2 see
+http://foundation.zurb.com/docs/faq.php or use the script in the starter
+template.php THEMENAME_preprocess_html function.
 
 *** IMPORTANT NOTE ***
 *

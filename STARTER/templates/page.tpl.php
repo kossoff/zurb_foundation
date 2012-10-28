@@ -1,12 +1,12 @@
 <div class="top-bar">
   <div class="row">
     <?php if ($linked_site_name || $linked_logo): ?>
-      <div class="two columns">
+      <div class="five columns">
         <?php if ($linked_logo): ?>
           <?php print $linked_logo; ?>
         <?php endif; ?>
       </div>
-      <div class="four columns">
+      <div class="seven columns text-right">
         <?php if ($is_front): ?>
           <h1 id="site-name"><?php print $linked_site_name; ?></h1>
         <?php else: ?>
@@ -14,13 +14,29 @@
         <?php endif; ?>
       </div>
     <?php endif; ?>
-    <?php if ($main_menu_links): ?>
-      <nav class="six columns">
-        <?php print $main_menu_links; ?>
-      </nav>
-    <?php endif; ?>
   </div>
 </div>
+
+<?php if (!empty($page['header'])): ?>
+  <div class="row">
+    <div class="tweleve columns">
+      <?php print render($page['header']);?>
+    </div>
+  </div>
+<?php endif; ?>
+
+<?php if ($main_menu_links || !empty($page['navigation'])): ?>
+  <div class="row">
+    <nav class="tweleve columns">
+      <?php if (!empty($page['navigation'])): ?>
+        <?php print render($page['navigation']);?>
+      <?php else: ?>
+        <?php print $main_menu_links; ?>
+      <?php endif; ?>
+    </nav>
+  </div>
+<?php endif; ?>
+
 <?php if ($site_slogan): ?>
   <div class="row">
     <div class="tweleve columns panel radius">
