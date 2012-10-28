@@ -104,12 +104,27 @@
 //}
 
 /**
+ * Implements hook_preprocess_button().
+ */
+//function STARTER_preprocess_button(&$vars) {
+//  $vars['element']['#attributes']['class'][] = 'button';
+//  if (isset($vars['element']['#parents'][0]) && $vars['element']['#parents'][0] == 'submit') {
+//    $vars['element']['#attributes']['class'][] = 'secondary';
+//  }
+//}
+
+/**
  * Implements hook_form_alter()
- * Use foundation sexy buttons
+ * Example of using foundation sexy buttons
  */
 //function STARTER_form_alter(&$form, &$form_state, $form_id) {
 //  // Sexy submit buttons
 //  if (!empty($form['actions']) && $form['actions']['submit']) {
-//    $form['actions']['submit']['#attributes'] = array('class' => array('secondary', 'button', 'radius'));
+//    $form['actions']['submit']['#attributes'] = array('class' => array('primary', 'button', 'radius'));
 //  }
+//}
+
+// Sexy preview buttons
+//function STARTER_form_comment_form_alter(&$form, &$form_state) {
+//  $form['actions']['preview']['#attributes']['class'][] = array('class' => array('secondary', 'button', 'radius'));
 //}

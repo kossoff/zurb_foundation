@@ -7,7 +7,7 @@
  */
 function zurb_foundation_preprocess_html(&$variables) {
   // Add conditional CSS for IE
-  drupal_add_css(path_to_theme() . '/css/framework/ie.css', array('weight' => CSS_THEME, 'browsers' => array('!IE' => FALSE), 'preprocess' => FALSE));
+  drupal_add_css(path_to_theme() . '/css/ie.css', array('weight' => CSS_THEME, 'browsers' => array('!IE' => FALSE), 'preprocess' => FALSE));
 
   global $language;
 
@@ -506,7 +506,7 @@ function zurb_foundation_preprocess_block(&$vars) {
  */
 function zurb_foundation_form_element_label($vars) {
   if (!empty($vars['element']['#title'])) {
-    $vars['element']['#title'] = '<span class="secondary label">' . $vars['element']['#title'] . '</span>';
+    $vars['element']['#title'] = '<label>' . $vars['element']['#title'] . '</label>';
   }
   if (!empty($vars['element']['#description'])) {
     $vars['element']['#description'] = ' <span class="has-tip tip-top radius" data-width="250" title="' . $vars['element']['#description'] . '">' . t('More information?') . '</span>';

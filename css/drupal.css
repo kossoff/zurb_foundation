@@ -55,9 +55,8 @@
 }
 
 /* Drupal overrides */
-js .block-search .form-autocomplete {
-    background: none;
-}
-
+.block-search .form-autocomplete {background: none;}
 .description {padding:5px}
+
 /* Foundation overrides */
+.button.primary {margin-right: .5em;}
