@@ -8,26 +8,29 @@ screenshot = images/screenshot.png
 
 ; Foundation framework stylesheets
 stylesheets[all][] = css/foundation.min.css
-;stylesheets[all][] = css/foundation.css ; Comment out for development or as a reference
+; Uncompressed uncomment for dev or as a reference
+;stylesheets[all][] = css/foundation.css 
 
 ; Base theme specific CSS
 stylesheets[all][] = css/drupal.css
 
-; Default theme scripts.
-scripts[] = js/app.js
-scripts[] = js/foundation.min.js
-scripts[] = js/jquery.foundation.accordion.js
-scripts[] = js/jquery.foundation.alerts.js
-scripts[] = js/jquery.foundation.buttons.js
-scripts[] = js/jquery.foundation.forms.js
-scripts[] = js/jquery.foundation.mediaQueryToggle.js
-scripts[] = js/jquery.foundation.navigation.js
-scripts[] = js/jquery.foundation.orbit.js
-scripts[] = js/jquery.foundation.reveal.js
-scripts[] = js/jquery.foundation.tabs.js
-scripts[] = js/jquery.foundation.tooltips.js
-scripts[] = js/jquery.placeholder.js
+; Foundation framework scripts.
 scripts[] = js/modernizr.foundation.js
+scripts[] = js/foundation.min.js
+scripts[] = js/app.js
+
+; Uncompressed uncomment for development or as a reference
+; scripts[] = js/jquery.foundation.accordion.js
+; scripts[] = js/jquery.foundation.alerts.js
+; scripts[] = js/jquery.foundation.buttons.js
+; scripts[] = js/jquery.foundation.forms.js
+; scripts[] = js/jquery.foundation.mediaQueryToggle.js
+; scripts[] = js/jquery.foundation.navigation.js
+; scripts[] = js/jquery.foundation.orbit.js
+; scripts[] = js/jquery.foundation.reveal.js
+; scripts[] = js/jquery.foundation.tabs.js
+; scripts[] = js/jquery.foundation.tooltips.js
+; scripts[] = js/jquery.placeholder.js
 
 ; Regions are output in the page.tpl.php
 regions[header]          = Header

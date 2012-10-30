@@ -6,9 +6,6 @@
  * Adds additional classes
  */
 function zurb_foundation_preprocess_html(&$variables) {
-  // Add conditional CSS for IE
-  drupal_add_css(path_to_theme() . '/css/ie.css', array('weight' => CSS_THEME, 'browsers' => array('!IE' => FALSE), 'preprocess' => FALSE));
-
   global $language;
 
   // Clean up the lang attributes
@@ -237,7 +234,6 @@ function zurb_foundation_preprocess_node(&$vars) {
 //  }
 }
 
-
 function zurb_foundation_field($variables) {
   $output = '';
 
@@ -266,8 +262,8 @@ function zurb_foundation_preprocess_field(&$vars) {
   if ($vars['field_type_css'] == 'taxonomy-term-reference') {
     $vars['content_attributes_array']['class'][] = 'comma-separated';
   }
-  /**
-   * Convinence variables
+  
+  // Convinence variables
   $name = $vars['element']['#field_name'];
   $bundle = $vars['element']['#bundle'];
   $mode = $vars['element']['#view_mode'];
@@ -278,7 +274,6 @@ function zurb_foundation_preprocess_field(&$vars) {
  
   // Global field classes
   $classes[] = 'field-wrapper';
-  $title_classes[] = 'field-label';
   $content_classes[] = 'field-items';
   $item_classes[] = 'field-item';
  
@@ -287,7 +282,7 @@ function zurb_foundation_preprocess_field(&$vars) {
   // print '<strong>Bundle:</strong> ' . $bundle  . '<br/>';
   // print '<strong>Mode:</strong> ' . $mode .'<br/>';
  
-  ///* Add specific classes to targeted fields 
+  // Add specific classes to targeted fields 
   switch ($mode) {
     // All teasers 
     case 'teaser':
@@ -304,62 +299,63 @@ function zurb_foundation_preprocess_field(&$vars) {
       }
       break;
   }
- 
-  switch ($field) {
-    case 'field_authors':
-      $title_classes[] = 'inline';
-      $content_classes[] = 'authors';
-      $item_classes[] = 'author';
-      break;
-  }
+ // Check if exists
+//  switch ($field) {
+//    case 'field_authors':
+//      $title_classes[] = 'inline';
+//      $content_classes[] = 'authors';
+//      $item_classes[] = 'author';
+//      break;
+//  }
  
   // Apply odd or even classes along with our custom classes to each item
   foreach ($vars['items'] as $delta => $item) {
     $item_classes[] = $delta % 2 ? 'odd' : 'even';
     $vars['item_attributes_array'][$delta]['class'] = $item_classes;
   }
-   **/
-//  // add class to a specific fields across content types.
-//  switch ($vars['element']['#field_name']) {
-//    case 'body':
-//      $vars['classes_array'][] = 'text-content';
-//      break;
-//
-//    case 'field_summary':
-//      $vars['classes_array'][] = 'text-teaser';
-//      break;
-//
-//    case 'field_link':
-//    case 'field_date':
-//      // Replace classes entirely, instead of adding extra.
-//      $vars['classes_array'] = array('list-definition', 'text-content');
-//      break;
-//
-//    case 'field_image':
-//      // Replace classes entirely, instead of adding extra.
-//      $vars['classes_array'] = array('title-image');
-//      break;
-//
-//    default:
-//      break;
-//  // Add classes to body based on content type and view mode.
-//  if ($vars['element']['#field_name'] = 'body') {
-//
-//    // Add classes to Foobar content type.
-//    if ($vars['element']['#bundle'] == 'foobar') {
-//      $vars['classes_array'][] = 'text-secondary';
-//    }
-//
-//    // Add classes to other content types with view mode 'teaser';
-//    elseif ($vars['element']['#view_mode'] == 'teaser') {
-//      $vars['classes_array'][] = 'text-secondary';
-//    }
-//
-//    // The rest is text-content.
-//    else {
-//      $vars['classes_array'][] = 'text-content';
-//    }
-//  }
+  
+  // Add class to a specific fields across content types.
+  switch ($vars['element']['#field_name']) {
+    case 'body':
+      $vars['classes_array'] = array('body');
+      break;
+
+    case 'field_summary':
+      $vars['classes_array'][] = 'text-teaser';
+      break;
+
+    case 'field_link':
+    case 'field_date':
+      // Replace classes entirely, instead of adding extra.
+      $vars['classes_array'] = array('text-content');
+      break;
+
+    case 'field_image':
+      // Replace classes entirely, instead of adding extra.
+      $vars['classes_array'] = array('image');
+      break;
+
+    default:
+      break;
+  }
+  // Add classes to body based on content type and view mode.
+  if ($vars['element']['#field_name'] = 'body') {
+
+    // Add classes to Foobar content type.
+    if ($vars['element']['#bundle'] == 'foobar') {
+      $vars['classes_array'][] = 'text-secondary';
+    }
+
+    // Add classes to other content types with view mode 'teaser';
+    elseif ($vars['element']['#view_mode'] == 'teaser') {
+      $vars['classes_array'][] = 'text-secondary';
+    }
+
+    // The rest is text-content.
+    else {
+      $vars['classes_array'][] = 'field';
+    }
+  }
 }
 
 /**
@@ -555,7 +551,6 @@ function zurb_foundation_preprocess_views_view(&$vars) {
 /**
  * Implements template_preprocess_panels_pane().
  *
- * Adds classes for styling.
  */
 function zurb_foundation_preprocess_panels_pane(&$vars) {
 }
@@ -563,7 +558,6 @@ function zurb_foundation_preprocess_panels_pane(&$vars) {
 ///**
 // * Implements template_preprocess_views_views_fields().
 // *
-// * Shows/hides summary on tiles based on presence of images.
 // */
 //function THEMENAME_preprocess_views_view_fields(&$vars) {
 //  if ($vars['view']->name == 'nodequeue_1') {
@@ -630,4 +624,17 @@ function zurb_foundation_menu_local_task(&$variables) {
   }
 
   return '<dd' . (!empty($variables['element']['#active']) ? ' class="active"' : '') . '>' . l($link_text, $link['href'], $link['localized_options']) . "</dd>\n";
+}
+
+// @TODO maybe use hook_library_alter or hook_library
+function zurb_foundation_js_alter(&$js) {
+  if (!module_exists('jquery_update')) {
+    // Swap out jQuery to use an updated version of the library.
+    $js['misc/jquery.js']['data'] = drupal_get_path('theme', 'zurb_foundation') . '/js/jquery.js';
+    $js['misc/jquery.js']['version'] = '1.8.2';
+  } 
+  // @TODO moving scripts to footer possibly remove?
+  foreach ($js as $key => $js_script) {
+    $js[$key]['scope'] = 'footer';
+  }
 }

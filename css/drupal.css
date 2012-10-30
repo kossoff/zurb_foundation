@@ -37,6 +37,7 @@
 
 .top-bar {
   border-bottom:1px solid #ddd;
+  height:auto;
   margin-bottom: 15px;
 }
 

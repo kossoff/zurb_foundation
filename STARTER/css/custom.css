@@ -11,4 +11,8 @@
 /* Drupal overrides */
 
 /* Foundation overrides */
+.top-bar {
+  background:transparent;
+  height:auto;
+}
 .button.primary {margin-right: .5em;}
