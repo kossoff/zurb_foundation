@@ -283,21 +283,23 @@ function zurb_foundation_preprocess_field(&$vars) {
   // print '<strong>Mode:</strong> ' . $mode .'<br/>';
  
   // Add specific classes to targeted fields 
-  switch ($mode) {
-    // All teasers 
-    case 'teaser':
-      switch ($field) {
-        // Teaser read more links
-        case 'node_link':
-          $item_classes[] = 'more-link';
-          break;
-        // Teaser descriptions
-        case 'body':
-        case 'field_description':
-          $item_classes[] = 'description';
-          break;
-      }
+  if(isset($field)) {
+    switch ($mode) {
+      // All teasers 
+      case 'teaser':
+        switch ($field) {
+          // Teaser read more links
+          case 'node_link':
+            $item_classes[] = 'more-link';
+            break;
+          // Teaser descriptions
+          case 'body':
+          case 'field_description':
+            $item_classes[] = 'description';
+            break;
+        }
       break;
+    }
   }
  // Check if exists
 //  switch ($field) {
