@@ -107,7 +107,7 @@
 <?php endif; ?>
 <div class="bottom-bar">
   <div class="row">
-    <div class="tweleve columns">
+    <div class="twelve columns">
       &copy; <?php print date('Y') . ' ' . check_plain($site_name) . ' ' . t('All rights reserved.'); ?>
     </div>
   </div>

@@ -19,7 +19,7 @@
 
 <?php if (!empty($page['header'])): ?>
   <div class="row">
-    <div class="tweleve columns">
+    <div class="twelve columns">
       <?php print render($page['header']);?>
     </div>
   </div>
@@ -27,7 +27,7 @@
 
 <?php if ($main_menu_links || !empty($page['navigation'])): ?>
   <div class="row">
-    <nav class="tweleve columns">
+    <nav class="twelve columns">
       <?php if (!empty($page['navigation'])): ?>
         <?php print render($page['navigation']);?>
       <?php else: ?>
@@ -39,7 +39,7 @@
 
 <?php if ($site_slogan): ?>
   <div class="row">
-    <div class="tweleve columns panel radius">
+    <div class="twelve columns panel radius">
       <?php print $site_slogan; ?>
     </div>
   </div>
@@ -104,7 +104,7 @@
 <?php endif; ?>
 <div class="bottom-bar">
   <div class="row">
-    <div class="tweleve columns">
+    <div class="twelve columns">
       &copy; <?php print date('Y') . ' ' . check_plain($site_name); ?>
     </div>
   </div>
