@@ -1,4 +1,42 @@
 <?php
+/**
+ * Implements theme_links() targeting the main menu specifically
+ * Outputs Foundation Nav bar http://foundation.zurb.com/docs/navigation.php
+ * 
+ */
+//function STARTER_links__system_main_menu($vars) {
+//  // Get all the main menu links
+//  $menu_links = menu_tree_output(menu_tree_all_data('main-menu'));
+//  
+//  // Initialize some variables to prevent errors
+//  $output = '';
+//  $sub_menu = '';
+//
+//  foreach ($menu_links as $key => $link) {
+//    // Add special class needed for Foundation dropdown menu to work
+//    !empty($link['#below']) ? $link['#attributes']['class'][] = 'has-flyout' : '';
+//
+//    // Render top level and make sure we have an actual link
+//    if (!empty($link['#href'])) {
+//      $output .= '<li' . drupal_attributes($link['#attributes']) . '>' . l($link['#title'], $link['#href']);
+//      // Get sub navigation links if they exist
+//      foreach ($link['#below'] as $key => $sub_link) {
+//        if (!empty($sub_link['#href'])) {
+//          $sub_menu .= '<li>' . l($sub_link['#title'], $sub_link['#href']) . '</li>';
+//        }
+//        
+//      }
+//      $output .= !empty($link['#below']) ? '<a href="#" class="flyout-toggle"><span> </span></a><ul class="flyout">' . $sub_menu . '</ul>' : '';
+//      
+//      // Reset dropdown to prevent duplicates
+//      unset($sub_menu);
+//      $sub_menu = '';
+//      
+//      $output .=  '</li>';
+//    }
+//  }
+//  return '<ul class="nav-bar">' . $output . '</ul>';
+//}
 
 /**
  * Implements template_preprocess_html().
