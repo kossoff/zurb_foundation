@@ -9,6 +9,7 @@
 }
 
 /* Drupal overrides */
+.links .node-readmore {padding-left:0;}
 
 /* Foundation overrides */
 .top-bar {
