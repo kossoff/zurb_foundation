@@ -227,9 +227,6 @@ function zurb_foundation_preprocess_node(&$vars) {
 //      $vars['theme_hook_suggestions'][] = 'node__aside';
 //      $vars['title_attributes_array']['class'] = array('title-block');
 //      $vars['attributes_array']['class'][] = 'block-content';
-//      $vars['attributes_array']['class'][] = 'st-spot';
-//      $vars['attributes_array']['class'][] = 'vgrid';
-//      $vars['attributes_array']['class'][] = 'clearfix';
 //      break;
 //  }
 }
@@ -341,7 +338,7 @@ function zurb_foundation_preprocess_field(&$vars) {
       break;
   }
   // Add classes to body based on content type and view mode.
-  if ($vars['element']['#field_name'] = 'body') {
+  if ($vars['element']['#field_name'] == 'body') {
 
     // Add classes to Foobar content type.
     if ($vars['element']['#bundle'] == 'foobar') {

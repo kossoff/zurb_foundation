@@ -1,26 +1,25 @@
-<div class="top-bar">
-  <div class="row">
-    <?php if ($linked_site_name || $linked_logo): ?>
-      <div class="two columns">
-        <?php if ($linked_logo): ?>
-          <?php print $linked_logo; ?>
-        <?php endif; ?>
-      </div>
-      <div class="four columns">
-        <?php if ($is_front): ?>
-          <h1 id="site-name"><?php print $linked_site_name; ?></h1>
-        <?php else: ?>
-          <div id="site-name"><?php print $linked_site_name; ?></div>
-        <?php endif; ?>
-      </div>
-    <?php endif; ?>
-      <?php if ($main_menu_links): ?>
-        <nav class="six columns">
-          <?php print $main_menu_links; ?>
-        </nav>
+<div class="row">
+  <?php if ($linked_site_name || $linked_logo): ?>
+    <div class="two columns">
+      <?php if ($linked_logo): ?>
+        <?php print $linked_logo; ?>
       <?php endif; ?>
-  </div>
+    </div>
+    <div class="four columns">
+      <?php if ($is_front): ?>
+        <h1 id="site-name"><?php print $linked_site_name; ?></h1>
+      <?php else: ?>
+        <div id="site-name"><?php print $linked_site_name; ?></div>
+      <?php endif; ?>
+    </div>
+  <?php endif; ?>
+    <?php if ($main_menu_links): ?>
+      <nav class="six columns">
+        <?php print $main_menu_links; ?>
+      </nav>
+    <?php endif; ?>
 </div>
+
 <div class="row">
   <div class="<?php $site_slogan ? print 'six' : print 'four columns offset-by-eight'; ?> columns hide-for-small">
     <p>

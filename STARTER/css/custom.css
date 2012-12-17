@@ -12,8 +12,4 @@
 .links .node-readmore {padding-left:0;}
 
 /* Foundation overrides */
-.top-bar {
-  background:transparent;
-  height:auto;
-}
 .button.primary {margin-right: .5em;}

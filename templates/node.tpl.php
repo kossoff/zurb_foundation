@@ -75,7 +75,7 @@
  * @see template_process()
  */
 ?>
-<div id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?>"<?php print $attributes; ?>>
+<article id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?>"<?php print $attributes; ?>>
   <?php print render($title_prefix); ?>
   <?php if (!$page): ?>
     <?php if (!$page): ?>
@@ -105,4 +105,4 @@
     <?php print render($content['links']); ?>
     <?php print render($content['comments']); ?>
 
-</div>
+</article>

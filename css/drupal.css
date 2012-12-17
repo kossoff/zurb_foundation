@@ -31,16 +31,6 @@
 }
 
 /* Base theme styling */
-.top-bar, .skip-link {
-  background: none repeat scroll 0 0 #eee;
-}
-
-.top-bar {
-  border-bottom:1px solid #ddd;
-  height:auto;
-  margin-bottom: 15px;
-}
-
 .menu a {
 	-moz-transition: background-color 0.2s linear 0s;
     font-family: "ProximaNovaBold","Helvetica Neue","Helvetica",Arial,sans-serif;
@@ -49,7 +39,7 @@
 }
 
 .bottom-bar {
-  background:no-repeat scroll center top #eee;
+  background:#eee no-repeat scroll top center;
   border-top: 1px solid #ddd;
   color: #555;
   padding: 15px 0;
