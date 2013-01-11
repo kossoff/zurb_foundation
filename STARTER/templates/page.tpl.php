@@ -1,20 +1,18 @@
-<div class="top-bar">
-  <div class="row">
-    <?php if ($linked_site_name || $linked_logo): ?>
-      <div class="five columns">
-        <?php if ($linked_logo): ?>
-          <?php print $linked_logo; ?>
-        <?php endif; ?>
-      </div>
-      <div class="seven columns text-right">
-        <?php if ($is_front): ?>
-          <h1 id="site-name"><?php print $linked_site_name; ?></h1>
-        <?php else: ?>
-          <div id="site-name"><?php print $linked_site_name; ?></div>
-        <?php endif; ?>
-      </div>
-    <?php endif; ?>
-  </div>
+<div class="row">
+  <?php if ($linked_site_name || $linked_logo): ?>
+    <div class="five columns">
+      <?php if ($linked_logo): ?>
+        <?php print $linked_logo; ?>
+      <?php endif; ?>
+    </div>
+    <div class="seven columns text-right">
+      <?php if ($is_front): ?>
+        <h1 id="site-name"><?php print $linked_site_name; ?></h1>
+      <?php else: ?>
+        <div id="site-name"><?php print $linked_site_name; ?></div>
+      <?php endif; ?>
+    </div>
+  <?php endif; ?>
 </div>
 
 <?php if (!empty($page['header'])): ?>

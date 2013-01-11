@@ -38,9 +38,6 @@ base theme = zurb_foundation
 ; CSS2.1 media types: http://www.w3.org/TR/CSS21/media.html#media-types
 ; CSS3 media queries: http://www.w3.org/TR/css3-mediaqueries/
 
-; Remove the styling from the base theme
-stylesheets[all][] = css/drupal.css
-
 ; An empty CSS file ready to be used
 stylesheets[all][] = css/custom.css
 
