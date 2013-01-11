@@ -118,6 +118,7 @@ function zurb_foundation_preprocess_page(&$variables) {
       ),
     ));
   }
+  
   $variables['linked_logo']  = '';
   if (!empty($variables['logo_img'])) {
     $variables['linked_logo'] = l($variables['logo_img'], '<front>', array(
@@ -128,6 +129,7 @@ function zurb_foundation_preprocess_page(&$variables) {
       'html' => TRUE,
     ));
   }
+  
   $variables['linked_site_name'] = '';
   if (!empty($variables['site_name'])) {
     $variables['linked_site_name'] = l($variables['site_name'], '<front>', array(
@@ -154,6 +156,7 @@ function zurb_foundation_preprocess_page(&$variables) {
       ),
     ));
   }
+  
   $variables['secondary_menu_links'] = '';
   if (isset($variables['secondary_menu'])) {
     $variables['secondary_menu_links'] = theme('links__system_secondary_menu', array(
@@ -378,122 +381,34 @@ function zurb_foundation_breadcrumb($variables) {
  * Implements hook_preprocess_block()
  */
 function zurb_foundation_preprocess_block(&$vars) {
-  // Add a striping class.
-  $vars['classes_array'][] = 'block-' . $vars['zebra'];
-  $vars['title_attributes_array']['class'][] = 'block-title';
+  // Convenience variable for block headers.
+  $title_class = &$vars['title_attributes_array']['class'];
+  
+  // Generic block header class.
+  $title_class[] = 'block-title';
 
   // In the header region visually hide block titles.
   if ($vars['block']->region == 'header') {
-    $vars['title_attributes_array']['class'][] = 'element-invisible';
+    $title_class[] = 'element-invisible';
   }
-//  $block_id = $vars['block']->module . '-' . $vars['block']->delta;
-//  $classes = &$vars['classes_array'];
-//  $title_classes = &$vars['title_attributes_array']['class'];
-//  $content_classes = &$vars['content_attributes_array']['class'];
- 
-  // Add global classes to all blocks 
-//  $title_classes[] = 'block-title';
-//  $content_classes[] = 'block-content';
+  
+  // Add a unique class for each block for styling.
+  $vars['classes_array'][] = $vars['block_html_id'];
+  
+  // Add classes based on region.
+  switch ($vars['elements']['#block']->region) {
+    // Add a striping class
+    case 'sidebar_first':
+    case 'sidebar_second':
+      $vars['classes_array'][] = 'block-' . $vars['zebra'];
+    break;
 
-  // Add classes based on the block delta. 
-//  switch ($block_id) {
-//    // System Navigation block
-//    case 'system-navigation':
-//      $classes[] = 'block-rounded';
-//      $title_classes[] = 'block-fancy-title';
-//      $content_classes[] = 'block-fancy-content';
-//      break;
-//    /* Main Menu block */
-//    case 'system-main-menu':
-//    /* User Login block */
-//    case 'user-login':
-//      $title_classes[] = 'element-invisible';
-//      break;
-//  }
-  // Add template suggestions for block.tpl.php.
-//    // Add theme suggestion based module.
-//    switch($vars['elements']['#block']->module) {
-//      case 'menu':
-//      case 'menu_block':
-//        $vars['theme_hook_suggestions'][] = 'block__navigation';
-//        break;
-//
-//      // Render some blocks without wrapper and leave it to the module.
-//      case 'views':
-//      case 'mini_panels':
-//        $vars['theme_hook_suggestions'][] = 'block__nowrapper';
-//    }
-// /**
-//   * Add classes to blocks created by Views based on views name.
-//   */
-//  // Check if block was created by views.
-//  if ($vars['elements']['#block']->module == 'views') {
-//
-//    // Get views name from $vars['elements']['#block']->delta.
-//    $block_delta = explode('-', $vars['elements']['#block']->delta);
-//    $views_name = $block_delta[0];
-//
-//    // Add classes based on views name.
-//    switch ($views_name) {
-//      case 'view_foo':
-//      case 'view_bar':
-//        $vars['title_attributes_array']['class'][] = 'title-list';
-//        break;
-//
-//      case 'view_baz':
-//        $vars['title_attributes_array']['class'] = 'title-block';
-//        $vars['classes_array'][] = 'block-secondary';
-//        break;
-//
-//      default:
-//        $vars['title_attributes_array']['class'][] = 'title-block';
-//    }
-//  }
-//   /**
-//   * Add classes based on region.
-//   */
-//  switch ($vars['elements']['#block']->region) {
-//    case 'region_foo':
-//    case 'region_bar':
-//    case 'region_baz':
-//      $vars['title_attributes_array']['class'][] = 'title-list';
-//      break;
-//
-//    case 'region_foobar':
-//      $vars['classes_array'][] = 'block-list';
-//      break;
-//
-//    default;
-//  }
-//  /*
-//   * Add classes based on module excluding certain regions.
-//   */
-//  switch ($vars['elements']['#block']->region) {
-//
-//    // Exclude certain blocks in certain regions.
-//    case 'footer_sitemap':
-//    case 'user_first':
-//    case 'user_second':
-//    case 'menu':
-//    case 'footer_first':
-//    case 'footer_second':
-//      // Do nothing.
-//      break;
-//
-//    default:
-//      switch($vars['elements']['#block']->module) {
-//        // For the rest of the regions add classes to navigation blocks.
-//        case 'menu':
-//        case 'menu_block':
-//          $vars['attributes_array']['class'][] = 'block-style-menu';
-//          break;
-//
-//        // And style standard blocks.
-//        case 'block':
-//          $vars['attributes_array']['class'][] = 'block-secondary';
-//          break;
-//      }
-//  }
+    case 'header':
+      $vars['classes_array'][] = 'header';
+    break;
+
+    default;
+  }
 }
 
 /**

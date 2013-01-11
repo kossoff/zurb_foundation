@@ -1,4 +1,4 @@
-<div class="row">
+<header class="row">
   <?php if ($linked_site_name || $linked_logo): ?>
     <div class="two columns">
       <?php if ($linked_logo): ?>
@@ -18,7 +18,15 @@
         <?php print $main_menu_links; ?>
       </nav>
     <?php endif; ?>
-</div>
+</header>
+
+<?php if (!empty($page['header'])): ?>
+  <div class="row">
+    <div class="twelve columns">
+      <?php print render($page['header']);?>
+    </div>
+  </div>
+<?php endif; ?>
 
 <div class="row">
   <div class="<?php $site_slogan ? print 'six' : print 'four columns offset-by-eight'; ?> columns hide-for-small">

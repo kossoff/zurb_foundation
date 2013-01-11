@@ -42,7 +42,7 @@
  */
 ?>
 <?php if ($block->delta != 'main'):  ?>  
-  <div id="<?php print $block_html_id; ?>" class="<?php print $classes; ?>"<?php print $attributes; ?>>
+  <div class="<?php print $classes; ?>"<?php print $attributes; ?>>
 <?php endif; ?>    
     
   <?php print render($title_prefix); ?>

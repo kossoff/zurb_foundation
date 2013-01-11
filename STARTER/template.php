@@ -68,6 +68,43 @@
  * Implements hook_preprocess_block()
  */
 //function STARTER_preprocess_block(&$vars) {
+//  // Add wrapping div with global class to all block content sections.
+//  $vars['content_attributes_array']['class'][] = 'block-content';
+//  
+//  // Convenience variable for classes based on block ID
+//  $block_id = $vars['block']->module . '-' . $vars['block']->delta;
+//  
+//  // Add classes based on a specific block
+//  switch ($block_id) {
+//    // System Navigation block
+//    case 'system-navigation':
+//      // Custom class for entire block
+//      $vars['classes_array'][] = 'system-nav';
+//      // Custom class for block title
+//      $vars['title_attributes_array']['class'][] = 'system-nav-title';
+//      // Wrapping div with custom class for block content
+//      $vars['content_attributes_array']['class'] = 'system-nav-content';
+//      break;
+//    
+//    // User Login block
+//    case 'user-login':
+//      // Hide title
+//      $vars['title_attributes_array']['class'][] = 'element-invisible';
+//      break;
+//
+//    // Example of adding Foundation classes
+//    case 'block-foo': // Target the block ID
+//      // Set grid column or mobile classes or anything else you want.
+//      $vars['classes_array'][] = 'six columns';
+//      break;
+//  }
+//
+//  // Add template suggestions for blocks from specific modules.
+//  switch($vars['elements']['#block']->module) {
+//    case 'menu':
+//      $vars['theme_hook_suggestions'][] = 'block__nav';
+//    break;
+//  }
 //}
 
 //function STARTER_preprocess_views_view(&$vars) {
