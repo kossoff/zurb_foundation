@@ -1,5 +1,5 @@
 name = ZURB Foundation
-description = Drupal implementation of the framework by <a href="http://ishmaelsanchez.com">Ishmael Sanchez</a>
+description = Drupal implementation of the Foundation 3 framework
 core = 7.x
 engine = phptemplate
 
@@ -50,6 +50,9 @@ regions[footer_last]     = Footer last
 ; Hidden regions
 regions_hidden[] = Page top
 regions_hidden[] = Page bottom
+
+; Panel Layouts
+plugins[panels][layouts] = layouts
 
 ; Possible theme settings
 ; settings[foundation_zurb_copyright] = 1
