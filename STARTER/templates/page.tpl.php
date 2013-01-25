@@ -100,7 +100,7 @@
     <?php endif; ?>
   </footer>
 <?php endif; ?>
-<div class="bottom-bar">
+<div class="bottom-bar panel">
   <div class="row">
     <div class="twelve columns">
       &copy; <?php print date('Y') . ' ' . check_plain($site_name); ?>
