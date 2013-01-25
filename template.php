@@ -1,60 +1,30 @@
 <?php
-
 /**
- * Implements template_preprocess_html().
+ * Load template files
  * 
- * Adds additional classes
+ * $files   Contains alphabetized list of files that will be required
  */
-function zurb_foundation_preprocess_html(&$variables) {
-  global $language;
+$files = array(
+  'elements.inc',
+  'form.inc',
+  'menu.inc',
+  'theme.inc',
+);
 
-  // Clean up the lang attributes
-  $variables['html_attributes'] = 'lang="' . $language->language . '" dir="' . $language->dir . '"';
-
-  // Add language body class.
-  if (function_exists('locale')) {
-    $variables['classes_array'][] = 'lang-' . $variables['language']->language;
-  }
-
-  //  @TODO Custom fonts from Google web-fonts
-  //  $font = str_replace(' ', '+', theme_get_setting('zurb_foundation_font'));
-  //  if (theme_get_setting('zurb_foundation_font')) {
-  //    drupal_add_css('http://fonts.googleapis.com/css?family=' . $font , array('type' => 'external', 'group' => CSS_THEME));
-  //  }
-
-  // Classes for body element. Allows advanced theming based on context
-  if (!$variables['is_front']) {
-    // Add unique class for each page.
-    $path = drupal_get_path_alias($_GET['q']);
-    // Add unique class for each website section.
-    list($section, ) = explode('/', $path, 2);
-    $arg = explode('/', $_GET['q']);
-    if ($arg[0] == 'node' && isset($arg[1])) {
-      if ($arg[1] == 'add') {
-        $section = 'node-add';
-      }
-      elseif (isset($arg[2]) && is_numeric($arg[1]) && ($arg[2] == 'edit' || $arg[2] == 'delete')) {
-        $section = 'node-' . $arg[2];
-      }
-    }
-    $variables['classes_array'][] = drupal_html_class('section-' . $section);
-  }
-
-  // Store the menu item since it has some useful information.
-  $variables['menu_item'] = menu_get_item();
-  if ($variables['menu_item']) {
-    switch ($variables['menu_item']['page_callback']) {
-      case 'views_page':
-        $variables['classes_array'][] = 'views-page';
-        break;
-      case 'page_manager_page_execute':
-      case 'page_manager_node_view':
-      case 'page_manager_contact_site':
-        $variables['classes_array'][] = 'panels-page';
-        break;
+function _zurb_foundation_load($files) {
+  $tp = drupal_get_path('theme', 'zurb_foundation');
+  $file = '';
+  
+  // Check file path and '.inc' extension
+  foreach($files as $file) {
+    $file_path = __DIR__ .'/inc/' . $file;
+    if ( strpos($file,'.inc') > 0 && file_exists($file_path)) {
+      require_once($file_path);
     }
   }
 }
+
+_zurb_foundation_load($files);
 
 /**
  * Implements hook_html_head_alter().
@@ -96,144 +66,24 @@ function zurb_foundation_html_head_alter(&$head_elements) {
   );
 }
 
-/**
- * Implements template_preprocess_page
- *
- * Add convenience variables and template suggestions
- */
-function zurb_foundation_preprocess_page(&$variables) {
-  // Add page--node_type.tpl.php suggestions
-  if (!empty($variables['node'])) {
-    $variables['theme_hook_suggestions'][] = 'page__' . $variables['node']->type;
-  }
 
-  $variables['logo_img'] = '';
-  if (!empty($variables['logo'])) {
-    $variables['logo_img'] = theme('image', array(
-      'path'  => $variables['logo'],
-      'alt'   => strip_tags($variables['site_name']) . ' ' . t('logo'),
-      'title' => strip_tags($variables['site_name']) . ' ' . t('Home'),
-						'attributes' => array(
-        'class' => array('logo'),
-      ),
-    ));
-  }
-  
-  $variables['linked_logo']  = '';
-  if (!empty($variables['logo_img'])) {
-    $variables['linked_logo'] = l($variables['logo_img'], '<front>', array(
-      'attributes' => array(
-        'rel'   => 'home',
-        'title' => strip_tags($variables['site_name']) . ' ' . t('Home'),
-      ),
-      'html' => TRUE,
-    ));
-  }
-  
-  $variables['linked_site_name'] = '';
-  if (!empty($variables['site_name'])) {
-    $variables['linked_site_name'] = l($variables['site_name'], '<front>', array(
-      'attributes' => array(
-        'rel'   => 'home',
-        'title' => strip_tags($variables['site_name']) . ' ' . t('Home'),
-      ),
-    ));
-  }
-
-  // Site navigation links.
-  $variables['main_menu_links'] = '';
-  if (isset($variables['main_menu'])) {
-    $variables['main_menu_links'] = theme('links__system_main_menu', array(
-      'links' => $variables['main_menu'],
-      'attributes' => array(
-        'id' => 'main-menu',
-        'class' => array('link-list'),
-      ),
-      'heading' => array(
-        'text' => t('Main menu'),
-        'level' => 'h2',
-        'class' => array('element-invisible'),
-      ),
-    ));
-  }
-  
-  $variables['secondary_menu_links'] = '';
-  if (isset($variables['secondary_menu'])) {
-    $variables['secondary_menu_links'] = theme('links__system_secondary_menu', array(
-      'links' => $variables['secondary_menu'],
-      'attributes' => array(
-        'id'    => 'secondary-menu',
-        'class' => array('secondary', 'nav-bar'),
-      ),
-      'heading' => array(
-        'text' => t('Secondary menu'),
-        'level' => 'h2',
-        'class' => array('element-invisible'),
-      ),
-    ));
-  }
-
-  // Convenience variables
-  $left = $variables['page']['sidebar_first'];
-  $right = $variables['page']['sidebar_second'];
-
-  // Dynamic sidebars
-  if (!empty($left) && !empty($right)) {
-    $variables['main_grid'] = 'six push-three';
-    $variables['sidebar_first_grid'] = 'three pull-six';
-    $variables['sidebar_sec_grid'] = 'three';
-  } elseif (empty($left) && !empty($right)) {
-    $variables['main_grid'] = 'nine';
-    $variables['sidebar_first_grid'] = '';
-    $variables['sidebar_sec_grid'] = 'three';
-  } elseif (!empty($left) && empty($right)) {
-    $variables['main_grid'] = 'nine push-three';
-    $variables['sidebar_first_grid'] = 'three pull-nine';
-    $variables['sidebar_sec_grid'] = '';
-  } else {
-    $variables['main_grid'] = 'twelve';
-    $variables['sidebar_first_grid'] = '';
-    $variables['sidebar_sec_grid'] = '';
-  }
-
-}
 
 /**
- * Implements template_preprocess_node
- *
- * Add template suggestions and classes
+ * Implements template_breadcrumb().
  */
-function zurb_foundation_preprocess_node(&$vars) {
-  // Add node--node_type--view_mode.tpl.php suggestions
-  $vars['theme_hook_suggestions'][] = 'node__' . $vars['type'] . '__' . $vars['view_mode'];
-  
-  // Add node--view_mode.tpl.php suggestions
-  $vars['theme_hook_suggestions'][] = 'node__' . $vars['view_mode'];
-  
-  // Add a class for the view mode.
-  if (!$vars['teaser']) {
-    $vars['classes_array'][] = 'view-mode-' . $vars['view_mode'];
-  }
-  $vars['title_attributes_array']['class'][] = 'node-title';
-//  // Add classes based on node type.
-//  switch ($vars['type']) {
-//    case 'news':
-//    case 'pages':
-//      $vars['attributes_array']['class'][] = 'content-wrapper';
-//      $vars['attributes_array']['class'][] = 'text-content';
-//      break;
-//  }
-//
-//  // Add classes & theme hook suggestions based on view mode.
-//  switch ($vars['view_mode']) {
-//    case 'block_display':
-//      $vars['theme_hook_suggestions'][] = 'node__aside';
-//      $vars['title_attributes_array']['class'] = array('title-block');
-//      $vars['attributes_array']['class'][] = 'block-content';
-//      break;
-//  }
-}
+function zurb_foundation_breadcrumb($variables) {
+  $breadcrumb = $variables['breadcrumb'];
+  $title = strip_tags(drupal_get_title());
 
+  if (!empty($breadcrumb)) {
+    // Provide a navigational heading to give context for breadcrumb links to
+    // screen-reader users. Make the heading invisible with .element-invisible.
+    $output = '<h2 class="element-invisible">' . t('You are here') . '</h2>';
+
+    $output .= '<div class="breadcrumb">' . implode(' &raquo; ', $breadcrumb) . ' &raquo; ' . $title . '</div>';
+    return $output;
+  }
+}
 function zurb_foundation_field($variables) {
   $output = '';
 
@@ -252,6 +102,63 @@ function zurb_foundation_field($variables) {
   return $output;
 }
 
+/**
+ * Implements theme_field__field_type().
+ */
+function zurb_foundation_field__taxonomy_term_reference($variables) {
+  $output = '';
+
+  // Render the label, if it's not hidden.
+  if (!$variables['label_hidden']) {
+    $output .= '<h2 class="field-label">' . $variables['label'] . ': </h2>';
+  }
+
+  // Render the items.
+  $output .= ($variables['element']['#label_display'] == 'inline') ? '<ul class="links inline">' : '<ul class="links">';
+  foreach ($variables['items'] as $delta => $item) {
+    $output .= '<li class="taxonomy-term-reference-' . $delta . '"' . $variables['item_attributes'][$delta] . '>' . drupal_render($item) . '</li>';
+  }
+  $output .= '</ul>';
+
+  // Render the top-level DIV.
+  $output = '<div class="' . $variables['classes'] . (!in_array('clearfix', $variables['classes_array']) ? ' clearfix' : '') . '">' . $output . '</div>';
+
+  return $output;
+}
+
+/**
+ * Implements hook_preprocess_block()
+ */
+function zurb_foundation_preprocess_block(&$vars) {
+  // Convenience variable for block headers.
+  $title_class = &$vars['title_attributes_array']['class'];
+  
+  // Generic block header class.
+  $title_class[] = 'block-title';
+
+  // In the header region visually hide block titles.
+  if ($vars['block']->region == 'header') {
+    $title_class[] = 'element-invisible';
+  }
+  
+  // Add a unique class for each block for styling.
+  $vars['classes_array'][] = $vars['block_html_id'];
+  
+  // Add classes based on region.
+  switch ($vars['elements']['#block']->region) {
+    // Add a striping class
+    case 'sidebar_first':
+    case 'sidebar_second':
+      $vars['classes_array'][] = 'block-' . $vars['zebra'];
+    break;
+
+    case 'header':
+      $vars['classes_array'][] = 'header';
+    break;
+
+    default;
+  }
+}
 /**
  * Implements template_preprocess_field().
  */
@@ -359,109 +266,196 @@ function zurb_foundation_preprocess_field(&$vars) {
     }
   }
 }
-
 /**
- * Implements template_breadcrumb().
+ * Implements template_preprocess_html().
+ * 
+ * Adds additional classes
  */
-function zurb_foundation_breadcrumb($variables) {
-  $breadcrumb = $variables['breadcrumb'];
-  $title = strip_tags(drupal_get_title());
+function zurb_foundation_preprocess_html(&$variables) {
+  global $language;
 
-  if (!empty($breadcrumb)) {
-    // Provide a navigational heading to give context for breadcrumb links to
-    // screen-reader users. Make the heading invisible with .element-invisible.
-    $output = '<h2 class="element-invisible">' . t('You are here') . '</h2>';
+  // Clean up the lang attributes
+  $variables['html_attributes'] = 'lang="' . $language->language . '" dir="' . $language->dir . '"';
 
-    $output .= '<div class="breadcrumb">' . implode(' &raquo; ', $breadcrumb) . ' &raquo; ' . $title . '</div>';
-    return $output;
+  // Add language body class.
+  if (function_exists('locale')) {
+    $variables['classes_array'][] = 'lang-' . $variables['language']->language;
+  }
+
+  //  @TODO Custom fonts from Google web-fonts
+  //  $font = str_replace(' ', '+', theme_get_setting('zurb_foundation_font'));
+  //  if (theme_get_setting('zurb_foundation_font')) {
+  //    drupal_add_css('http://fonts.googleapis.com/css?family=' . $font , array('type' => 'external', 'group' => CSS_THEME));
+  //  }
+
+  // Classes for body element. Allows advanced theming based on context
+  if (!$variables['is_front']) {
+    // Add unique class for each page.
+    $path = drupal_get_path_alias($_GET['q']);
+    // Add unique class for each website section.
+    list($section, ) = explode('/', $path, 2);
+    $arg = explode('/', $_GET['q']);
+    if ($arg[0] == 'node' && isset($arg[1])) {
+      if ($arg[1] == 'add') {
+        $section = 'node-add';
+      }
+      elseif (isset($arg[2]) && is_numeric($arg[1]) && ($arg[2] == 'edit' || $arg[2] == 'delete')) {
+        $section = 'node-' . $arg[2];
+      }
+    }
+    $variables['classes_array'][] = drupal_html_class('section-' . $section);
+  }
+
+  // Store the menu item since it has some useful information.
+  $variables['menu_item'] = menu_get_item();
+  if ($variables['menu_item']) {
+    switch ($variables['menu_item']['page_callback']) {
+      case 'views_page':
+        $variables['classes_array'][] = 'views-page';
+        break;
+      case 'page_manager_page_execute':
+      case 'page_manager_node_view':
+      case 'page_manager_contact_site':
+        $variables['classes_array'][] = 'panels-page';
+        break;
+    }
   }
 }
-
 /**
- * Implements hook_preprocess_block()
- */
-function zurb_foundation_preprocess_block(&$vars) {
-  // Convenience variable for block headers.
-  $title_class = &$vars['title_attributes_array']['class'];
-  
-  // Generic block header class.
-  $title_class[] = 'block-title';
-
-  // In the header region visually hide block titles.
-  if ($vars['block']->region == 'header') {
-    $title_class[] = 'element-invisible';
-  }
-  
-  // Add a unique class for each block for styling.
-  $vars['classes_array'][] = $vars['block_html_id'];
-  
-  // Add classes based on region.
-  switch ($vars['elements']['#block']->region) {
-    // Add a striping class
-    case 'sidebar_first':
-    case 'sidebar_second':
-      $vars['classes_array'][] = 'block-' . $vars['zebra'];
-    break;
-
-    case 'header':
-      $vars['classes_array'][] = 'header';
-    break;
-
-    default;
-  }
-}
-
-/**
- * Implements theme_form_element_label()
- */
-function zurb_foundation_form_element_label($vars) {
-  if (!empty($vars['element']['#title'])) {
-    $vars['element']['#title'] = '<label>' . $vars['element']['#title'] . '</label>';
-  }
-  if (!empty($vars['element']['#description'])) {
-    $vars['element']['#description'] = ' <span class="has-tip tip-top radius" data-width="250" title="' . $vars['element']['#description'] . '">' . t('More information?') . '</span>';
-  }
-  return theme_form_element_label($vars);
-}
-
-function zurb_foundation_form_alter(&$form, &$form_state, $form_id) {
-  // Sexy submit buttons
-  if (!empty($form['actions']) && $form['actions']['submit']) {
-    $form['actions']['submit']['#attributes'] = array('class' => array('secondary', 'button', 'radius'));
-  }
-}
-
-/**
- * Implements theme_field__field_type().
- */
-function zurb_foundation_field__taxonomy_term_reference($variables) {
-  $output = '';
-
-  // Render the label, if it's not hidden.
-  if (!$variables['label_hidden']) {
-    $output .= '<h2 class="field-label">' . $variables['label'] . ': </h2>';
-  }
-
-  // Render the items.
-  $output .= ($variables['element']['#label_display'] == 'inline') ? '<ul class="links inline">' : '<ul class="links">';
-  foreach ($variables['items'] as $delta => $item) {
-    $output .= '<li class="taxonomy-term-reference-' . $delta . '"' . $variables['item_attributes'][$delta] . '>' . drupal_render($item) . '</li>';
-  }
-  $output .= '</ul>';
-
-  // Render the top-level DIV.
-  $output = '<div class="' . $variables['classes'] . (!in_array('clearfix', $variables['classes_array']) ? ' clearfix' : '') . '">' . $output . '</div>';
-
-  return $output;
-}
-
-/**
- * Implements template_preprocess_views_view().
+ * Implements template_preprocess_node
  *
+ * Add template suggestions and classes
  */
-function zurb_foundation_preprocess_views_view(&$vars) {
+function zurb_foundation_preprocess_node(&$vars) {
+  // Add node--node_type--view_mode.tpl.php suggestions
+  $vars['theme_hook_suggestions'][] = 'node__' . $vars['type'] . '__' . $vars['view_mode'];
+  
+  // Add node--view_mode.tpl.php suggestions
+  $vars['theme_hook_suggestions'][] = 'node__' . $vars['view_mode'];
+  
+  // Add a class for the view mode.
+  if (!$vars['teaser']) {
+    $vars['classes_array'][] = 'view-mode-' . $vars['view_mode'];
+  }
+  $vars['title_attributes_array']['class'][] = 'node-title';
+//  // Add classes based on node type.
+//  switch ($vars['type']) {
+//    case 'news':
+//    case 'pages':
+//      $vars['attributes_array']['class'][] = 'content-wrapper';
+//      $vars['attributes_array']['class'][] = 'text-content';
+//      break;
+//  }
+//
+//  // Add classes & theme hook suggestions based on view mode.
+//  switch ($vars['view_mode']) {
+//    case 'block_display':
+//      $vars['theme_hook_suggestions'][] = 'node__aside';
+//      $vars['title_attributes_array']['class'] = array('title-block');
+//      $vars['attributes_array']['class'][] = 'block-content';
+//      break;
+//  }
 }
+/**
+ * Implements template_preprocess_page
+ *
+ * Add convenience variables and template suggestions
+ */
+function zurb_foundation_preprocess_page(&$variables) {
+  // Add page--node_type.tpl.php suggestions
+  if (!empty($variables['node'])) {
+    $variables['theme_hook_suggestions'][] = 'page__' . $variables['node']->type;
+  }
 
+  $variables['logo_img'] = '';
+  if (!empty($variables['logo'])) {
+    $variables['logo_img'] = theme('image', array(
+      'path'  => $variables['logo'],
+      'alt'   => strip_tags($variables['site_name']) . ' ' . t('logo'),
+      'title' => strip_tags($variables['site_name']) . ' ' . t('Home'),
+            'attributes' => array(
+        'class' => array('logo'),
+      ),
+    ));
+  }
+  
+  $variables['linked_logo']  = '';
+  if (!empty($variables['logo_img'])) {
+    $variables['linked_logo'] = l($variables['logo_img'], '<front>', array(
+      'attributes' => array(
+        'rel'   => 'home',
+        'title' => strip_tags($variables['site_name']) . ' ' . t('Home'),
+      ),
+      'html' => TRUE,
+    ));
+  }
+  
+  $variables['linked_site_name'] = '';
+  if (!empty($variables['site_name'])) {
+    $variables['linked_site_name'] = l($variables['site_name'], '<front>', array(
+      'attributes' => array(
+        'rel'   => 'home',
+        'title' => strip_tags($variables['site_name']) . ' ' . t('Home'),
+      ),
+    ));
+  }
+
+  // Site navigation links.
+  $variables['main_menu_links'] = '';
+  if (isset($variables['main_menu'])) {
+    $variables['main_menu_links'] = theme('links__system_main_menu', array(
+      'links' => $variables['main_menu'],
+      'attributes' => array(
+        'id' => 'main-menu',
+        'class' => array('link-list'),
+      ),
+      'heading' => array(
+        'text' => t('Main menu'),
+        'level' => 'h2',
+        'class' => array('element-invisible'),
+      ),
+    ));
+  }
+  
+  $variables['secondary_menu_links'] = '';
+  if (isset($variables['secondary_menu'])) {
+    $variables['secondary_menu_links'] = theme('links__system_secondary_menu', array(
+      'links' => $variables['secondary_menu'],
+      'attributes' => array(
+        'id'    => 'secondary-menu',
+        'class' => array('secondary', 'nav-bar'),
+      ),
+      'heading' => array(
+        'text' => t('Secondary menu'),
+        'level' => 'h2',
+        'class' => array('element-invisible'),
+      ),
+    ));
+  }
+
+  // Convenience variables
+  $left = $variables['page']['sidebar_first'];
+  $right = $variables['page']['sidebar_second'];
+
+  // Dynamic sidebars
+  if (!empty($left) && !empty($right)) {
+    $variables['main_grid'] = 'six push-three';
+    $variables['sidebar_first_grid'] = 'three pull-six';
+    $variables['sidebar_sec_grid'] = 'three';
+  } elseif (empty($left) && !empty($right)) {
+    $variables['main_grid'] = 'nine';
+    $variables['sidebar_first_grid'] = '';
+    $variables['sidebar_sec_grid'] = 'three';
+  } elseif (!empty($left) && empty($right)) {
+    $variables['main_grid'] = 'nine push-three';
+    $variables['sidebar_first_grid'] = 'three pull-nine';
+    $variables['sidebar_sec_grid'] = '';
+  } else {
+    $variables['main_grid'] = 'twelve';
+    $variables['sidebar_first_grid'] = '';
+    $variables['sidebar_sec_grid'] = '';
+  }
+}
 /**
  * Implements template_preprocess_panels_pane().
  *
@@ -469,86 +463,34 @@ function zurb_foundation_preprocess_views_view(&$vars) {
 function zurb_foundation_preprocess_panels_pane(&$vars) {
 }
 
-///**
-// * Implements template_preprocess_views_views_fields().
-// *
+/**
+* Implements template_preprocess_views_views_fields().
+*/
+/* Delete me to enable
+function THEMENAME_preprocess_views_view_fields(&$vars) {
+ if ($vars['view']->name == 'nodequeue_1') {
+
+   // Check if we have both an image and a summary
+   if (isset($vars['fields']['field_image'])) {
+
+     // If a combined field has been created, unset it and just show image
+     if (isset($vars['fields']['nothing'])) {
+       unset($vars['fields']['nothing']);
+     }
+
+   } elseif (isset($vars['fields']['title'])) {
+     unset ($vars['fields']['title']);
+   }
+
+   // Always unset the separate summary if set
+   if (isset($vars['fields']['field_summary'])) {
+     unset($vars['fields']['field_summary']);
+   }
+ }
+}
 // */
-//function THEMENAME_preprocess_views_view_fields(&$vars) {
-//  if ($vars['view']->name == 'nodequeue_1') {
-//
-//    // Check if we have both an image and a summary
-//    if (isset($vars['fields']['field_image'])) {
-//
-//      // If a combined field has been created, unset it and just show image
-//      if (isset($vars['fields']['nothing'])) {
-//        unset($vars['fields']['nothing']);
-//      }
-//
-//    } elseif (isset($vars['fields']['title'])) {
-//      unset ($vars['fields']['title']);
-//    }
-//
-//    // Always unset the separate summary if set
-//    if (isset($vars['fields']['field_summary'])) {
-//      unset($vars['fields']['field_summary']);
-//    }
-//  }
-//}
-
 /**
- * Implements theme_menu_local_tasks().
+ * Implements template_preprocess_views_view().
  */
-function zurb_foundation_menu_local_tasks(&$variables) {
-  $output = '';
-
-  if (!empty($variables['primary'])) {
-    $variables['primary']['#prefix'] = '<h2 class="element-invisible">' . t('Primary tabs') . '</h2>';
-    $variables['primary']['#prefix'] .= '<dl class="tabs">';
-    $variables['primary']['#suffix'] = '</dl>';
-    $output .= drupal_render($variables['primary']);
-  }
-  if (!empty($variables['secondary'])) {
-    $variables['secondary']['#prefix'] = '<h2 class="element-invisible">' . t('Secondary tabs') . '</h2>';
-    $variables['secondary']['#prefix'] .= '<dl class="tabs pill">';
-    $variables['secondary']['#suffix'] = '</dl>';
-    $output .= drupal_render($variables['secondary']);
-  }
-
-  return $output;
-}
-
-/**
- * Implements theme_menu_local_task().
- */
-function zurb_foundation_menu_local_task(&$variables) {
-  $link = $variables['element']['#link'];
-  $link_text = $link['title'];
-
-  if (!empty($variables['element']['#active'])) {
-    // Add text to indicate active tab for non-visual users.
-    $active = '<span class="element-invisible">' . t('(active tab)') . '</span>';
-
-    // If the link does not contain HTML already, check_plain() it now.
-    // After we set 'html'=TRUE the link will not be sanitized by l().
-    if (empty($link['localized_options']['html'])) {
-      $link['title'] = check_plain($link['title']);
-    }
-    $link['localized_options']['html'] = TRUE;
-    $link_text = t('!local-task-title!active', array('!local-task-title' => $link['title'], '!active' => $active));
-  }
-
-  return '<dd' . (!empty($variables['element']['#active']) ? ' class="active"' : '') . '>' . l($link_text, $link['href'], $link['localized_options']) . "</dd>\n";
-}
-
-// @TODO maybe use hook_library_alter or hook_library
-function zurb_foundation_js_alter(&$js) {
-  if (!module_exists('jquery_update')) {
-    // Swap out jQuery to use an updated version of the library.
-    $js['misc/jquery.js']['data'] = drupal_get_path('theme', 'zurb_foundation') . '/js/jquery.js';
-    $js['misc/jquery.js']['version'] = '1.8.2';
-  } 
-  // @TODO moving scripts to footer possibly remove?
-  foreach ($js as $key => $js_script) {
-    $js[$key]['scope'] = 'footer';
-  }
+function zurb_foundation_preprocess_views_view(&$vars) {
 }

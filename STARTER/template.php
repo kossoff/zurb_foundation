@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Implements theme_links() targeting the main menu specifically
  * Outputs Foundation Nav bar http://foundation.zurb.com/docs/navigation.php
