@@ -43,16 +43,3 @@ function zurb_foundation_menu_local_task(&$variables) {
 
   return '<dd' . (!empty($variables['element']['#active']) ? ' class="active"' : '') . '>' . l($link_text, $link['href'], $link['localized_options']) . "</dd>\n";
 }
-
-// @TODO maybe use hook_library_alter or hook_library
-function zurb_foundation_js_alter(&$js) {
-  if (!module_exists('jquery_update')) {
-    // Swap out jQuery to use an updated version of the library.
-    $js['misc/jquery.js']['data'] = drupal_get_path('theme', 'zurb_foundation') . '/js/jquery.js';
-    $js['misc/jquery.js']['version'] = '1.8.2';
-  } 
-  // @TODO moving scripts to footer possibly remove?
-  foreach ($js as $key => $js_script) {
-    $js[$key]['scope'] = 'footer';
-  }
-}
