@@ -39,23 +39,13 @@ function zurb_foundation_form_element_label($vars) {
 /**
  * Returns HTML for a button form element.
  */
-function zurb_foundation_button($variables) {
-  $element = $variables['element'];
-  $label = check_plain($element['#value']);
-  element_set_attributes($element, array('id', 'name', 'value', 'type'));
-
-  $element['#attributes']['class'][] = 'form-' . $element['#button_type'];
-  if (!empty($element['#attributes']['disabled'])) {
-    $element['#attributes']['class'][] = 'form-button-disabled';
-  }
-
-  // Prepare input whitelist - added to ensure ajax functions don't break
-  $whitelist = _bootstrap_element_whitelist();
-
-  if (in_array($element['#id'], $whitelist)) {
-    return '<input' . drupal_attributes($element['#attributes']) . ">\n"; // This line break adds inherent margin between multiple buttons
-  }
-  else {
-    return '<button' . drupal_attributes($element['#attributes']) . '>'. $label ."</button>\n"; // This line break adds inherent margin between multiple buttons
-  }
-}
+// function zurb_foundation_button($variables) {
+  // $element = $variables['element'];
+  // $label = check_plain($element['#value']);
+  // element_set_attributes($element, array('id', 'name', 'value', 'type'));
+// 
+  // $element['#attributes']['class'][] = 'form-' . $element['#button_type'];
+  // if (!empty($element['#attributes']['disabled'])) {
+    // $element['#attributes']['class'][] = 'form-button-disabled';
+  // }
+// }
