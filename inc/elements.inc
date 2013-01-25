@@ -20,10 +20,12 @@ function zurb_foundation_status_messages($variables) {
     'warning' => 'secondary'
   );
   foreach (drupal_get_messages($display) as $type => $messages) {
-    if (isset($status_mapping[$type]))
+    if (isset($status_mapping[$type])) {
       $output .= "<div class=\"alert-box $status_mapping[$type]\">\n";
-    else
+    }
+    else {
       $output .= "<div class=\"alert-box\">\n";
+    }
 
     if (!empty($status_heading[$type])) {
       $output .= '<h2 class="element-invisible">' . $status_heading[$type] . "</h2>\n";
