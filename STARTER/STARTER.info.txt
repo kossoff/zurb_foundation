@@ -1,19 +1,8 @@
-; Drupal's .info files allow themers to easily specify some of the static
-; properties of your theme. Properties such as its name, stylesheets,
-; javascripts, and block regions.
-;
-; Drupal 7 stores a cache of the data in this .info files. If you modify any
-; lines in this file, you MUST refresh Drupal 7's cache by simply visiting the
-; Appearance page at admin/appearance.
-
-; The name, description and screenshot used for this theme on the Appearance
-; page at admin/appearance.
 name = ZURB Foundation Sub-theme Starter
 description = Custom sub-theme, inherits from the Foundation base theme 
-read <a href="http://foundation.zurb.com/docs/index.php">framework documenation</a>
+read <a href="http://foundation.zurb.com/docs/index.php">framework documentation</a>
 screenshot = images/screenshot.png
 
-; This theme is compatible with Drupal 7 core and is a sub-theme
 core = 7.x
 engine = phptemplate
 base theme = zurb_foundation
@@ -38,8 +27,8 @@ base theme = zurb_foundation
 ; CSS2.1 media types: http://www.w3.org/TR/CSS21/media.html#media-types
 ; CSS3 media queries: http://www.w3.org/TR/css3-mediaqueries/
 
-; An empty CSS file ready to be used
-stylesheets[all][] = css/custom.css
+; Base theme specific CSS
+stylesheets[all][] = css/drupal.css
 
 ; An empty JavaScript file ready to be used just uncomment and add JavaScript
 ; scripts[] = js/scripts.js
