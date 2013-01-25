@@ -1,5 +1,5 @@
 name = ZURB Foundation
-description = Drupal implemenation of the framework by <a href="http://ishmaelsanchez.com">Ishmael Sanchez</a>
+description = Drupal implementation of the framework by <a href="http://ishmaelsanchez.com">Ishmael Sanchez</a>
 core = 7.x
 engine = phptemplate
 
@@ -13,6 +13,9 @@ stylesheets[all][] = css/foundation.min.css
 
 ; Base theme specific CSS
 stylesheets[all][] = css/drupal.css
+
+; Theme specific CSS
+stylesheets[all][] = css/app.css
 
 ; Foundation framework scripts.
 scripts[] = js/modernizr.foundation.js
