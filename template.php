@@ -15,6 +15,10 @@ function _zurb_foundation_load($files) {
   $tp = drupal_get_path('theme', 'zurb_foundation');
   $file = '';
   
+  // Workaround for magic constant; for now because of php 5.2 issue
+  // http://drupal.org/node/1899620#comment-6988766
+  if( !defined( __DIR__ ) )define( __DIR__, dirname(__FILE__) );
+  
   // Check file path and '.inc' extension
   foreach($files as $file) {
     $file_path = __DIR__ .'/inc/' . $file;
