@@ -19,7 +19,7 @@ function zurb_foundation_form_alter(&$form, &$form_state, $form_id) {
   }
   
   // Sexy submit buttons
-  if (!empty($form['actions']) && $form['actions']['submit']) {
+  if (!empty($form['actions']) && !empty($form['actions']['submit'])) {
     $form['actions']['submit']['#attributes'] = array('class' => array('secondary', 'button', 'radius'));
   }
 }
@@ -36,9 +36,9 @@ function zurb_foundation_form_element_label($vars) {
   return theme_form_element_label($vars);
 }
 
-/**
- * Returns HTML for a button form element.
- */
+// /**
+ // * Returns HTML for a button form element.
+ // */
 // function zurb_foundation_button($variables) {
   // $element = $variables['element'];
   // $label = check_plain($element['#value']);
