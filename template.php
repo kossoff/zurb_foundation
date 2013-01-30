@@ -70,24 +70,33 @@ function zurb_foundation_html_head_alter(&$head_elements) {
   );
 }
 
-
-
 /**
- * Implements template_breadcrumb().
+ * Implements theme_breadrumb().
+ *
+ * Print breadcrumbs as a list, with separators.
  */
-function zurb_foundation_breadcrumb($variables) {
-  $breadcrumb = $variables['breadcrumb'];
-  $title = strip_tags(drupal_get_title());
+function zurb_foundation_breadcrumb($vars) {
+  $breadcrumb = $vars['breadcrumb'];
 
   if (!empty($breadcrumb)) {
     // Provide a navigational heading to give context for breadcrumb links to
     // screen-reader users. Make the heading invisible with .element-invisible.
-    $output = '<h2 class="element-invisible">' . t('You are here') . '</h2>';
+    $breadcrumbs = '<h2 class="element-invisible">' . t('You are here') . '</h2>';
+    
+    $breadcrumbs .= '<ul class="breadcrumbs">';
 
-    $output .= '<div class="breadcrumb">' . implode(' &raquo; ', $breadcrumb) . ' &raquo; ' . $title . '</div>';
-    return $output;
+    foreach ($breadcrumb as $key => $value) {
+      $breadcrumbs .= '<li>' . $value . '</li>';
+    }
+
+    $title = strip_tags(drupal_get_title());
+    $breadcrumbs .= '<li class="current"><a href="#">' . $title. '</a></li>';
+    $breadcrumbs .= '</ul>';
+
+    return $breadcrumbs;
   }
 }
+
 function zurb_foundation_field($variables) {
   $output = '';
 
@@ -128,6 +137,44 @@ function zurb_foundation_field__taxonomy_term_reference($variables) {
   $output = '<div class="' . $variables['classes'] . (!in_array('clearfix', $variables['classes_array']) ? ' clearfix' : '') . '">' . $output . '</div>';
 
   return $output;
+}
+
+/**
+ * Implements theme_links() targeting the main menu specifically
+ * Outputs Foundation Nav bar http://foundation.zurb.com/docs/navigation.php
+ * 
+ */
+function zurb_foundation_links__system_main_menu($vars) {
+  // Get all the main menu links
+  $menu_links = menu_tree_output(menu_tree_all_data('main-menu'));
+  
+  // Initialize some variables to prevent errors
+  $output = '';
+  $sub_menu = '';
+
+  foreach ($menu_links as $key => $link) {
+    // Add special class needed for Foundation dropdown menu to work
+    !empty($link['#below']) ? $link['#attributes']['class'][] = 'has-flyout' : '';
+
+    // Render top level and make sure we have an actual link
+    if (!empty($link['#href'])) {
+      $output .= '<li' . drupal_attributes($link['#attributes']) . '>' . l($link['#title'], $link['#href']);
+      // Get sub navigation links if they exist
+      foreach ($link['#below'] as $key => $sub_link) {
+        if (!empty($sub_link['#href'])) {
+          $sub_menu .= '<li>' . l($sub_link['#title'], $sub_link['#href']) . '</li>';
+        }        
+      }
+      $output .= !empty($link['#below']) ? '<a href="#" class="flyout-toggle"><span> </span></a><ul class="flyout">' . $sub_menu . '</ul>' : '';
+      
+      // Reset dropdown to prevent duplicates
+      unset($sub_menu);
+      $sub_menu = '';
+      
+      $output .=  '</li>';
+    }
+  }
+  return '<ul class="nav-bar">' . $output . '</ul>';
 }
 
 /**
@@ -325,6 +372,7 @@ function zurb_foundation_preprocess_html(&$variables) {
     }
   }
 }
+
 /**
  * Implements template_preprocess_node
  *
@@ -341,7 +389,9 @@ function zurb_foundation_preprocess_node(&$vars) {
   if (!$vars['teaser']) {
     $vars['classes_array'][] = 'view-mode-' . $vars['view_mode'];
   }
+
   $vars['title_attributes_array']['class'][] = 'node-title';
+
 //  // Add classes based on node type.
 //  switch ($vars['type']) {
 //    case 'news':
@@ -360,6 +410,7 @@ function zurb_foundation_preprocess_node(&$vars) {
 //      break;
 //  }
 }
+
 /**
  * Implements template_preprocess_page
  *
@@ -411,7 +462,7 @@ function zurb_foundation_preprocess_page(&$variables) {
       'links' => $variables['main_menu'],
       'attributes' => array(
         'id' => 'main-menu',
-        'class' => array('link-list'),
+        'class' => array('main-nav'),
       ),
       'heading' => array(
         'text' => t('Main menu'),
@@ -427,7 +478,7 @@ function zurb_foundation_preprocess_page(&$variables) {
       'links' => $variables['secondary_menu'],
       'attributes' => array(
         'id'    => 'secondary-menu',
-        'class' => array('secondary', 'nav-bar'),
+        'class' => array('secondary', 'link-list'),
       ),
       'heading' => array(
         'text' => t('Secondary menu'),
@@ -460,6 +511,7 @@ function zurb_foundation_preprocess_page(&$variables) {
     $variables['sidebar_sec_grid'] = '';
   }
 }
+
 /**
  * Implements template_preprocess_panels_pane().
  *
@@ -498,7 +550,6 @@ function THEMENAME_preprocess_views_view_fields(&$vars) {
  */
 function zurb_foundation_preprocess_views_view(&$vars) {
 }
-
 
 // @TODO maybe use hook_library_alter or hook_library
 function zurb_foundation_js_alter(&$js) {
