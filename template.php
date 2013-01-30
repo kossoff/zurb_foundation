@@ -1,7 +1,7 @@
 <?php
 /**
  * Load template files
- * 
+ *
  * $files   Contains alphabetized list of files that will be required
  */
 $files = array(
@@ -14,11 +14,11 @@ $files = array(
 function _zurb_foundation_load($files) {
   $tp = drupal_get_path('theme', 'zurb_foundation');
   $file = '';
-  
+
   // Workaround for magic constant; for now because of php 5.2 issue
   // http://drupal.org/node/1899620#comment-6988766
   if( !defined( __DIR__ ) )define( __DIR__, dirname(__FILE__) );
-  
+
   // Check file path and '.inc' extension
   foreach($files as $file) {
     $file_path = __DIR__ .'/inc/' . $file;
@@ -82,7 +82,7 @@ function zurb_foundation_breadcrumb($vars) {
     // Provide a navigational heading to give context for breadcrumb links to
     // screen-reader users. Make the heading invisible with .element-invisible.
     $breadcrumbs = '<h2 class="element-invisible">' . t('You are here') . '</h2>';
-    
+
     $breadcrumbs .= '<ul class="breadcrumbs">';
 
     foreach ($breadcrumb as $key => $value) {
@@ -142,12 +142,12 @@ function zurb_foundation_field__taxonomy_term_reference($variables) {
 /**
  * Implements theme_links() targeting the main menu specifically
  * Outputs Foundation Nav bar http://foundation.zurb.com/docs/navigation.php
- * 
+ *
  */
 function zurb_foundation_links__system_main_menu($vars) {
   // Get all the main menu links
   $menu_links = menu_tree_output(menu_tree_all_data('main-menu'));
-  
+
   // Initialize some variables to prevent errors
   $output = '';
   $sub_menu = '';
@@ -163,14 +163,14 @@ function zurb_foundation_links__system_main_menu($vars) {
       foreach ($link['#below'] as $key => $sub_link) {
         if (!empty($sub_link['#href'])) {
           $sub_menu .= '<li>' . l($sub_link['#title'], $sub_link['#href']) . '</li>';
-        }        
+        }
       }
       $output .= !empty($link['#below']) ? '<a href="#" class="flyout-toggle"><span> </span></a><ul class="flyout">' . $sub_menu . '</ul>' : '';
-      
+
       // Reset dropdown to prevent duplicates
       unset($sub_menu);
       $sub_menu = '';
-      
+
       $output .=  '</li>';
     }
   }
@@ -183,7 +183,7 @@ function zurb_foundation_links__system_main_menu($vars) {
 function zurb_foundation_preprocess_block(&$vars) {
   // Convenience variable for block headers.
   $title_class = &$vars['title_attributes_array']['class'];
-  
+
   // Generic block header class.
   $title_class[] = 'block-title';
 
@@ -191,10 +191,10 @@ function zurb_foundation_preprocess_block(&$vars) {
   if ($vars['block']->region == 'header') {
     $title_class[] = 'element-invisible';
   }
-  
+
   // Add a unique class for each block for styling.
   $vars['classes_array'][] = $vars['block_html_id'];
-  
+
   // Add classes based on region.
   switch ($vars['elements']['#block']->region) {
     // Add a striping class
@@ -220,7 +220,7 @@ function zurb_foundation_preprocess_field(&$vars) {
   if ($vars['field_type_css'] == 'taxonomy-term-reference') {
     $vars['content_attributes_array']['class'][] = 'comma-separated';
   }
-  
+
   // Convinence variables
   $name = $vars['element']['#field_name'];
   $bundle = $vars['element']['#bundle'];
@@ -229,21 +229,21 @@ function zurb_foundation_preprocess_field(&$vars) {
   $title_classes = &$vars['title_attributes_array']['class'];
   $content_classes = &$vars['content_attributes_array']['class'];
   $item_classes = array();
- 
+
   // Global field classes
   $classes[] = 'field-wrapper';
   $content_classes[] = 'field-items';
   $item_classes[] = 'field-item';
- 
+
   // Uncomment the lines below to see variables you can use to target a field
   // print '<strong>Name:</strong> ' . $name . '<br/>';
   // print '<strong>Bundle:</strong> ' . $bundle  . '<br/>';
   // print '<strong>Mode:</strong> ' . $mode .'<br/>';
- 
-  // Add specific classes to targeted fields 
+
+  // Add specific classes to targeted fields
   if(isset($field)) {
     switch ($mode) {
-      // All teasers 
+      // All teasers
       case 'teaser':
         switch ($field) {
           // Teaser read more links
@@ -267,13 +267,13 @@ function zurb_foundation_preprocess_field(&$vars) {
 //      $item_classes[] = 'author';
 //      break;
 //  }
- 
+
   // Apply odd or even classes along with our custom classes to each item
   foreach ($vars['items'] as $delta => $item) {
     $item_classes[] = $delta % 2 ? 'odd' : 'even';
     $vars['item_attributes_array'][$delta]['class'] = $item_classes;
   }
-  
+
   // Add class to a specific fields across content types.
   switch ($vars['element']['#field_name']) {
     case 'body':
@@ -319,7 +319,7 @@ function zurb_foundation_preprocess_field(&$vars) {
 }
 /**
  * Implements template_preprocess_html().
- * 
+ *
  * Adds additional classes
  */
 function zurb_foundation_preprocess_html(&$variables) {
@@ -381,10 +381,10 @@ function zurb_foundation_preprocess_html(&$variables) {
 function zurb_foundation_preprocess_node(&$vars) {
   // Add node--node_type--view_mode.tpl.php suggestions
   $vars['theme_hook_suggestions'][] = 'node__' . $vars['type'] . '__' . $vars['view_mode'];
-  
+
   // Add node--view_mode.tpl.php suggestions
   $vars['theme_hook_suggestions'][] = 'node__' . $vars['view_mode'];
-  
+
   // Add a class for the view mode.
   if (!$vars['teaser']) {
     $vars['classes_array'][] = 'view-mode-' . $vars['view_mode'];
@@ -433,7 +433,7 @@ function zurb_foundation_preprocess_page(&$variables) {
       ),
     ));
   }
-  
+
   $variables['linked_logo']  = '';
   if (!empty($variables['logo_img'])) {
     $variables['linked_logo'] = l($variables['logo_img'], '<front>', array(
@@ -444,7 +444,7 @@ function zurb_foundation_preprocess_page(&$variables) {
       'html' => TRUE,
     ));
   }
-  
+
   $variables['linked_site_name'] = '';
   if (!empty($variables['site_name'])) {
     $variables['linked_site_name'] = l($variables['site_name'], '<front>', array(
@@ -471,7 +471,7 @@ function zurb_foundation_preprocess_page(&$variables) {
       ),
     ));
   }
-  
+
   $variables['secondary_menu_links'] = '';
   if (isset($variables['secondary_menu'])) {
     $variables['secondary_menu_links'] = theme('links__system_secondary_menu', array(
@@ -557,7 +557,7 @@ function zurb_foundation_js_alter(&$js) {
     // Swap out jQuery to use an updated version of the library.
     $js['misc/jquery.js']['data'] = drupal_get_path('theme', 'zurb_foundation') . '/js/jquery.js';
     $js['misc/jquery.js']['version'] = '1.8.2';
-  } 
+  }
   // @TODO moving scripts to footer possibly remove?
   foreach ($js as $key => $js_script) {
     $js[$key]['scope'] = 'footer';
