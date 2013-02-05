@@ -28,7 +28,7 @@ base theme = zurb_foundation
 ; CSS3 media queries: http://www.w3.org/TR/css3-mediaqueries/
 
 ; Base theme specific CSS
-stylesheets[all][] = css/drupal.css
+stylesheets[all][] = css/custom.css
 
 ; An empty JavaScript file ready to be used just uncomment and add JavaScript
 ; scripts[] = js/scripts.js
