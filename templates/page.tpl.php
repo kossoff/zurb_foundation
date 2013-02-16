@@ -14,7 +14,7 @@
     </div>
   <?php endif; ?>
     <?php if ($main_menu_links): ?>
-      <nav class="six columns">
+      <nav class="twelve columns">
         <?php print $main_menu_links; ?>
       </nav>
     <?php endif; ?>
