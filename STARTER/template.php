@@ -195,7 +195,7 @@
  */
 //function STARTER_form_alter(&$form, &$form_state, $form_id) {
 //  // Sexy submit buttons
-//  if (!empty($form['actions']) && $form['actions']['submit']) {
+//  if (!empty($form['actions']) && !empty($form['actions']['submit'])) {
 //    $form['actions']['submit']['#attributes'] = array('class' => array('primary', 'button', 'radius'));
 //  }
 //}
