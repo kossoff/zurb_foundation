@@ -2,12 +2,12 @@
 //
 // In order to use the settings copy over the settings file
 // found in the zurb foundation github repository and then
-// recompile and preprocess the theme again. 
+// recompile and preprocess the theme again.
 //
 // For a detailed list of each value and variable visit the sass settings:
 // http://foundation.zurb.com/docs/sass-settings.php
 //
-// For the latest settings.css file, it can be found here: 
+// For the latest settings.css file, it can be found here:
 // https://raw.github.com/zurb/foundation/master/scss/foundation/_settings.scss
 //
 // Be sure to check which version of foundation you're using.
@@ -26,3 +26,10 @@
 // $white: #fff;
 // $shinyEdge: rgba(#fff, .5);
 // $darkEdge: rgba(#000, .2);
+
+//============================
+// Default SCSS Variables
+//============================
+$row-width:     62.5em !default;
+$column-gutter: 1.875em !default;
+$total-columns: 12 !default;

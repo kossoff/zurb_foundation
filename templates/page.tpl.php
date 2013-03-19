@@ -1,11 +1,11 @@
 <header class="row">
   <?php if ($linked_site_name || $linked_logo): ?>
-    <div class="two columns">
+    <div class="large-2 columns">
       <?php if ($linked_logo): ?>
         <?php print $linked_logo; ?>
       <?php endif; ?>
     </div>
-    <div class="four columns">
+    <div class="large-4 columns">
       <?php if ($is_front): ?>
         <h1 id="site-name"><?php print $linked_site_name; ?></h1>
       <?php else: ?>
@@ -14,7 +14,7 @@
     </div>
   <?php endif; ?>
     <?php if ($main_menu_links): ?>
-      <nav class="twelve columns">
+      <nav class="large-12 columns">
         <?php print $main_menu_links; ?>
       </nav>
     <?php endif; ?>
@@ -22,14 +22,14 @@
 
 <?php if (!empty($page['header'])): ?>
   <div class="row">
-    <div class="twelve columns">
+    <div class="large-12 columns">
       <?php print render($page['header']);?>
     </div>
   </div>
 <?php endif; ?>
 
 <div class="row">
-  <div class="<?php $site_slogan ? print 'six' : print 'four columns offset-by-eight'; ?> columns hide-for-small">
+  <div class="<?php $site_slogan ? print 'large-6' : print 'large-4 columns large-offset-8'; ?> columns hide-for-small">
     <p>
       <?php if ($logged_in): ?>
         <?php print l(t('My Account'), 'user'); ?>
@@ -38,18 +38,18 @@
         <?php print l(t('Login'), 'user/login', array('attributes' => array('class' => array('large', 'radius', 'button')))); ?>
         <?php print l(t('Sign Up'), 'user/register', array('attributes' => array('class' => array('large', 'radius', 'success', 'button')))); ?>
       <?php endif;  ?>
-    </p>  
+    </p>
   </div>
   <?php if ($site_slogan): ?>
-    <div class="six columns panel radius hide-for-small">
+    <div class="large-6 columns panel radius hide-for-small">
       <?php print $site_slogan; ?>
     </div>
   <?php endif; ?>
   <div class="show-for-small">
-    <div class="six mobile-two columns">
-      <p><?php print l(t('Login'), 'user/login', array('attributes' => array('class' => array('radius', 'button')))); ?></p>
+    <div class="large-6 small-2 columns">
+      <p><?php print l(t('Login'), 'user/login', array('attributes' => array('class' => array('radius', 'button', 'small')))); ?></p>
     </div>
-    <div class="six mobile-two columns">
+    <div class="large-6 small-2 columns">
       <p><?php print l(t('Sign Up'), 'user/register', array('attributes' => array('class' => array('radius', 'success', 'button')))); ?></p>
     </div>
   </div>
@@ -96,17 +96,17 @@
 <?php if (!empty($page['footer_first']) || !empty($page['footer_middle']) || !empty($page['footer_last'])): ?>
   <footer class="row">
     <?php if (!empty($page['footer_first'])): ?>
-      <div id="footer-first" class="four columns">
+      <div id="footer-first" class="large-4 columns">
         <?php print render($page['footer_first']); ?>
       </div>
     <?php endif; ?>
     <?php if (!empty($page['footer_middle'])): ?>
-      <div id="footer-middle" class="four columns">
+      <div id="footer-middle" class="large-4 columns">
         <?php print render($page['footer_middle']); ?>
       </div>
     <?php endif; ?>
     <?php if (!empty($page['footer_last'])): ?>
-      <div id="footer-last" class="four columns">
+      <div id="footer-last" class="large-4 columns">
         <?php print render($page['footer_last']); ?>
       </div>
     <?php endif; ?>
@@ -114,7 +114,7 @@
 <?php endif; ?>
 <div class="bottom-bar panel">
   <div class="row">
-    <div class="twelve columns">
+    <div class="large-12 columns">
       &copy; <?php print date('Y') . ' ' . check_plain($site_name) . ' ' . t('All rights reserved.'); ?>
     </div>
   </div>

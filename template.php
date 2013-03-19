@@ -170,7 +170,7 @@ function zurb_foundation_links__system_main_menu($vars) {
       $output .=  '</li>';
     }
   }
-  return '<ul class="nav-bar">' . $output . '</ul>';
+  return '<ul class="top-bar">' . $output . '</ul>';
 }
 
 /**
