@@ -5,54 +5,30 @@
     <li><li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li></li>
   </ul>
   <section class="top-bar-section">
-  <?php print $main_menu_links; ?>
+    <?php if ($main_menu_links) :?>
+      <?php print $main_menu_links; ?>
+    <?php endif; ?>
+    <?php if (!empty($page['header'])): ?>
+      <?php print render($page['header']);?>
+    <?php endif; ?>
   </section>
 </nav>
 
-  <?php if ($linked_site_name || $linked_logo): ?>
-    <div class="large-2 columns">
-      <?php if ($linked_logo): ?>
-        <?php print $linked_logo; ?>
-      <?php endif; ?>
-    </div>
-    <div class="large-4 columns">
-      <?php if ($is_front): ?>
-        <h1 id="site-name"><?php print $linked_site_name; ?></h1>
-      <?php else: ?>
-        <div id="site-name"><?php print $linked_site_name; ?></div>
-      <?php endif; ?>
-    </div>
-  <?php endif; ?>
-    <?php if ($main_menu_links): ?>
-      <nav class="large-12 columns">
-
-      </nav>
-    <?php endif; ?>
-
-
-<?php if (!empty($page['header'])): ?>
-  <div class="row">
-    <div class="large-12 columns">
-      <?php print render($page['header']);?>
-    </div>
-  </div>
-<?php endif; ?>
-
 <div class="row">
-  <div class="<?php $site_slogan ? print 'large-6' : print 'large-4 columns large-offset-8'; ?> columns hide-for-small">
-    <p>
+  <div class="<?php $site_slogan ? print 'large-6' : print 'small-4 large-4 columns large-offset-8'; ?> columns hide-for-small">
       <?php if ($logged_in): ?>
-        <?php print l(t('My Account'), 'user'); ?>
-        <?php print l(t('Logout'), 'user/logout'); ?>
+      <ul class="inline-list right">
+        <li><?php print l(t('My Account'), 'user'); ?></li>
+        <li><?php print l(t('Logout'), 'user/logout'); ?></li>
+      </ul>
       <?php else: ?>
         <?php print l(t('Login'), 'user/login', array('attributes' => array('class' => array('large', 'radius', 'button')))); ?>
         <?php print l(t('Sign Up'), 'user/register', array('attributes' => array('class' => array('large', 'radius', 'success', 'button')))); ?>
       <?php endif;  ?>
-    </p>
   </div>
   <?php if ($site_slogan): ?>
-    <div class="large-6 columns panel radius hide-for-small">
-      <?php print $site_slogan; ?>
+    <div class="large-12 columns hide-for-small">
+      <h2><?php print $site_slogan; ?></h2>
     </div>
   <?php endif; ?>
   <div class="show-for-small">
@@ -104,7 +80,7 @@
   <?php endif; ?>
 </div>
 <?php if (!empty($page['footer_first']) || !empty($page['footer_middle']) || !empty($page['footer_last'])): ?>
-  <footer class="row">
+<footer class="row">
     <?php if (!empty($page['footer_first'])): ?>
       <div id="footer-first" class="large-4 columns">
         <?php print render($page['footer_first']); ?>
@@ -120,12 +96,19 @@
         <?php print render($page['footer_last']); ?>
       </div>
     <?php endif; ?>
-  </footer>
+</footer>
 <?php endif; ?>
 <div class="bottom-bar panel">
   <div class="row">
-    <div class="large-12 columns">
-      &copy; <?php print date('Y') . ' ' . check_plain($site_name) . ' ' . t('All rights reserved.'); ?>
+    <div class="large-6 columns">
+      <?php if ($site_name) :?>
+        &copy; <?php print date('Y') . ' ' . check_plain($site_name) . ' ' . t('All rights reserved.'); ?>
+      <?php endif; ?>
+    </div>
+    <div class="large-6 small-12 columns">
+      <?php if(!empty($page['bottom_menu'])) :?>
+        <?php print render($page['bottom_menu']); ?>
+      <?php endif; ?>
     </div>
   </div>
 </div>

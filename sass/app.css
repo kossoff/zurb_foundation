@@ -1,5 +1,0 @@
-
-body:before {
-  white-space: pre;
-  font-family: monospace;
-  content: "Syntax error: File to import not found or unreadable: foundation/components/global.\A               Load paths:\A                 /home/parallels/workspace/zf/sites/all/themes/zurb-foundation/sass\A                 /var/lib/gems/1.8/gems/compass-0.12.2/frameworks/blueprint/stylesheets\A                 /var/lib/gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets\A                 Compass::SpriteImporter\A         on line 8 of /home/parallels/workspace/zf/sites/all/themes/zurb-foundation/sass/_base.scss\A         from line 2 of /home/parallels/workspace/zf/sites/all/themes/zurb-foundation/sass/app.scss"; }
