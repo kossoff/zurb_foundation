@@ -7,9 +7,10 @@ engine = phptemplate
 screenshot = images/screenshot.png
 
 ; Foundation framework stylesheets
+stylesheets[all][] = css/normalize.css
 stylesheets[all][] = css/foundation.min.css
 ; Uncompressed uncomment for dev or as a reference
-;stylesheets[all][] = css/foundation.css 
+;stylesheets[all][] = css/foundation.css
 
 ; Base theme specific CSS
 stylesheets[all][] = css/drupal.css

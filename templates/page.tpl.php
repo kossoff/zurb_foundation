@@ -1,4 +1,14 @@
-<header class="row">
+<!-- Header and Nav -->
+<nav class="top-bar">
+  <ul class="title-area">
+    <li class="name"><h1><?php print $linked_site_name; ?></h1></li>
+    <li><li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li></li>
+  </ul>
+  <section class="top-bar-section">
+  <?php print $main_menu_links; ?>
+  </section>
+</nav>
+
   <?php if ($linked_site_name || $linked_logo): ?>
     <div class="large-2 columns">
       <?php if ($linked_logo): ?>
@@ -15,10 +25,10 @@
   <?php endif; ?>
     <?php if ($main_menu_links): ?>
       <nav class="large-12 columns">
-        <?php print $main_menu_links; ?>
+
       </nav>
     <?php endif; ?>
-</header>
+
 
 <?php if (!empty($page['header'])): ?>
   <div class="row">
