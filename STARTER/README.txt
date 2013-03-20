@@ -1,12 +1,17 @@
+DOCUMENTATION
+----------------------------------
+Please refer also to the community documentation:
+  http://drupal.org/node/1948260
+
 BUILD A THEME WITH ZURB FOUNDATION
 ----------------------------------
 
 The base Foundation theme is designed to be easily extended by its sub-themes.
-You shouldn't modify any of the CSS or PHP files in the zurb_foundation/ folder; 
+You shouldn't modify any of the CSS or PHP files in the zurb_foundation/ folder;
 but instead you should create a sub-theme of zurb_foundation which is located in
 a folder outside of the root zurb_foundation/ folder. The examples below assume
 zurb_foundation and your sub-theme will be installed in sites/all/themes/,
-but any valid theme directory is acceptable. Read the 
+but any valid theme directory is acceptable. Read the
 sites/default/default.settings.php for more info.
 
 This theme does not support IE7. If you need it downgrade to Foundation 2 see
@@ -23,9 +28,19 @@ template.php THEMENAME_preprocess_html function.
 *
 * Drupal 7 also stores a cache of the data in .info files. If you modify any
 * lines in your sub-theme's .info file, you MUST refresh Drupal 7's cache by
-* simply visiting the Appearance page at admin/appearance or at 
+* simply visiting the Appearance page at admin/appearance or at
   admin/config/development/performance.
 
+BUILD A THEME WITH DRUSH
+----------------------------------
+If you have drush and the zurb foundation theme enabled you can create a
+subtheme easily with a drush.
+
+The command to do this is simply:
+  drush fst [THEMENAME] [Description !Optional]
+
+MANUALLY BUILD A THEME
+----------------------------------
  1. Setup the location for your new sub-theme.
 
     Copy the STARTER folder out of the zurb_foundation/ folder and rename it to
@@ -85,7 +100,7 @@ Optional steps:
     zurb_foundation folder, copy them to your sub-theme's folder before
     making any changes.And then rebuild the theme registry.
 
-    For example, copy zurb_foundation/templates/page.tpl.php to 
+    For example, copy zurb_foundation/templates/page.tpl.php to
     THEMENAME/templates/page.tpl.php.
 
  7. Modify the markup in Drupal's search form.
@@ -104,5 +119,5 @@ Optional steps:
 
  8. Further extend your sub-theme.
 
-    Discover further ways to extend your sub-theme by reading 
+    Discover further ways to extend your sub-theme by reading
     Drupal 7's Theme Guide online at: http://drupal.org/theme-guide
