@@ -55,6 +55,13 @@
 		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
 
+  <!-- @todo convert fallback into head alter function -->
+  <!-- Check for Zepto support, load jQuery if necessary -->
+  <script>
+    document.write('<script src=/js/vendor/'
+      + ('__proto__' in {} ? 'zepto' : 'jquery')
+      + '.js><\/script>');
+  </script>
 </head>
 <body class="<?php print $classes; ?>" <?php print $attributes;?>>
   <div class="skip-link">

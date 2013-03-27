@@ -43,42 +43,60 @@
 <div class="row">
   <?php if ($messages): print $messages; endif; ?>
   <?php if (!empty($page['help'])): print render($page['help']); endif; ?>
+
+  <!--#main -->
   <div id="main" class="<?php print $main_grid; ?> columns">
+
     <?php if (!empty($page['highlighted'])): ?>
       <div class="highlight panel callout">
         <?php print render($page['highlighted']); ?>
       </div>
     <?php endif; ?>
+
     <a id="main-content"></a>
+
     <?php if ($breadcrumb): print $breadcrumb; endif; ?>
+
     <?php if ($title && !$is_front): ?>
       <?php print render($title_prefix); ?>
       <h1 id="page-title" class="title"><?php print $title; ?></h1>
       <?php print render($title_suffix); ?>
     <?php endif; ?>
 
-    <?php if (!empty($tabs)): ?>
-      <?php print render($tabs); ?>
-      <?php if (!empty($tabs2)): print render($tabs2); endif; ?>
-    <?php endif; ?>
-    <?php if ($action_links): ?>
-      <ul class="action-links">
-        <?php print render($action_links); ?>
-      </ul>
-    <?php endif; ?>
+      <?php if (!empty($tabs)): ?>
+        <?php print render($tabs); ?>
+        <?php if (!empty($tabs2)): print render($tabs2); endif; ?>
+      <?php endif; ?>
+
+      <?php if ($action_links): ?>
+        <ul class="action-links">
+          <?php print render($action_links); ?>
+        </ul>
+      <?php endif; ?>
+
     <?php print render($page['content']); ?>
+
+    <!--#sidebar-first -->
+    <?php if (!empty($page['sidebar_first'])): ?>
+      <div id="sidebar-first" class="<?php print $sidebar_first_grid; ?> columns sidebar ">
+        <?php print render($page['sidebar_first']); ?>
+      </div>
+    <?php endif; ?>
+    <!--/#sidebar-first-->
+
+    <!--#sidebar-second -->
+    <?php if (!empty($page['sidebar_second'])): ?>
+      <div id="sidebar-second" class="<?php print $sidebar_sec_grid;?> columns sidebar">
+        <?php print render($page['sidebar_second']); ?>
+      </div>
+    <?php endif; ?>
+    <!--/#sidebar-second -->
+
   </div>
-  <?php if (!empty($page['sidebar_first'])): ?>
-    <div id="sidebar-first" class="<?php print $sidebar_first_grid; ?> columns sidebar ">
-      <?php print render($page['sidebar_first']); ?>
-    </div>
-  <?php endif; ?>
-  <?php if (!empty($page['sidebar_second'])): ?>
-    <div id="sidebar-second" class="<?php print $sidebar_sec_grid;?> columns sidebar">
-      <?php print render($page['sidebar_second']); ?>
-    </div>
-  <?php endif; ?>
+  <!--#main -->
+
 </div>
+
 <?php if (!empty($page['footer_first']) || !empty($page['footer_middle']) || !empty($page['footer_last'])): ?>
 <footer class="row">
     <?php if (!empty($page['footer_first'])): ?>
@@ -98,6 +116,7 @@
     <?php endif; ?>
 </footer>
 <?php endif; ?>
+
 <div class="bottom-bar panel">
   <div class="row">
     <div class="large-6 columns">

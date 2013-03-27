@@ -21,8 +21,11 @@ stylesheets[all][] = css/drupal.css
 ; Theme specific CSS
 stylesheets[all][] = css/app.css
 
+; Modernizr acts as a shim for HTML5 elements for older browsers
+; as well as detection for mobile devices.
+scripts[] = js/vendor/custom.modernizr.js
+
 ; Foundation framework scripts.
-scripts[] = js/modernizr.foundation.js
 scripts[] = js/foundation.min.js
 scripts[] = js/app.js
 
