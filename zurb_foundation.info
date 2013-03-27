@@ -1,5 +1,5 @@
 name = ZURB Foundation
-description = Drupal implementation of the Foundation 3 framework
+description = Drupal implementation of the Foundation 4 framework
 core = 7.x
 engine = phptemplate
 
