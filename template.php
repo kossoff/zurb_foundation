@@ -1,15 +1,20 @@
 <?php
-/**
- * Load template files
- *
- * $files   Contains alphabetized list of files that will be required
+/*
+ * @file
  */
+
 $files = array(
   'elements.inc',
   'form.inc',
   'menu.inc',
   'theme.inc',
 );
+
+  // Zepto Fallback
+  drupal_add_js('document.write(\'<script src=/' . path_to_theme() .'/js/vendor/\'
+      + (\'__proto__\' in {} ? \'zepto\' : \'jquery\')
+      + \'.js><\/script>\');',
+      'inline', array('group',JS_LIBRARY));
 
 function _zurb_foundation_load($files) {
   $tp = drupal_get_path('theme', 'zurb_foundation');
@@ -560,8 +565,8 @@ function zurb_foundation_preprocess_views_view(&$vars) {
 function zurb_foundation_js_alter(&$js) {
   if (!module_exists('jquery_update')) {
     // Swap out jQuery to use an updated version of the library.
-    $js['misc/jquery.js']['data'] = drupal_get_path('theme', 'zurb_foundation') . '/js/jquery.js';
-    $js['misc/jquery.js']['version'] = '1.8.2';
+    $js['misc/jquery.js']['data'] = drupal_get_path('theme', 'zurb_foundation') . '/js/vendor/jquery.js';
+    $js['misc/jquery.js']['version'] = '1.9.1';
   }
   // @TODO moving scripts to footer possibly remove?
   foreach ($js as $key => $js_script) {
