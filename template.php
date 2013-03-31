@@ -559,6 +559,7 @@ function THEMENAME_preprocess_views_view_fields(&$vars) {
  * Implements template_preprocess_views_view().
  */
 function zurb_foundation_preprocess_views_view(&$vars) {
+
 }
 
 // @TODO maybe use hook_library_alter or hook_library
