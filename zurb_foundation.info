@@ -26,36 +26,44 @@ stylesheets[all][] = css/app.css
 scripts[] = js/vendor/custom.modernizr.js
 
 ; Foundation framework scripts.
+scripts[] = js/vendor/custom.modernizr.js
+scripts[] = js/vender/jquery.js
 scripts[] = js/foundation.min.js
-scripts[] = js/app.js
+scripts[] = js/custom.js
 
+; Source order:
+; http://foundation.zurb.com/docs/index.html#basicHTMLMarkup
+;
 ; Uncompressed uncomment for development or as a reference
-; scripts[] = js/jquery.foundation.accordion.js
-; scripts[] = js/jquery.foundation.alerts.js
-; scripts[] = js/jquery.foundation.buttons.js
-; scripts[] = js/jquery.foundation.clearing.js
-; scripts[] = js/jquery.foundation.forms.js
-; scripts[] = js/jquery.foundation.joyride.js
-; scripts[] = js/jquery.foundation.magellan.js
-; scripts[] = js/jquery.foundation.mediaQueryToggle.js
-; scripts[] = js/jquery.foundation.navigation.js
-; scripts[] = js/jquery.foundation.orbit.js
-; scripts[] = js/jquery.foundation.reveal.js
-; scripts[] = js/jquery.foundation.tabs.js
-; scripts[] = js/jquery.foundation.tooltips.js
-; scripts[] = js/jquery.placeholder.js
+
+scripts[] = js/foundation/foundation.js
+scripts[] = js/foundation/foundation.alerts.js
+scripts[] = js/foundation/foundation.clearing.js
+scripts[] = js/foundation/foundation.cookie.js
+scripts[] = js/foundation/foundation.dropdown.js
+scripts[] = js/foundation/foundation.forms.js
+scripts[] = js/foundation/foundation.joyride.js
+scripts[] = js/foundation/foundation.magellan.js
+scripts[] = js/foundation/foundation.orbit.js
+scripts[] = js/foundation/foundation.placeholder.js
+scripts[] = js/foundation/foundation.reveal.js
+scripts[] = js/foundation/foundation.section.js
+scripts[] = js/foundation/foundation.tooltips.js
+scripts[] = js/foundation/foundation.topbar.js
 
 ; Regions are output in the page.tpl.php
-regions[header]          = Header
-regions[navigation]      = Navigation
-regions[help]            = Help
-regions[highlighted]     = Highlighted
-regions[content]         = Content
-regions[sidebar_first]   = Left Sidebar
-regions[sidebar_second]  = Right Sidebar
-regions[footer_first]    = Footer first
-regions[footer_middle]   = Footer middle
-regions[footer_last]     = Footer last
+regions[header]         = Header
+regions[header_left]    = Header Left
+regions[header_right]   = Header Left
+regions[navigation]     = Navigation
+regions[help]           = Help
+regions[highlighted]    = Highlighted
+regions[content]        = Content
+regions[sidebar_first]  = Left Sidebar
+regions[sidebar_second] = Right Sidebar
+regions[footer_first]   = Footer first
+regions[footer_middle]  = Footer middle
+regions[footer_last]    = Footer last
 
 ; Hidden regions
 regions_hidden[] = Page top
@@ -64,7 +72,11 @@ regions_hidden[] = Page bottom
 ; Panel Layouts
 plugins[panels][layouts] = layouts
 
+;
+; settings[foundation_zurb_zepto] = 1
+;
 ; Possible theme settings
+;
 ; settings[foundation_zurb_copyright] = 1
 ; settings[foundation_zurb_credit] = ''
 ; settings[foundation_zurb_font_fallback] = 'sans-serif'
