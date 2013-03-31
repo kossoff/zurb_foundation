@@ -16,7 +16,7 @@ stylesheets[all][] = css/foundation.min.css
 ;stylesheets[all][] = css/foundation.css
 
 ; Base theme specific CSS
-stylesheets[all][] = css/drupal.css
+stylesheets[all][] = css/base.css
 
 ; Theme specific CSS
 stylesheets[all][] = css/app.css
