@@ -499,19 +499,19 @@ function zurb_foundation_preprocess_page(&$variables) {
 
   // Dynamic sidebars
   if (!empty($left) && !empty($right)) {
-    $variables['main_grid'] = 'six push-three';
-    $variables['sidebar_first_grid'] = 'three pull-six';
-    $variables['sidebar_sec_grid'] = 'three';
+    $variables['main_grid'] = 'large-6 push-three';
+    $variables['sidebar_first_grid'] = 'large-3 pull-6';
+    $variables['sidebar_sec_grid'] = 'large-3';
   } elseif (empty($left) && !empty($right)) {
-    $variables['main_grid'] = 'nine';
+    $variables['main_grid'] = 'large-9';
     $variables['sidebar_first_grid'] = '';
-    $variables['sidebar_sec_grid'] = 'three';
+    $variables['sidebar_sec_grid'] = 'large-3 small-3';
   } elseif (!empty($left) && empty($right)) {
-    $variables['main_grid'] = 'nine push-three';
-    $variables['sidebar_first_grid'] = 'three pull-nine';
+    $variables['main_grid'] = 'large-9 push-3';
+    $variables['sidebar_first_grid'] = 'large-3 pull-9';
     $variables['sidebar_sec_grid'] = '';
   } else {
-    $variables['main_grid'] = 'twelve';
+    $variables['main_grid'] = 'large-12';
     $variables['sidebar_first_grid'] = '';
     $variables['sidebar_sec_grid'] = '';
   }
