@@ -27,7 +27,7 @@ scripts[] = js/vendor/custom.modernizr.js
 
 ; Foundation framework scripts.
 scripts[] = js/vendor/custom.modernizr.js
-scripts[] = js/vender/jquery.js
+scripts[] = js/vendor/jquery.js
 scripts[] = js/foundation.min.js
 scripts[] = js/custom.js
 
