@@ -11,7 +11,7 @@ $files = array(
 );
 
   // Zepto Fallback
-  drupal_add_js('document.write(\'<script src=/' . path_to_theme() .'/js/vendor/\'
+  drupal_add_js('document.write(\'<script src=/' . drupal_get_path('theme', 'zurb_foundation') .'/js/vendor/\'
       + (\'__proto__\' in {} ? \'zepto\' : \'jquery\')
       + \'.js><\/script>\');',
       'inline', array('group',JS_LIBRARY));
