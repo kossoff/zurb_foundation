@@ -15,30 +15,23 @@
 </nav>
 
 <div class="row">
-  <div class="<?php $site_slogan ? print 'large-6' : print 'small-4 large-4 columns large-offset-8'; ?> columns hide-for-small">
+  <!-- Login / Logout buttons -->
+  <div class="<?php $site_slogan ? print 'large-12' : print 'small-4 large-4 columns large-offset-8'; ?> columns hide-for-small">
+      <ul class="button-group right">
       <?php if ($logged_in): ?>
-      <ul class="inline-list right">
-        <li><?php print l(t('My Account'), 'user'); ?></li>
-        <li><?php print l(t('Logout'), 'user/logout'); ?></li>
-      </ul>
+        <li><?php print l(t('Logout'), 'user/logout', array('attributes' => array('class' => array('small','button')))); ?></li>
+        <li><?php print l(t('My Account'), 'user', array('attributes' => array('class' => array('small','button')))); ?></li>
       <?php else: ?>
-        <?php print l(t('Login'), 'user/login', array('attributes' => array('class' => array('large', 'radius', 'button')))); ?>
-        <?php print l(t('Sign Up'), 'user/register', array('attributes' => array('class' => array('large', 'radius', 'success', 'button')))); ?>
+        <li><?php print l(t('Login'), 'user/login', array('attributes' => array('class' => array('button', 'small')))); ?></li>
+        <li><?php print l(t('Sign Up'), 'user/register', array('attributes' => array('class' => array('small', 'button')))); ?></li>
       <?php endif;  ?>
+     </ul>
   </div>
   <?php if ($site_slogan): ?>
-    <div class="large-12 columns hide-for-small">
+    <div class="large-12 small-6 columns">
       <h2><?php print $site_slogan; ?></h2>
     </div>
   <?php endif; ?>
-  <div class="show-for-small">
-    <div class="large-6 small-2 columns">
-      <p><?php print l(t('Login'), 'user/login', array('attributes' => array('class' => array('radius', 'button', 'small')))); ?></p>
-    </div>
-    <div class="large-6 small-2 columns">
-      <p><?php print l(t('Sign Up'), 'user/register', array('attributes' => array('class' => array('radius', 'success', 'button')))); ?></p>
-    </div>
-  </div>
 </div>
 <div class="row">
   <?php if ($messages): print $messages; endif; ?>
