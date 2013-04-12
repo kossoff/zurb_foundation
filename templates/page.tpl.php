@@ -8,31 +8,39 @@
     <?php if ($main_menu_links) :?>
       <?php print $main_menu_links; ?>
     <?php endif; ?>
-    <?php if (!empty($page['header'])): ?>
-      <?php print render($page['header']);?>
+    <?php if (!empty($page['header_left'])): ?>
+      <?php print render($page['header_left']);?>
+    <?php endif; ?>
+    <?php if (!empty($page['header_right'])): ?>
+      <?php print render($page['header_right']);?>
     <?php endif; ?>
   </section>
 </nav>
 
 <div class="row">
+  <?php if ($site_slogan): ?>
+  <div class="large-9 small-6 columns">
+    <h2><?php print $site_slogan; ?></h2>
+  </div>
+  <?php endif; ?>
   <!-- Login / Logout buttons -->
-  <div class="<?php $site_slogan ? print 'large-12' : print 'small-4 large-4 columns large-offset-8'; ?> columns hide-for-small">
+  <div class="<?php $site_slogan ? print 'small-6 large-3 columns' : print 'large-12'; ?> columns hide-for-small">
       <ul class="button-group right">
       <?php if ($logged_in): ?>
-        <li><?php print l(t('Logout'), 'user/logout', array('attributes' => array('class' => array('small','button')))); ?></li>
-        <li><?php print l(t('My Account'), 'user', array('attributes' => array('class' => array('small','button')))); ?></li>
+        <li><?php print l(t('Logout'), 'user/logout', array('attributes' => array('class' => array('small','button')))); ?>
+        </li>
+        <li><?php print l(t('My Account'), 'user', array('attributes' => array('class' => array('small','button')))); ?>
+        </li>
       <?php else: ?>
-        <li><?php print l(t('Login'), 'user/login', array('attributes' => array('class' => array('button', 'small')))); ?></li>
-        <li><?php print l(t('Sign Up'), 'user/register', array('attributes' => array('class' => array('small', 'button')))); ?></li>
+        <li><?php print l(t('Login'), 'user/login', array('attributes' => array('class' => array('button', 'small')))); ?>
+        </li>
+        <li><?php print l(t('Sign Up'), 'user/register', array('attributes' => array('class' => array('small', 'button')))); ?>
+        </li>
       <?php endif;  ?>
      </ul>
   </div>
-  <?php if ($site_slogan): ?>
-    <div class="large-12 small-6 columns">
-      <h2><?php print $site_slogan; ?></h2>
-    </div>
-  <?php endif; ?>
 </div>
+
 <div class="row">
   <?php if ($messages): print $messages; endif; ?>
   <?php if (!empty($page['help'])): print render($page['help']); endif; ?>
