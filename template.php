@@ -10,8 +10,8 @@ $files = array(
   'theme.inc',
 );
 
-  // Zepto Fallback
-  drupal_add_js('document.write(\'<script src=/' . drupal_get_path('theme', 'zurb_foundation') .'/js/vendor/\'
+// Zepto Fallback
+drupal_add_js('document.write(\'<script src=/' . drupal_get_path('theme', 'zurb_foundation') .'/js/vendor/\'
       + (\'__proto__\' in {} ? \'zepto\' : \'jquery\')
       + \'.js><\/script>\');',
       'inline', array('group',JS_LIBRARY));
@@ -562,7 +562,18 @@ function zurb_foundation_preprocess_views_view(&$vars) {
 
 }
 
-// @TODO maybe use hook_library_alter or hook_library
+/**
+ * Implements hook_css_alter()
+ */
+function zurb_foundation_css_alter(&$css) {
+  // Remove defaults.css file.
+  //dsm(drupal_get_path('module', 'system') . '/system.menus.css');
+  unset($css[drupal_get_path('module', 'system') . '/system.menus.css']);
+}
+
+/**
+ * Implements hook_js_alter()
+ */
 function zurb_foundation_js_alter(&$js) {
   if (!module_exists('jquery_update')) {
     // Swap out jQuery to use an updated version of the library.
