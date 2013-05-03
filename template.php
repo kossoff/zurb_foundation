@@ -566,8 +566,7 @@ function zurb_foundation_preprocess_views_view(&$vars) {
  * Implements hook_css_alter()
  */
 function zurb_foundation_css_alter(&$css) {
-  // Remove defaults.css file.
-  //dsm(drupal_get_path('module', 'system') . '/system.menus.css');
+  // Remove system  menu css file.
   unset($css[drupal_get_path('module', 'system') . '/system.menus.css']);
 }
 
