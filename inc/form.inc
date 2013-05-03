@@ -22,6 +22,11 @@ function zurb_foundation_form_alter(&$form, &$form_state, $form_id) {
   if (!empty($form['actions']) && !empty($form['actions']['submit'])) {
     $form['actions']['submit']['#attributes'] = array('class' => array('secondary', 'button', 'radius'));
   }
+  
+  if (isset($form['#form_id']) && ($form['#form_id'] == 'search_block_form')) {
+    $form['search_block_form']['#attributes']['class'] = array('small-8', 'columns');
+    $form['actions']['submit']['#attributes']['class'] = array('postfix', 'small-4', 'columns');
+  }
 }
 /**
  * Implements theme_form_element_label()
