@@ -48,6 +48,7 @@
   <!--#main -->
   <div id="main" class="<?php print $main_grid; ?> columns">
 
+
     <?php if (!empty($page['highlighted'])): ?>
       <div class="highlight panel callout">
         <?php print render($page['highlighted']); ?>
@@ -77,26 +78,28 @@
 
     <?php print render($page['content']); ?>
 
-    <!--#sidebar-first -->
-    <?php if (!empty($page['sidebar_first'])): ?>
-      <div id="sidebar-first" class="<?php print $sidebar_first_grid; ?> columns sidebar ">
-        <?php print render($page['sidebar_first']); ?>
-      </div>
-    <?php endif; ?>
-    <!--/#sidebar-first-->
-
-    <!--#sidebar-second -->
-    <?php if (!empty($page['sidebar_second'])): ?>
-      <div id="sidebar-second" class="<?php print $sidebar_sec_grid;?> columns sidebar">
-        <?php print render($page['sidebar_second']); ?>
-      </div>
-    <?php endif; ?>
-    <!--/#sidebar-second -->
 
   </div>
   <!--#main -->
 
-</div>
+
+  <!--#sidebar-first -->
+  <?php if (!empty($page['sidebar_first'])): ?>
+    <div id="sidebar-first" class="<?php print $sidebar_first_grid; ?> columns sidebar ">
+      <?php print render($page['sidebar_first']); ?>
+    </div>
+  <?php endif; ?>
+  <!--/#sidebar-first-->
+
+  <!--#sidebar-second -->
+  <?php if (!empty($page['sidebar_second'])): ?>
+    <div id="sidebar-second" class="<?php print $sidebar_sec_grid;?> columns sidebar">
+      <?php print render($page['sidebar_second']); ?>
+    </div>
+  <?php endif; ?>
+  <!--/#sidebar-second -->
+
+</div> <!--/.row -->
 
 <?php if (!empty($page['footer_first']) || !empty($page['footer_middle']) || !empty($page['footer_last'])): ?>
 <footer class="row">
