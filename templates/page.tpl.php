@@ -79,25 +79,22 @@
     <?php print render($page['content']); ?>
 
 
-  </div>
-  <!--#main -->
+  </div><!--/#main -->
 
 
-  <!--#sidebar-first -->
   <?php if (!empty($page['sidebar_first'])): ?>
+  <!--#sidebar-first -->
     <div id="sidebar-first" class="<?php print $sidebar_first_grid; ?> columns sidebar ">
       <?php print render($page['sidebar_first']); ?>
-    </div>
+    </div><!--/#sidebar-first-->
   <?php endif; ?>
-  <!--/#sidebar-first-->
 
-  <!--#sidebar-second -->
   <?php if (!empty($page['sidebar_second'])): ?>
+  <!--#sidebar-second -->
     <div id="sidebar-second" class="<?php print $sidebar_sec_grid;?> columns sidebar">
       <?php print render($page['sidebar_second']); ?>
-    </div>
+    </div><!--/#sidebar-second -->
   <?php endif; ?>
-  <!--/#sidebar-second -->
 
 </div> <!--/.row -->
 
