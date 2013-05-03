@@ -5,7 +5,7 @@
  * Outputs Foundation Nav bar http://foundation.zurb.com/docs/navigation.php
  * 
  */
-//function STARTER_links__system_main_menu($vars) {
+//function STARTER_links__system_main_menu($variables) {
 //  // Get all the main menu links
 //  $menu_links = menu_tree_output(menu_tree_all_data('main-menu'));
 //  
@@ -43,7 +43,7 @@
  * Implements template_preprocess_html().
  * 
  */
-//function STARTER_preprocess_html(&$vars) {
+//function STARTER_preprocess_html(&$variables) {
 //  // Add conditional CSS for IE. To use uncomment below and add IE css file
 //  drupal_add_css(path_to_theme() . '/css/ie.css', array('weight' => CSS_THEME, 'browsers' => array('!IE' => FALSE), 'preprocess' => FALSE));
 //  
@@ -55,82 +55,82 @@
  * Implements template_preprocess_page
  *
  */
-//function STARTER_preprocess_page(&$vars) {
+//function STARTER_preprocess_page(&$variables) {
 //}
 
 /**
  * Implements template_preprocess_node
  *
  */
-//function STARTER_preprocess_node(&$vars) {
+//function STARTER_preprocess_node(&$variables) {
 //}
 
 /**
  * Implements hook_preprocess_block()
  */
-//function STARTER_preprocess_block(&$vars) {
+//function STARTER_preprocess_block(&$variables) {
 //  // Add wrapping div with global class to all block content sections.
-//  $vars['content_attributes_array']['class'][] = 'block-content';
+//  $variables['content_attributes_array']['class'][] = 'block-content';
 //  
 //  // Convenience variable for classes based on block ID
-//  $block_id = $vars['block']->module . '-' . $vars['block']->delta;
+//  $block_id = $variables['block']->module . '-' . $variables['block']->delta;
 //  
 //  // Add classes based on a specific block
 //  switch ($block_id) {
 //    // System Navigation block
 //    case 'system-navigation':
 //      // Custom class for entire block
-//      $vars['classes_array'][] = 'system-nav';
+//      $variables['classes_array'][] = 'system-nav';
 //      // Custom class for block title
-//      $vars['title_attributes_array']['class'][] = 'system-nav-title';
+//      $variables['title_attributes_array']['class'][] = 'system-nav-title';
 //      // Wrapping div with custom class for block content
-//      $vars['content_attributes_array']['class'] = 'system-nav-content';
+//      $variables['content_attributes_array']['class'] = 'system-nav-content';
 //      break;
 //    
 //    // User Login block
 //    case 'user-login':
 //      // Hide title
-//      $vars['title_attributes_array']['class'][] = 'element-invisible';
+//      $variables['title_attributes_array']['class'][] = 'element-invisible';
 //      break;
 //
 //    // Example of adding Foundation classes
 //    case 'block-foo': // Target the block ID
 //      // Set grid column or mobile classes or anything else you want.
-//      $vars['classes_array'][] = 'six columns';
+//      $variables['classes_array'][] = 'six columns';
 //      break;
 //  }
 //
 //  // Add template suggestions for blocks from specific modules.
-//  switch($vars['elements']['#block']->module) {
+//  switch($variables['elements']['#block']->module) {
 //    case 'menu':
-//      $vars['theme_hook_suggestions'][] = 'block__nav';
+//      $variables['theme_hook_suggestions'][] = 'block__nav';
 //    break;
 //  }
 //}
 
-//function STARTER_preprocess_views_view(&$vars) {
+//function STARTER_preprocess_views_view(&$variables) {
 //}
 
 /**
  * Implements template_preprocess_panels_pane().
  *
  */
-//function STARTER_preprocess_panels_pane(&$vars) {
+//function STARTER_preprocess_panels_pane(&$variables) {
 //}
 
 /**
  * Implements template_preprocess_views_views_fields().
  *
  */
-//function STARTER_preprocess_views_view_fields(&$vars) {
+//function STARTER_preprocess_views_view_fields(&$variables) {
 //}
 
 /**
  * Status messages in reveal modal
  *
  */
-//function STARTER_status_messages($vars) {
-//  $display = $vars['display'];
+//function STARTER_status_messages($variables) {
+//  $display = $variables['display'];
 //  $output = ''; 
 //
 //  $status_heading = array(
@@ -169,23 +169,23 @@
  * Implements theme_form_element_label()
  * Use foundation tooltips
  */
-//function STARTER_form_element_label($vars) {
-//  if (!empty($vars['element']['#title'])) {
-//    $vars['element']['#title'] = '<span class="secondary label">' . $vars['element']['#title'] . '</span>';
+//function STARTER_form_element_label($variables) {
+//  if (!empty($variables['element']['#title'])) {
+//    $variables['element']['#title'] = '<span class="secondary label">' . $variables['element']['#title'] . '</span>';
 //  }
-//  if (!empty($vars['element']['#description'])) {
-//    $vars['element']['#description'] = ' <span class="has-tip tip-top radius" data-width="250" title="' . $vars['element']['#description'] . '">' . t('More information?') . '</span>';
+//  if (!empty($variables['element']['#description'])) {
+//    $variables['element']['#description'] = ' <span class="has-tip tip-top radius" data-width="250" title="' . $variables['element']['#description'] . '">' . t('More information?') . '</span>';
 //  }
-//  return theme_form_element_label($vars);
+//  return theme_form_element_label($variables);
 //}
 
 /**
  * Implements hook_preprocess_button().
  */
-//function STARTER_preprocess_button(&$vars) {
-//  $vars['element']['#attributes']['class'][] = 'button';
-//  if (isset($vars['element']['#parents'][0]) && $vars['element']['#parents'][0] == 'submit') {
-//    $vars['element']['#attributes']['class'][] = 'secondary';
+//function STARTER_preprocess_button(&$variables) {
+//  $variables['element']['#attributes']['class'][] = 'button';
+//  if (isset($variables['element']['#parents'][0]) && $variables['element']['#parents'][0] == 'submit') {
+//    $variables['element']['#attributes']['class'][] = 'secondary';
 //  }
 //}
 

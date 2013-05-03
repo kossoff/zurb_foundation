@@ -22,30 +22,25 @@ function zurb_foundation_form_alter(&$form, &$form_state, $form_id) {
   if (!empty($form['actions']) && !empty($form['actions']['submit'])) {
     $form['actions']['submit']['#attributes'] = array('class' => array('secondary', 'button', 'radius'));
   }
-  
-  if (isset($form['#form_id']) && ($form['#form_id'] == 'search_block_form')) {
-    $form['search_block_form']['#attributes']['class'] = array('small-8', 'columns');
-    $form['actions']['submit']['#attributes']['class'] = array('postfix', 'small-4', 'columns');
-  }
 }
 /**
  * Implements theme_form_element_label()
  */
-function zurb_foundation_form_element_label($vars) {
-  if (!empty($vars['element']['#title'])) {
-    $vars['element']['#title'] = '<label>' . $vars['element']['#title'] . '</label>';
+function zurb_foundation_form_element_label($variables) {
+  if (!empty($variables['element']['#title'])) {
+    $variables['element']['#title'] = '<label>' . $variables['element']['#title'] . '</label>';
   }
-  if (!empty($vars['element']['#description'])) {
-    $vars['element']['#description'] = ' <span class="has-tip tip-top radius" data-width="250" title="' . $vars['element']['#description'] . '">' . t('More information?') . '</span>';
+  if (!empty($variables['element']['#description'])) {
+    $variables['element']['#description'] = ' <span class="has-tip tip-top radius" data-width="250" title="' . $variables['element']['#description'] . '">' . t('More information?') . '</span>';
   }
-  return theme_form_element_label($vars);
+  return theme_form_element_label($variables);
 }
 
 /**
  * Returns HTML for a button form element.
  */
-function zurb_foundation_button($vars) {
-  $element = $vars['element'];
+function zurb_foundation_button($variables) {
+  $element = $variables['element'];
   $label = check_plain($element['#value']);
   element_set_attributes($element, array('id', 'name', 'value', 'type'));
 
