@@ -43,7 +43,7 @@ function zurb_foundation_status_messages($variables) {
     $output .= "</div>\n";
   }
   // Enable Modal Status Messages
-  /*
+  ///*
   if ($output != '') {
     drupal_add_js("jQuery(document).ready(function() { jQuery('#status-messages').reveal();
             });", array('type' => 'inline', 'scope' => 'footer'));

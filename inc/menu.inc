@@ -42,6 +42,9 @@ function zurb_foundation_menu_local_task(&$variables) {
     $link_text = t('!local-task-title!active', array('!local-task-title' => $link['title'], '!active' => $active));
   }
 
+  // Add section tab styling
+  $link['localized_options']['attributes']['class'] = array('small', 'button', 'secondary');
+
   $output = '';
   $output .= '<li' . $li_class . '>';
   $output .= l($link_text, $link['href'], $link['localized_options']);

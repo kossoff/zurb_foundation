@@ -10,12 +10,6 @@ $files = array(
   'theme.inc',
 );
 
-// Zepto Fallback
-drupal_add_js('document.write(\'<script src=/' . drupal_get_path('theme', 'zurb_foundation') .'/js/vendor/\'
-      + (\'__proto__\' in {} ? \'zepto\' : \'jquery\')
-      + \'.js><\/script>\');',
-      'inline', array('group',JS_LIBRARY));
-
 function _zurb_foundation_load($files) {
   $tp = drupal_get_path('theme', 'zurb_foundation');
   $file = '';
@@ -162,8 +156,8 @@ function zurb_foundation_links__system_main_menu($variables) {
     if (!empty($link['#href'])) {
 
       $output .= '<li' . drupal_attributes($link['#attributes']) . '>' . l($link['#title'], $link['#href']);
-// Uncomment if we don't want to repeat the links under the dropdown for large-screen
-//      $small_link['#attributes']['class'][] = 'show-for-small';
+      // Uncomment if we don't want to repeat the links under the dropdown for large-screen
+      // $small_link['#attributes']['class'][] = 'show-for-small';
       $sub_menu = '<li' . drupal_attributes($small_link['#attributes']) . '>' . l($link['#title'], $link['#href']);
       // Get sub navigation links if they exist
       foreach ($link['#below'] as $key => $sub_link) {
@@ -381,6 +375,14 @@ function zurb_foundation_preprocess_html(&$variables) {
         break;
     }
   }
+  /*
+   * Zepto Fallback
+   *   Use with caution
+   */
+  // drupal_add_js('document.write(\'<script src=/' . drupal_get_path('theme', 'zurb_foundation') .'/js/vendor/\'
+  //       + (\'__proto__\' in {} ? \'zepto\' : \'jquery\')
+  //       + \'.js><\/script>\');',
+  //       'inline', array('group',JS_LIBRARY));
 }
 
 /**
@@ -577,11 +579,12 @@ function zurb_foundation_css_alter(&$css) {
 function zurb_foundation_js_alter(&$js) {
   if (!module_exists('jquery_update')) {
     // Swap out jQuery to use an updated version of the library.
-    $js['misc/jquery.js']['data'] = drupal_get_path('theme', 'zurb_foundation') . '/js/vendor/jquery.js';
-    $js['misc/jquery.js']['version'] = '1.9.1';
+    // $js['misc/jquery.js']['data'] = drupal_get_path('theme', 'zurb_foundation') . '/js/vendor/jquery.js';
+    $js['misc/jquery.js']['version'] = '1.8.2';
   }
+
   // @TODO moving scripts to footer possibly remove?
-  foreach ($js as $key => $js_script) {
-    $js[$key]['scope'] = 'footer';
-  }
+  // foreach ($js as $key => $js_script) {
+  //   $js[$key]['scope'] = 'footer';
+  // }
 }
