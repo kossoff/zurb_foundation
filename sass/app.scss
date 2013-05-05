@@ -9,12 +9,20 @@
  *   - Layout — macro arrangement of a web page, icluding any grid systems.
  *   - Component — discrete, reusable UI elements.
  *   - State — styles that deal with client-side changes to components.
- *   - Skin — purely visual styling (“look-and-feel”) for a component.
+ *   - Skin / Theme — purely visual styling (“look-and-feel”) for a component.
  */
 
-/* Base Rules */
-@import "normalize.css";
-/* Layout Rules  */
+/* Base */
+@import "base/base"; // Loads all the files in the base folder
+
+/* Layout */
+// @import "layout/all";
+
 /* Component */
+// @import "components/all";
+
 /* State */
+// @import "compontents/all";
+
 /* Skin  */
+// @import "skin/all";
