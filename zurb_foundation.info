@@ -28,7 +28,6 @@ scripts[] = js/vendor/custom.modernizr.js
 ; Foundation framework scripts.
 scripts[] = js/vendor/custom.modernizr.js
 scripts[] = js/foundation.min.js
-scripts[] = js/custom.js
 
 ; Source order:
 ; http://foundation.zurb.com/docs/index.html#basicHTMLMarkup

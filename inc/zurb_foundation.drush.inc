@@ -72,6 +72,8 @@ function drush_zurb_foundation_foundation_sub_theme($name = NULL, $machine_name 
   drush_op('zurb_foundation_file_str_replace', "$subtheme_path/$machine_name.info", 'custom.css', "$machine_name.css");
   // Rename the .info reference to the custom js file
   drush_op('zurb_foundation_file_str_replace', "$subtheme_path/$machine_name.info", 'scripts.js', "$machine_name.js");
+  // Rename the Drupal behavior name in the custom js file.
+  drush_op('zurb_foundation_file_str_replace', "$subtheme_path/js/$machine_name.js", 'STARTER', "$machine_name");
   // @TODO drush_op('zurb_foundation_file_str_replace', "$subtheme_path/template.php", '//', "$name");
 
   // Notify user of the newly created theme.
