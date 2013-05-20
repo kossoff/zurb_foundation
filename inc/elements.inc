@@ -47,9 +47,10 @@ function zurb_foundation_status_messages($variables) {
   // if ($output != '') {
   //   drupal_add_js("jQuery(document).ready(function() { jQuery('#status-messages').foundation('reveal','open');
   //           });", array('type' => 'inline', 'scope' => 'footer'));
-  //   $output = '<div id="status-messages" class="reveal-modal expand" >'. $output;
+  //   $output = '<div id="status-messages" class="reveal-modal">'. $output;
   //   $output .= '<a class="close-reveal-modal">&#215;</a>';
   //   $output .= "</div>\n";
+  //   $output .= '</div><div class="reveal-modal-bg"></div>';
   // }
   //*/
   return $output;
