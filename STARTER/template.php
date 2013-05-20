@@ -156,7 +156,7 @@
 //    $output .= "</div>\n";
 //  }
 //  if ($output != '') {
-//    drupal_add_js("jQuery(document).ready(function() { jQuery('#status-messages').reveal(); 
+//    drupal_add_js("jQuery(document).ready(function() { jQuery('#status-messages').foundation('reveal','open');
 //            });", array('type' => 'inline', 'scope' => 'footer'));
 //    $output = '<div id="status-messages" class="reveal-modal expand" >'. $output;
 //    $output .= '<a class="close-reveal-modal">&#215;</a>';
