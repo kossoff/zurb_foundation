@@ -16,7 +16,7 @@ function zurb_foundation_status_messages($variables) {
   );
   $status_mapping = array(
     'error' => 'alert',
-    'success' => 'success',
+    'status' => 'success',
     'warning' => 'secondary'
   );
   foreach (drupal_get_messages($display) as $type => $messages) {
@@ -50,7 +50,7 @@ function zurb_foundation_status_messages($variables) {
   //   $output = '<div id="status-messages" class="reveal-modal">'. $output;
   //   $output .= '<a class="close-reveal-modal">&#215;</a>';
   //   $output .= "</div>\n";
-  //   $output .= '</div><div class="reveal-modal-bg"></div>';
+  //   $output .= '<div class="reveal-modal-bg"></div>';
   // }
   //*/
   return $output;
