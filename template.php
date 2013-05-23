@@ -13,10 +13,11 @@ $files = array(
 function _zurb_foundation_load($files) {
   $tp = drupal_get_path('theme', 'zurb_foundation');
   $file = '';
+  $dir = dirname(__FILE__);
 
   // Check file path and '.inc' extension
   foreach($files as $file) {
-    $file_path = __DIR__ .'/inc/' . $file;
+    $file_path = $dir . '/inc/' . $file;
     if ( strpos($file,'.inc') > 0 && file_exists($file_path)) {
       require_once($file_path);
     }
