@@ -141,7 +141,7 @@ function zurb_foundation_field__taxonomy_term_reference($variables) {
  */
 function zurb_foundation_links__system_main_menu($variables) {
   // Get all the main menu links
-  $menu_links = menu_tree_output(menu_tree_all_data('main-menu'));
+  $menu_links = menu_tree_output(menu_tree_all_data(variable_get('menu_main_links_source', 'main-menu')));
 
   // Initialize some variables to prevent errors
   $output = '';
