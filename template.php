@@ -507,7 +507,7 @@ function zurb_foundation_preprocess_page(&$variables) {
 
   // Dynamic sidebars
   if (!empty($left) && !empty($right)) {
-    $variables['main_grid'] = 'large-6 push-three';
+    $variables['main_grid'] = 'large-6 push-3';
     $variables['sidebar_first_grid'] = 'large-3 pull-6';
     $variables['sidebar_sec_grid'] = 'large-3';
   } elseif (empty($left) && !empty($right)) {
