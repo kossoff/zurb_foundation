@@ -1,16 +1,21 @@
-@import "base";
+// Foundation Settings file
+//
+// In order to use the settings copy over the settings file
+// found in the zurb foundation github repository and then
+// recompile and preprocess the theme again.
+//
+// For a detailed list of each value and variable visit the sass settings:
+// http://foundation.zurb.com/docs/sass-settings.php
+//
+// For the latest settings.css file, it can be found here:
+// https://raw.github.com/zurb/foundation/master/scss/foundation/_settings.scss
+//
+// Be sure to check which version of foundation you're using.
 
-// Settings file containing Foundation defaults
-
-// Grid Settings
-
-// $rowWidth: 1000px;
-// $columnGutter: 30px;
-// $totalColumns: 12;
-// $mobileTotalColumns: 4;
-
-// Colors Settings
-
+//============================
+// Examples:
+//============================
+// Color
 // $mainColor: #2ba6cb;
 // $secondaryColor: #e9e9e9;
 // $alertColor: #c60f13;
@@ -22,29 +27,9 @@
 // $shinyEdge: rgba(#fff, .5);
 // $darkEdge: rgba(#000, .2);
 
-// Button Settings
-
-// $buttonRadius: 3px;
-// $btnBase: 10px;
-
-// $tinyBtnBase: $btnBase - 5;
-// $smallBtnBase: $btnBase - 3;
-// $largeBtnBase: $btnBase + 5;
-
-// Form Settings
-
-// $formSpacing: 12px;
-
-// Tab Settings
-
-// $tabHeight: 40px;
-
-// Nav Bar Settings
-
-// $navBarHeight: 40px;
-// $navFlyoutBaseWidth: 250px;
-
-// Modular Scale
-// $ratio: $golden;
-// $base-size: 14px 44px;
-
+//============================
+// Default SCSS Variables
+//============================
+$row-width:     62.5em !default;
+$column-gutter: 1.875em !default;
+$total-columns: 12 !default;
