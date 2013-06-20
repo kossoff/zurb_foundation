@@ -513,7 +513,7 @@ function zurb_foundation_preprocess_page(&$variables) {
   } elseif (empty($left) && !empty($right)) {
     $variables['main_grid'] = 'large-9';
     $variables['sidebar_first_grid'] = '';
-    $variables['sidebar_sec_grid'] = 'large-3 small-3';
+    $variables['sidebar_sec_grid'] = 'large-3';
   } elseif (!empty($left) && empty($right)) {
     $variables['main_grid'] = 'large-9 push-3';
     $variables['sidebar_first_grid'] = 'large-3 pull-9';

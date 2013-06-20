@@ -175,7 +175,7 @@
 //    $variables['element']['#title'] = '<span class="secondary label">' . $variables['element']['#title'] . '</span>';
 //  }
 //  if (!empty($variables['element']['#description'])) {
-//    $variables['element']['#description'] = ' <span class="has-tip tip-top radius" data-width="250" title="' . $variables['element']['#description'] . '">' . t('More information?') . '</span>';
+//    $variables['element']['#description'] = ' <span data-tooltip="top" class="has-tip tip-top" data-width="250" title="' . $variables['element']['#description'] . '">' . t('More information?') . '</span>';
 //  }
 //  return theme_form_element_label($variables);
 //}
