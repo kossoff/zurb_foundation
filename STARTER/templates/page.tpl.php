@@ -40,6 +40,13 @@
     </div>
   </div>
 </div>
+<?php if (!empty($page['featured'])): ?>
+  <div class="row">
+    <div class="large-12 columns">
+      <?php print render($page['featured']); ?>
+    </div>
+  </div>  
+<?php endif; ?>
 <div class="row">
   <?php if ($messages): print $messages; endif; ?>
   <?php if (!empty($page['help'])): print render($page['help']); endif; ?>
@@ -72,36 +79,61 @@
     <?php print render($page['content']); ?>
   </div>
   <?php if (!empty($page['sidebar_first'])): ?>
-    <div id="sidebar-first" class="<?php print $sidebar_first_grid; ?> columns sidebar ">
+    <div id="sidebar-first" class="<?php print $sidebar_first_grid; ?> columns sidebar">
       <?php print render($page['sidebar_first']); ?>
     </div>
   <?php endif; ?>
   <?php if (!empty($page['sidebar_second'])): ?>
-    <div id="sidebar-second" class="<?php print $sidebar_sec_grid;?> columns sidebar">
+    <div id="sidebar-second" class="<?php print $sidebar_sec_grid; ?> columns sidebar">
       <?php print render($page['sidebar_second']); ?>
     </div>
   <?php endif; ?>
 </div>
-<?php if (!empty($page['footer_first']) || !empty($page['footer_middle']) || !empty($page['footer_last'])): ?>
-<footer class="row">
-    <?php if (!empty($page['footer_first'])): ?>
-      <div id="footer-first" class="large-4 columns">
-        <?php print render($page['footer_first']); ?>
+<?php if (!empty($page['triptych_first']) || !empty($page['triptych_middle']) || !empty($page['triptych_last'])): ?>
+  <div class="row">
+    <div class="large-4 columns">
+      <?php print render($page['triptych_first']); ?>
+    </div>
+    <div class="large-4 columns">
+      <?php print render($page['triptych_middle']); ?>
+    </div>
+    <div class="large-4 columns">
+      <?php print render($page['triptych_last']); ?>
+    </div>
+  </div>  
+<?php endif; ?>
+<?php if (!empty($page['footer_firstcolumn']) || !empty($page['footer_secondcolumn']) || !empty($page['footer_thirdcolumn']) || !empty($page['footer_fourthcolumn'])): ?>
+  <footer class="row">
+    <?php if (!empty($page['footer_firstcolumn'])): ?>
+      <div id="footer-first" class="large-3 columns">
+        <?php print render($page['footer_firstcolumn']); ?>
       </div>
     <?php endif; ?>
-    <?php if (!empty($page['footer_middle'])): ?>
-      <div id="footer-middle" class="large-4 columns">
-        <?php print render($page['footer_middle']); ?>
+    <?php if (!empty($page['footer_secondcolumn'])): ?>
+      <div id="footer-second" class="large-3 columns">
+        <?php print render($page['footer_secondcolumn']); ?>
       </div>
     <?php endif; ?>
-    <?php if (!empty($page['footer_last'])): ?>
-      <div id="footer-last" class="large-4 columns">
-        <?php print render($page['footer_last']); ?>
+    <?php if (!empty($page['footer_thirdcolumn'])): ?>
+      <div id="footer-third" class="large-3 columns">
+        <?php print render($page['footer_thirdcolumn']); ?>
       </div>
     <?php endif; ?>
-</footer>
+    <?php if (!empty($page['footer_fourthcolumn'])): ?>
+      <div id="footer-fourth" class="large-3 columns">
+        <?php print render($page['footer_fourthcolumn']); ?>
+      </div>
+    <?php endif; ?>
+  </footer>
 <?php endif; ?>
 <div class="bottom-bar panel">
+  <?php if (!empty($page['footer'])): ?>
+   <div class="row">
+      <div class="large-12 columns">
+        <?php print render($page['footer']); ?>
+      </div>
+    </div>  
+  <?php endif; ?>
   <div class="row">
     <div class="large-6 columns">
       <?php if ($site_name) :?>
