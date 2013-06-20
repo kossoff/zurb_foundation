@@ -1,18 +1,26 @@
-<!-- Header and Nav -->
-<nav class="top-bar">
-  <ul class="title-area">
-    <li class="name"><h1><?php print $linked_site_name; ?></h1></li>
-    <li><li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li></li>
-  </ul>
-  <section class="top-bar-section">
-    <?php if ($main_menu_links) :?>
-      <?php print $main_menu_links; ?>
-    <?php endif; ?>
-    <?php if (!empty($page['header'])): ?>
-      <?php print render($page['header']);?>
-    <?php endif; ?>
-  </section>
-</nav>
+<!-- Top bar -->
+<?php if ($top_bar): ?>
+  <div class="<?php print $top_bar_classes; ?>">
+    <nav class="top-bar">
+      <ul class="title-area">
+        <li class="name"><h1><?php print $linked_site_name; ?></h1></li>
+        <li class="toggle-topbar menu-icon"><a href="#"><span><?php print $top_bar_menu_text; ?></span></a></li>
+      </ul>
+      <section class="top-bar-section">
+        <?php if ($main_menu_links) :?>
+          <?php print $main_menu_links; ?>
+        <?php endif; ?>
+        <?php if (!empty($page['header_left'])): ?>
+          <?php print render($page['header_left']);?>
+        <?php endif; ?>
+        <?php if (!empty($page['header_right'])): ?>
+          <?php print render($page['header_right']);?>
+        <?php endif; ?>
+      </section>
+    </nav>
+  </div>
+<?php endif; ?>
+<!-- End top bar -->
 
 <div class="row">
   <div class="<?php $site_slogan ? print 'large-6' : print 'small-4 large-4 columns large-offset-8'; ?> columns hide-for-small">

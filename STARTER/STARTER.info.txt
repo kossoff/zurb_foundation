@@ -82,3 +82,7 @@ regions[page_bottom]    = Page bottom
 ; features[] = favicon
 ; features[] = main_menu
 ; features[] = secondary_menu
+
+; Theme settings.
+settings[zurb_foundation_top_bar_enable] = 1
+settings[zurb_foundation_top_bar_animate] = 'fadeInDown'
