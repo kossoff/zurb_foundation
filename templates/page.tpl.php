@@ -10,12 +10,6 @@
         <?php if ($main_menu_links) :?>
           <?php print $main_menu_links; ?>
         <?php endif; ?>
-        <?php if (!empty($page['header_left'])): ?>
-          <?php print render($page['header_left']);?>
-        <?php endif; ?>
-        <?php if (!empty($page['header_right'])): ?>
-          <?php print render($page['header_right']);?>
-        <?php endif; ?>
       </section>
     </nav>
   </div>

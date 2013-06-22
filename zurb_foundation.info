@@ -51,8 +51,6 @@ scripts[] = js/foundation/foundation.topbar.js
 
 ; Regions are output in the page.tpl.php
 regions[header]         = Header
-regions[header_left]    = Header Left
-regions[header_right]   = Header Right
 regions[navigation]     = Navigation
 regions[help]           = Help
 regions[highlighted]    = Highlighted

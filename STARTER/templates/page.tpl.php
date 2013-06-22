@@ -10,12 +10,6 @@
         <?php if ($main_menu_links) :?>
           <?php print $main_menu_links; ?>
         <?php endif; ?>
-        <?php if (!empty($page['header_left'])): ?>
-          <?php print render($page['header_left']);?>
-        <?php endif; ?>
-        <?php if (!empty($page['header_right'])): ?>
-          <?php print render($page['header_right']);?>
-        <?php endif; ?>
       </section>
     </nav>
   </div>
@@ -53,7 +47,7 @@
     <div class="large-12 columns">
       <?php print render($page['featured']); ?>
     </div>
-  </div>  
+  </div>
 <?php endif; ?>
 <div class="row">
   <?php if ($messages): print $messages; endif; ?>
@@ -108,7 +102,7 @@
     <div class="large-4 columns">
       <?php print render($page['triptych_last']); ?>
     </div>
-  </div>  
+  </div>
 <?php endif; ?>
 <?php if (!empty($page['footer_firstcolumn']) || !empty($page['footer_secondcolumn']) || !empty($page['footer_thirdcolumn']) || !empty($page['footer_fourthcolumn'])): ?>
   <footer class="row">
@@ -140,7 +134,7 @@
       <div class="large-12 columns">
         <?php print render($page['footer']); ?>
       </div>
-    </div>  
+    </div>
   <?php endif; ?>
   <div class="row">
     <div class="large-6 columns">
