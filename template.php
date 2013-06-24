@@ -178,17 +178,19 @@ function _zurb_foundation_links($menu_links) {
   foreach ($menu_links as $link) {
     // Add special class needed for Foundation dropdown menu to work
     $small_link = $link; //duplicate version that won't get the dropdown class, save for later
-    !empty($link['#below']) ? $link['#attributes']['class'][] = 'has-dropdown' : '';
+
+    if (!empty($link['#below'])) {
+      $link['#attributes']['class'][] = 'has-dropdown';
+    }
 
     // Render top level and make sure we have an actual link
     if (!empty($link['#href'])) {
-
       $output .= '<li' . drupal_attributes($link['#attributes']) . '>' . l($link['#title'], $link['#href']);
       // Uncomment if we don't want to repeat the links under the dropdown for large-screen
       // $small_link['#attributes']['class'][] = 'show-for-small';
       $sub_menu = '<li' . drupal_attributes($small_link['#attributes']) . '>' . l($link['#title'], $link['#href']);
       // Get sub navigation links if they exist
-      foreach ($link['#below'] as $key => $sub_link) {
+      foreach ($link['#below'] as $sub_link) {
         if (!empty($sub_link['#href'])) {
           $sub_menu .= '<li>' . l($sub_link['#title'], $sub_link['#href']) . '</li>';
         }
