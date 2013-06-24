@@ -136,8 +136,8 @@ function zurb_foundation_field__taxonomy_term_reference($variables) {
 }
 
 /**
- * Implements theme_links() targeting the main menu specifically
- * Outputs Foundation Top Bar http://foundation.zurb.com/docs/navigation.php
+ * Implements theme_links() targeting the main menu specifically.
+ * Formats links for Top Bar http://foundation.zurb.com/docs/components/top-bar.html
  */
 function zurb_foundation_links__system_main_menu($variables) {
   // Get all the main menu links
