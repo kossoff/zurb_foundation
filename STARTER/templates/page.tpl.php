@@ -10,6 +10,9 @@
         <?php if ($main_menu_links) :?>
           <?php print $main_menu_links; ?>
         <?php endif; ?>
+        <?php if ($secondary_menu_links) :?>
+          <?php print $secondary_menu_links; ?>
+        <?php endif; ?>
       </section>
     </nav>
   </div>

@@ -142,13 +142,40 @@ function zurb_foundation_field__taxonomy_term_reference($variables) {
 function zurb_foundation_links__system_main_menu($variables) {
   // Get all the main menu links
   $menu_links = menu_tree_output(menu_tree_all_data(variable_get('menu_main_links_source', 'main-menu')));
+  $output = _zurb_foundation_links($menu_links);
+  return '<ul class="left">' . $output . '</ul>';
+}
 
+/**
+ * Implements theme_links() targeting the secondary menu specifically.
+ * Formats links for Top Bar http://foundation.zurb.com/docs/components/top-bar.html
+ */
+function zurb_foundation_links__system_secondary_menu($variables) {
+  // Get all the secondary menu links
+  $menu_links = menu_tree_output(menu_tree_all_data(variable_get('menu_secondary_links_source', 'user-menu')));
+  $output = _zurb_foundation_links($menu_links);
+  return '<ul class="right">' . $output . '</ul>';
+}
+
+/**
+ * Helper function to output menus with Foundation-friendly markup.
+ *
+ * @param array
+ *   An array of menu links.
+ *
+ * @return string
+ *   A rendered list of links, without a <ul> or <ol> wrapper.
+ *
+ * @see zurb_foundation_links__system_main_menu()
+ * @see zurb_foundation_links__system_secondary_menu()
+ */
+function _zurb_foundation_links($menu_links) {
   // Initialize some variables to prevent errors
   $output = '';
   $sub_menu = '';
   $small_link = '';
 
-  foreach ($menu_links as $key => $link) {
+  foreach ($menu_links as $link) {
     // Add special class needed for Foundation dropdown menu to work
     $small_link = $link; //duplicate version that won't get the dropdown class, save for later
     !empty($link['#below']) ? $link['#attributes']['class'][] = 'has-dropdown' : '';
@@ -163,7 +190,7 @@ function zurb_foundation_links__system_main_menu($variables) {
       // Get sub navigation links if they exist
       foreach ($link['#below'] as $key => $sub_link) {
         if (!empty($sub_link['#href'])) {
-        $sub_menu .= '<li>' . l($sub_link['#title'], $sub_link['#href']) . '</li>';
+          $sub_menu .= '<li>' . l($sub_link['#title'], $sub_link['#href']) . '</li>';
         }
       }
       $output .= !empty($link['#below']) ? '<ul class="dropdown">' . $sub_menu . '</ul>' : '';
@@ -177,7 +204,8 @@ function zurb_foundation_links__system_main_menu($variables) {
       $output .=  '</li>';
     }
   }
-  return '<ul class="right">' . $output . '</ul>';
+
+  return $output;
 }
 
 /**
