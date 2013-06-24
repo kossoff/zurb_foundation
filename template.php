@@ -179,8 +179,6 @@ function zurb_foundation_links__system_main_menu($variables) {
   }
   return '<ul class="right">' . $output . '</ul>';
 }
-// end Top Bar */
-
 
 /**
  * Implements hook_preprocess_block()
