@@ -468,27 +468,23 @@ function zurb_foundation_preprocess_page(&$variables) {
 
   // Top bar.
   if ($variables['top_bar'] = theme_get_setting('zurb_foundation_top_bar_enable')) {
-    $top_bar_animate = theme_get_setting('zurb_foundation_top_bar_animate');
-    $top_bar_grid = theme_get_setting('zurb_foundation_top_bar_grid');
-    $top_bar_sticky = theme_get_setting('zurb_foundation_top_bar_sticky');
-    $variables['top_bar_menu_text'] = theme_get_setting('zurb_foundation_top_bar_menu_text');
-
     $top_bar_classes = array();
 
-    if ($top_bar_animate) {
+    if ($top_bar_animate = theme_get_setting('zurb_foundation_top_bar_animate')) {
       $top_bar_classes[] = 'animated';
       $top_bar_classes[] = $top_bar_animate;
     }
 
-    if ($top_bar_grid) {
+    if (theme_get_setting('zurb_foundation_top_bar_grid')) {
       $top_bar_classes[] = 'contain-to-grid';
     }
 
-    if ($top_bar_sticky) {
+    if (theme_get_setting('zurb_foundation_top_bar_sticky')) {
       $top_bar_classes[] = 'sticky';
     }
 
     $variables['top_bar_classes'] = implode(' ', $top_bar_classes);
+    $variables['top_bar_menu_text'] = theme_get_setting('zurb_foundation_top_bar_menu_text');
   }
 
   // Site navigation links.
