@@ -511,6 +511,10 @@ function zurb_foundation_preprocess_page(&$variables) {
       $top_bar_classes[] = 'sticky';
     }
 
+    if ($variables['top_bar'] == 2) {
+      $top_bar_classes[] = 'show-for-small';
+    }
+
     $variables['top_bar_classes'] = implode(' ', $top_bar_classes);
     $variables['top_bar_menu_text'] = theme_get_setting('zurb_foundation_top_bar_menu_text');
   }
