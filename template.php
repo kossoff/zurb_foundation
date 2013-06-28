@@ -521,6 +521,13 @@ function zurb_foundation_preprocess_page(&$variables) {
     $variables['top_bar_menu_text'] = theme_get_setting('zurb_foundation_top_bar_menu_text');
   }
 
+  // Alternative header.
+  // This is what will show up if the top bar is disabled or enabled only for mobile.
+  if ($variables['alt_header'] = ($variables['top_bar'] != 1)) {
+    // Hide alt header on mobile if using top bar in mobile.
+    $variables['alt_header_classes'] = $variables['top_bar'] == 2 ? ' hide-for-small' : '';
+  }
+
   // Site navigation links.
   $variables['main_menu_links'] = '';
   if (isset($variables['main_menu'])) {

@@ -19,32 +19,35 @@
 <?php endif; ?>
 <!-- End top bar -->
 
-<div class="row">
-  <div class="<?php $site_slogan ? print 'large-6' : print 'small-4 large-4 columns large-offset-8'; ?> columns hide-for-small">
-      <?php if ($logged_in): ?>
-      <ul class="inline-list right">
-        <li><?php print l(t('My Account'), 'user'); ?></li>
-        <li><?php print l(t('Logout'), 'user/logout'); ?></li>
-      </ul>
-      <?php else: ?>
-        <?php print l(t('Login'), 'user/login', array('attributes' => array('class' => array('large', 'radius', 'button')))); ?>
-        <?php print l(t('Sign Up'), 'user/register', array('attributes' => array('class' => array('large', 'radius', 'success', 'button')))); ?>
-      <?php endif;  ?>
+<!-- Title, slogan and menu -->
+<?php if ($alt_header): ?>
+  <div class="row<?php print $alt_header_classes; ?>">
+
+    <?php if ($logo): ?>
+      <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo">
+        <img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" />
+      </a>
+    <?php endif; ?>
+
+    <?php if ($site_name): ?>
+      <h1 title="<?php print $site_name; ?>" id="site-name" class="site-name">
+        <a href="<?php print $front_page; ?>" title="<?php print $site_name; ?>"><?php print $site_name; ?></a>
+      </h1>
+    <?php endif; ?>
+
+    <?php if ($site_slogan): ?>
+      <h2 title="<?php print $site_slogan; ?>" id="site-slogan" class="site-slogan">
+        <?php print $site_slogan; ?>
+      </h2>
+    <?php endif; ?>
+
+    <?php if ($main_menu_links) :?>
+      <?php print $main_menu_links; ?>
+    <?php endif; ?>
   </div>
-  <?php if ($site_slogan): ?>
-    <div class="large-12 columns hide-for-small">
-      <h2><?php print $site_slogan; ?></h2>
-    </div>
-  <?php endif; ?>
-  <div class="show-for-small">
-    <div class="large-6 small-2 columns">
-      <p><?php print l(t('Login'), 'user/login', array('attributes' => array('class' => array('radius', 'button', 'small')))); ?></p>
-    </div>
-    <div class="large-6 small-2 columns">
-      <p><?php print l(t('Sign Up'), 'user/register', array('attributes' => array('class' => array('radius', 'success', 'button')))); ?></p>
-    </div>
-  </div>
-</div>
+<?php endif; ?>
+<!-- End title, slogan and menu -->
+
 <?php if (!empty($page['featured'])): ?>
   <div class="row">
     <div class="large-12 columns">
