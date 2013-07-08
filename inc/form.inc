@@ -83,5 +83,7 @@ function _zurb_foundation_element_whitelist() {
     'panels-ipe-cancel',
     'panels-ipe-customize-page',
     'panels-ipe-save',
+    'panelizer-save-default',
+    'panelizer-ipe-revert',
   );
 }
