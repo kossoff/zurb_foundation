@@ -1,3 +1,5 @@
 *.html
 humans.txt
 robots.txt
+js/foundation/jquery.js
+MIT-LICENSE.txt
