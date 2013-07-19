@@ -36,9 +36,7 @@
     <?php endif; ?>
 
     <?php if ($site_slogan): ?>
-      <h2 title="<?php print $site_slogan; ?>" id="site-slogan" class="site-slogan">
-        <?php print $site_slogan; ?>
-      </h2>
+      <h2 title="<?php print $site_slogan; ?>" id="site-slogan" class="site-slogan"><?php print $site_slogan; ?></h2>
     <?php endif; ?>
 
     <?php if ($main_menu_links) :?>
