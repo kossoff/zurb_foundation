@@ -167,8 +167,7 @@
 //            });", array('type' => 'inline', 'scope' => 'footer'));
 //    $output = '<div id="status-messages" class="reveal-modal" >'. $output;
 //    $output .= '<a class="close-reveal-modal">&#215;</a>';
-//    $output .= "</div>\n";
-//    $output .= '<div class="reveal-modal-bg"></div>';
+//    $output .= "</div>";
 //  }
 //  return $output;
 //}
