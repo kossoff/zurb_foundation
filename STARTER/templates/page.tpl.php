@@ -39,8 +39,38 @@
       <h2 title="<?php print $site_slogan; ?>" id="site-slogan" class="site-slogan"><?php print $site_slogan; ?></h2>
     <?php endif; ?>
 
-    <?php if ($main_menu_links) :?>
-      <?php print $main_menu_links; ?>
+    <?php if ($main_menu): ?>
+      <nav id="main-menu" class="navigation" role="navigation">
+        <?php print theme('links__system_main_menu', array(
+          'links' => $main_menu,
+          'attributes' => array(
+            'id' => 'main-menu-links',
+            'class' => array('links', 'clearfix'),
+          ),
+          'heading' => array(
+            'text' => t('Main menu'),
+            'level' => 'h2',
+            'class' => array('element-invisible'),
+          ),
+        )); ?>
+      </nav> <!-- /#main-menu -->
+    <?php endif; ?>
+
+    <?php if ($secondary_menu): ?>
+      <nav id="secondary-menu" class="navigation" role="navigation">
+        <?php print theme('links__system_secondary_menu', array(
+          'links' => $secondary_menu,
+          'attributes' => array(
+            'id' => 'secondary-menu-links',
+            'class' => array('links', 'inline', 'clearfix'),
+          ),
+          'heading' => array(
+            'text' => t('Secondary menu'),
+            'level' => 'h2',
+            'class' => array('element-invisible'),
+          ),
+        )); ?>
+      </nav> <!-- /#secondary-menu -->
     <?php endif; ?>
   </div>
 <?php endif; ?>

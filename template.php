@@ -139,7 +139,7 @@ function zurb_foundation_field__taxonomy_term_reference($variables) {
  * Implements theme_links() targeting the main menu specifically.
  * Formats links for Top Bar http://foundation.zurb.com/docs/components/top-bar.html
  */
-function zurb_foundation_links__system_main_menu($variables) {
+function zurb_foundation_links__topbar_main_menu($variables) {
   // We need to fetch the links ourselves because we need the entire tree.
   $links = menu_tree_output(menu_tree_all_data(variable_get('menu_main_links_source', 'main-menu')));
   $output = _zurb_foundation_links($links);
@@ -151,7 +151,7 @@ function zurb_foundation_links__system_main_menu($variables) {
  * Implements theme_links() targeting the secondary menu specifically.
  * Formats links for Top Bar http://foundation.zurb.com/docs/components/top-bar.html
  */
-function zurb_foundation_links__system_secondary_menu($variables) {
+function zurb_foundation_links__topbar_secondary_menu($variables) {
   // We need to fetch the links ourselves because we need the entire tree.
   $links = menu_tree_output(menu_tree_all_data(variable_get('menu_secondary_links_source', 'user-menu')));
   $output = _zurb_foundation_links($links);
@@ -546,7 +546,7 @@ function zurb_foundation_preprocess_page(&$variables) {
   // Site navigation links.
   $variables['main_menu_links'] = '';
   if (isset($variables['main_menu'])) {
-    $variables['main_menu_links'] = theme('links__system_main_menu', array(
+    $variables['main_menu_links'] = theme('links__topbar_main_menu', array(
       'links' => $variables['main_menu'],
       'attributes' => array(
         'id' => 'main-menu',
@@ -562,7 +562,7 @@ function zurb_foundation_preprocess_page(&$variables) {
 
   $variables['secondary_menu_links'] = '';
   if (isset($variables['secondary_menu'])) {
-    $variables['secondary_menu_links'] = theme('links__system_secondary_menu', array(
+    $variables['secondary_menu_links'] = theme('links__topbar_secondary_menu', array(
       'links' => $variables['secondary_menu'],
       'attributes' => array(
         'id'    => 'secondary-menu',
