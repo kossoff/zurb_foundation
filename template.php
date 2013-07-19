@@ -140,10 +140,11 @@ function zurb_foundation_field__taxonomy_term_reference($variables) {
  * Formats links for Top Bar http://foundation.zurb.com/docs/components/top-bar.html
  */
 function zurb_foundation_links__system_main_menu($variables) {
-  // Get all the main menu links
-  $menu_links = menu_tree_output(menu_tree_all_data(variable_get('menu_main_links_source', 'main-menu')));
-  $output = _zurb_foundation_links($menu_links);
-  return '<ul class="left">' . $output . '</ul>';
+  // We need to fetch the links ourselves because we need the entire tree.
+  $links = menu_tree_output(menu_tree_all_data(variable_get('menu_main_links_source', 'main-menu')));
+  $output = _zurb_foundation_links($links);
+
+  return '<ul class="left"' . drupal_attributes($variables['attributes']) . '>' . $output . '</ul>';
 }
 
 /**
@@ -151,60 +152,74 @@ function zurb_foundation_links__system_main_menu($variables) {
  * Formats links for Top Bar http://foundation.zurb.com/docs/components/top-bar.html
  */
 function zurb_foundation_links__system_secondary_menu($variables) {
-  // Get all the secondary menu links
-  $menu_links = menu_tree_output(menu_tree_all_data(variable_get('menu_secondary_links_source', 'user-menu')));
-  $output = _zurb_foundation_links($menu_links);
-  return '<ul class="right">' . $output . '</ul>';
+  // We need to fetch the links ourselves because we need the entire tree.
+  $links = menu_tree_output(menu_tree_all_data(variable_get('menu_secondary_links_source', 'user-menu')));
+  $output = _zurb_foundation_links($links);
+
+  return '<ul class="right"' . drupal_attributes($variables['attributes']) . '>' . $output . '</ul>';
 }
 
 /**
- * Helper function to output menus with Foundation-friendly markup.
+ * Helper function to output a Drupal menu as a Foundation Top Bar.
  *
  * @param array
  *   An array of menu links.
  *
  * @return string
- *   A rendered list of links, without a <ul> or <ol> wrapper.
+ *   A rendered list of links, with no <ul> or <ol> wrapper.
  *
  * @see zurb_foundation_links__system_main_menu()
  * @see zurb_foundation_links__system_secondary_menu()
  */
-function _zurb_foundation_links($menu_links) {
-  // Initialize some variables to prevent errors
+function _zurb_foundation_links($links) {
   $output = '';
-  $sub_menu = '';
-  $small_link = '';
 
-  foreach ($menu_links as $link) {
-    // Add special class needed for Foundation dropdown menu to work
-    $small_link = $link; //duplicate version that won't get the dropdown class, save for later
+  foreach (element_children($links) as $key) {
+    $output .= _zurb_foundation_render_link($links[$key]);
+  }
 
-    if (!empty($link['#below'])) {
-      $link['#attributes']['class'][] = 'has-dropdown';
-    }
+  return $output;
+}
 
-    // Render top level and make sure we have an actual link
-    if (!empty($link['#href'])) {
-      $output .= '<li' . drupal_attributes($link['#attributes']) . '>' . l($link['#title'], $link['#href']);
-      // Uncomment if we don't want to repeat the links under the dropdown for large-screen
-      // $small_link['#attributes']['class'][] = 'show-for-small';
-      $sub_menu = '<li' . drupal_attributes($small_link['#attributes']) . '>' . l($link['#title'], $link['#href']);
-      // Get sub navigation links if they exist
-      foreach ($link['#below'] as $sub_link) {
-        if (!empty($sub_link['#href'])) {
-          $sub_menu .= '<li>' . l($sub_link['#title'], $sub_link['#href']) . '</li>';
-        }
+/**
+ * Helper function to recursively render sub-menus.
+ *
+ * @param array
+ *   An array of menu links.
+ *
+ * @return string
+ *   A rendered list of links, with no <ul> or <ol> wrapper.
+ *
+ * @see _zurb_foundation_links()
+ */
+function _zurb_foundation_render_link($link) {
+  $output = '';
+
+  // This is a duplicate link that won't get the dropdown class and will only
+  // show up in small-screen.
+  $small_link = $link;
+
+  if (!empty($link['#below'])) {
+    $link['#attributes']['class'][] = 'has-dropdown';
+  }
+
+  // Render top level and make sure we have an actual link.
+  if (!empty($link['#href'])) {
+    $output .= '<li' . drupal_attributes($link['#attributes']) . '>' . l($link['#title'], $link['#href']);
+
+    // Add repeated link under the dropdown for small-screen.
+    $small_link['#attributes']['class'][] = 'show-for-small';
+    $sub_menu = '<li' . drupal_attributes($small_link['#attributes']) . '>' . l($link['#title'], $link['#href']);
+
+    // Build sub nav recursively.
+    foreach ($link['#below'] as $sub_link) {
+      if (!empty($sub_link['#href'])) {
+        $sub_menu .= _zurb_foundation_render_link($sub_link);
       }
-      $output .= !empty($link['#below']) ? '<ul class="dropdown">' . $sub_menu . '</ul>' : '';
-
-      // Reset dropdown to prevent duplicates
-      unset($sub_menu);
-      unset($small_link);
-      $small_link = '';
-      $sub_menu = '';
-
-      $output .=  '</li>';
     }
+
+    $output .= !empty($link['#below']) ? '<ul class="dropdown">' . $sub_menu . '</ul>' : '';
+    $output .=  '</li>';
   }
 
   return $output;
