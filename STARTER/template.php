@@ -3,7 +3,7 @@
 /**
  * Implements theme_links() targeting the main menu specifically
  * Outputs Foundation Nav bar http://foundation.zurb.com/docs/navigation.php
- * 
+ *
  */
 // function STARTER_links__system_main_menu($variables) {
 //   // Get all the main menu links
@@ -48,14 +48,14 @@
 
 /**
  * Implements template_preprocess_html().
- * 
+ *
  */
 //function STARTER_preprocess_html(&$variables) {
 //  // Add conditional CSS for IE. To use uncomment below and add IE css file
 //  drupal_add_css(path_to_theme() . '/css/ie.css', array('weight' => CSS_THEME, 'browsers' => array('!IE' => FALSE), 'preprocess' => FALSE));
-//  
+//
 //  // Need legacy support for IE downgrade to Foundation 2 or use JS file below
-//  // drupal_add_js('http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE7.js', 'external'); 
+//  // drupal_add_js('http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE7.js', 'external');
 //}
 
 /**
@@ -78,10 +78,10 @@
 //function STARTER_preprocess_block(&$variables) {
 //  // Add wrapping div with global class to all block content sections.
 //  $variables['content_attributes_array']['class'][] = 'block-content';
-//  
+//
 //  // Convenience variable for classes based on block ID
 //  $block_id = $variables['block']->module . '-' . $variables['block']->delta;
-//  
+//
 //  // Add classes based on a specific block
 //  switch ($block_id) {
 //    // System Navigation block
@@ -93,7 +93,7 @@
 //      // Wrapping div with custom class for block content
 //      $variables['content_attributes_array']['class'] = 'system-nav-content';
 //      break;
-//    
+//
 //    // User Login block
 //    case 'user-login':
 //      // Hide title
@@ -138,28 +138,28 @@
  */
 //function STARTER_status_messages($variables) {
 //  $display = $variables['display'];
-//  $output = ''; 
+//  $output = '';
 //
 //  $status_heading = array(
-//    'status' => t('Status message'), 
-//    'error' => t('Error message'), 
+//    'status' => t('Status message'),
+//    'error' => t('Error message'),
 //    'warning' => t('Warning message'),
-//  );  
+//  );
 //  foreach (drupal_get_messages($display) as $type => $messages) {
 //    $output .= "<div class=\"messages $type\">\n";
 //    if (!empty($status_heading[$type])) {
 //      $output .= '<h2 class="element-invisible">' . $status_heading[$type] . "</h2>\n";
-//    }   
+//    }
 //    if (count($messages) > 1) {
 //      $output .= " <ul>\n";
 //      foreach ($messages as $message) {
 //        $output .= '  <li>' . $message . "</li>\n";
-//      }   
+//      }
 //      $output .= " </ul>\n";
-//    }   
+//    }
 //    else {
 //      $output .= $messages[0];
-//    }   
+//    }
 //    $output .= "</div>\n";
 //  }
 //  if ($output != '') {
