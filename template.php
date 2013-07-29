@@ -205,11 +205,11 @@ function _zurb_foundation_render_link($link) {
 
   // Render top level and make sure we have an actual link.
   if (!empty($link['#href'])) {
-    $output .= '<li' . drupal_attributes($link['#attributes']) . '>' . l($link['#title'], $link['#href']);
+    $output .= '<li' . drupal_attributes($link['#attributes']) . '>' . l($link['#title'], $link['#href'], $link['#localized_options']);
 
     // Add repeated link under the dropdown for small-screen.
     $small_link['#attributes']['class'][] = 'show-for-small';
-    $sub_menu = '<li' . drupal_attributes($small_link['#attributes']) . '>' . l($link['#title'], $link['#href']);
+    $sub_menu = '<li' . drupal_attributes($small_link['#attributes']) . '>' . l($link['#title'], $link['#href'], $link['#localized_options']);
 
     // Build sub nav recursively.
     foreach ($link['#below'] as $sub_link) {
