@@ -576,6 +576,9 @@ function zurb_foundation_preprocess_page(&$variables) {
     ));
   }
 
+  // Messages in modal.
+  $variables['zurb_foundation_messages_modal'] = theme_get_setting('zurb_foundation_messages_modal');
+
   // Convenience variables
   $left = $variables['page']['sidebar_first'];
   $right = $variables['page']['sidebar_second'];

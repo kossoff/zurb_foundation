@@ -85,7 +85,7 @@
 <?php endif; ?>
 <div class="row">
 
-  <?php if ($messages): print $messages; endif; ?>
+  <?php if ($messages && !$zurb_foundation_messages_modal): print $messages; endif; ?>
 
   <?php if (!empty($page['help'])): print render($page['help']); endif; ?>
   <div id="main" class="<?php print $main_grid; ?> columns">
@@ -185,3 +185,5 @@
     </div>
   </div>
 </div>
+
+<?php if ($messages && $zurb_foundation_messages_modal): print $messages; endif; ?>

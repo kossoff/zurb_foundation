@@ -77,7 +77,7 @@
 <!-- End title, slogan and menu -->
 
 <div class="row">
-  <?php if ($messages): print $messages; endif; ?>
+  <?php if ($messages && !$zurb_foundation_messages_modal): print $messages; endif; ?>
   <?php if (!empty($page['help'])): print render($page['help']); endif; ?>
 
   <!--#main -->
@@ -167,3 +167,5 @@
     </div>
   </div>
 </div>
+
+<?php if ($messages && $zurb_foundation_messages_modal): print $messages; endif; ?>
