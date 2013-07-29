@@ -1,6 +1,8 @@
 <!-- Top bar -->
 <?php if ($top_bar): ?>
-  <div class="<?php print $top_bar_classes; ?>">
+  <?php if ($top_bar_classes): ?>
+    <div class="<?php print $top_bar_classes; ?>">
+  <?php endif; ?>
     <nav class="top-bar">
       <ul class="title-area">
         <li class="name"><h1><?php print $linked_site_name; ?></h1></li>
@@ -15,7 +17,9 @@
         <?php endif; ?>
       </section>
     </nav>
-  </div>
+  <?php if ($top_bar_classes): ?>
+    </div>
+  <?php endif; ?>
 <?php endif; ?>
 <!-- End top bar -->
 
