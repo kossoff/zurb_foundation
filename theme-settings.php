@@ -58,18 +58,6 @@ function zurb_foundation_form_system_theme_settings_alter(&$form, &$form_state) 
       '#default_value' => theme_get_setting('zurb_foundation_top_bar_enable'),
     );
 
-    $form['zurb_foundation']['foundation']['top_bar']['zurb_foundation_top_bar_animate'] = array(
-      '#type' => 'textfield',
-      '#title' => t('Animation'),
-      '#description' => t('Specify an animation for the top bar or leave blank for none.'),
-      '#default_value' => theme_get_setting('zurb_foundation_top_bar_animate'),
-      '#states' => array(
-        'visible' => array(
-          'select[name="zurb_foundation_top_bar_enable"]' => array('!value' => '0'),
-        ),
-      ),
-    );
-
     $form['zurb_foundation']['foundation']['top_bar']['zurb_foundation_top_bar_grid'] = array(
       '#type' => 'checkbox',
       '#title' => t('Contain to grid'),

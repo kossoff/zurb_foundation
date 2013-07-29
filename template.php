@@ -515,11 +515,6 @@ function zurb_foundation_preprocess_page(&$variables) {
   if ($variables['top_bar'] = theme_get_setting('zurb_foundation_top_bar_enable')) {
     $top_bar_classes = array();
 
-    if ($top_bar_animate = theme_get_setting('zurb_foundation_top_bar_animate')) {
-      $top_bar_classes[] = 'animated';
-      $top_bar_classes[] = $top_bar_animate;
-    }
-
     if (theme_get_setting('zurb_foundation_top_bar_grid')) {
       $top_bar_classes[] = 'contain-to-grid';
     }
