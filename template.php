@@ -529,6 +529,28 @@ function zurb_foundation_preprocess_page(&$variables) {
 
     $variables['top_bar_classes'] = implode(' ', $top_bar_classes);
     $variables['top_bar_menu_text'] = theme_get_setting('zurb_foundation_top_bar_menu_text');
+
+    $top_bar_options = array();
+
+    if (!theme_get_setting('zurb_foundation_top_bar_custom_back_text')) {
+      $top_bar_options[] = 'custom_back_text:false';
+    }
+
+    if ($back_text = theme_get_setting('zurb_foundation_top_bar_back_text')) {
+      $top_bar_options[] = "back_text:'{$back_text}'";
+    }
+
+    if (!theme_get_setting('zurb_foundation_top_bar_is_hover')) {
+      $top_bar_options[] = 'is_hover:false';
+    }
+
+    if (!theme_get_setting('zurb_foundation_top_bar_scrolltop')) {
+      $top_bar_options[] = 'scrolltop:false';
+    }
+
+    if (!empty($top_bar_options)) {
+      $variables['top_bar_options'] = ' data-options="' . implode('; ', $top_bar_options) . '"';
+    }
   }
 
   // Alternative header.
