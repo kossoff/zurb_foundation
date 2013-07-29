@@ -85,7 +85,7 @@ function zurb_foundation_form_system_theme_settings_alter(&$form, &$form_state) 
     $form['zurb_foundation']['foundation']['top_bar']['zurb_foundation_top_bar_sticky'] = array(
       '#type' => 'checkbox',
       '#title' => t('Sticky'),
-      '#description' => t('Check this for your top bar to stick to the top of the screen when the user scrolls down.'),
+      '#description' => t('Check this for your top bar to stick to the top of the screen when the user scrolls down. If you\'re using the Admin Menu module and have it set to \'Keep menu at top of page\', you\'ll need to check this option to maintain compatibility.'),
       '#default_value' => theme_get_setting('zurb_foundation_top_bar_sticky'),
       '#states' => array(
         'visible' => array(
