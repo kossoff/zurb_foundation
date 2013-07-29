@@ -26,7 +26,6 @@ stylesheets[all][] = css/app.css
 scripts[] = js/vendor/custom.modernizr.js
 
 ; Foundation framework scripts.
-scripts[] = js/vendor/custom.modernizr.js
 scripts[] = js/foundation.min.js
 
 ; Source order:
