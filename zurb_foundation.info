@@ -60,10 +60,6 @@ regions[footer_first]   = Footer first
 regions[footer_middle]  = Footer middle
 regions[footer_last]    = Footer last
 
-; Hidden regions
-regions_hidden[] = Page top
-regions_hidden[] = Page bottom
-
 ; Panel Layouts
 plugins[panels][layouts] = layouts
 
