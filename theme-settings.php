@@ -43,6 +43,7 @@ function zurb_foundation_form_system_theme_settings_alter(&$form, &$form_state) 
       '#type' => 'fieldset',
       '#title' => t('Top Bar'),
       '#description' => t('The Foundation Top Bar gives you a great way to display a complex navigation bar on small or large screens.'),
+      '#collapsible' => TRUE,
     );
 
     $form['zurb_foundation']['foundation']['top_bar']['zurb_foundation_top_bar_enable'] = array(
@@ -103,6 +104,19 @@ function zurb_foundation_form_system_theme_settings_alter(&$form, &$form_state) 
           'select[name="zurb_foundation_top_bar_enable"]' => array('!value' => '0'),
         ),
       ),
+    );
+
+    $form['zurb_foundation']['foundation']['messages'] = array(
+      '#type' => 'fieldset',
+      '#title' => t('Messages'),
+      '#collapsible' => TRUE,
+    );
+
+    $form['zurb_foundation']['foundation']['messages']['modal'] = array(
+      '#type' => 'checkbox',
+      '#title' => t('Display status messages in a modal'),
+      '#description' => t('Check this to display Drupal status messages in a Foundation reveal modal.'),
+      '#default_value' => theme_get_setting('zurb_foundation_messages_modal'),
     );
   }
 }

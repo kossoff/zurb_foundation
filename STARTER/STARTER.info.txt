@@ -86,3 +86,5 @@ regions[page_bottom]    = Page bottom
 ; Theme settings.
 settings[zurb_foundation_top_bar_enable] = 1
 settings[zurb_foundation_top_bar_animate] = 'fadeInDown'
+
+settings[zurb_foundation_messages_modal] = 1
