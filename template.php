@@ -205,20 +205,42 @@ function _zurb_foundation_render_link($link) {
 
   // Render top level and make sure we have an actual link.
   if (!empty($link['#href'])) {
-    $output .= '<li' . drupal_attributes($link['#attributes']) . '>' . l($link['#title'], $link['#href'], $link['#localized_options']);
+    $rendered_link = NULL;
 
-    // Add repeated link under the dropdown for small-screen.
-    $small_link['#attributes']['class'][] = 'show-for-small';
-    $sub_menu = '<li' . drupal_attributes($small_link['#attributes']) . '>' . l($link['#title'], $link['#href'], $link['#localized_options']);
-
-    // Build sub nav recursively.
-    foreach ($link['#below'] as $sub_link) {
-      if (!empty($sub_link['#href'])) {
-        $sub_menu .= _zurb_foundation_render_link($sub_link);
+// Foundation offers some of the same functionality as Special Menu Items;
+// ie: Dividers and Labels in the top bar. So let's make sure that we
+// render them the Foundation way.
+    if (module_exists('special_menu_items')) {
+      if ($link['#href'] === '<nolink>') {
+        $rendered_link = '<label>' . $link['#title'] . '</label>';
+      }
+      else if ($link['#href'] === '<separator>') {
+        $link['#attributes']['class'][] = 'divider';
+        $rendered_link = '';
       }
     }
 
-    $output .= !empty($link['#below']) ? '<ul class="dropdown">' . $sub_menu . '</ul>' : '';
+    if (!isset($rendered_link)) {
+      $rendered_link = l($link['#title'], $link['#href'], $link['#localized_options']);
+    }
+
+    $output .= '<li' . drupal_attributes($link['#attributes']) . '>' . $rendered_link;
+
+    if (!empty($link['#below'])) {
+      // Add repeated link under the dropdown for small-screen.
+      $small_link['#attributes']['class'][] = 'show-for-small';
+      $sub_menu = '<li' . drupal_attributes($small_link['#attributes']) . '>' . l($link['#title'], $link['#href'], $link['#localized_options']);
+
+      // Build sub nav recursively.
+      foreach ($link['#below'] as $sub_link) {
+        if (!empty($sub_link['#href'])) {
+          $sub_menu .= _zurb_foundation_render_link($sub_link);
+        }
+      }
+
+      $output .= '<ul class="dropdown">' . $sub_menu . '</ul>';
+    }
+
     $output .=  '</li>';
   }
 
