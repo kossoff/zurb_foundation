@@ -60,13 +60,6 @@ regions[footer_thirdcolumn]  = Footer three
 regions[footer_fourthcolumn] = Footer four
 regions[footer]              = Footer
 
-; The page_top and page_bottom regions are hidden, which means they will not
-; show up on the blocks administration page. But they are required in order for
-; the html.tpl.php to work properly, so do not delete them.
-
-regions[page_top]       = Page top
-regions[page_bottom]    = Page bottom
-
 ; Various page elements output by the theme can be toggled on and off. The
 ; "features" control which of these check boxes display on the
 ; admin/appearance config page. This is useful for suppressing check boxes
@@ -84,5 +77,16 @@ regions[page_bottom]    = Page bottom
 ; features[] = secondary_menu
 
 ; Theme settings.
+
+; Top Bar.
 settings[zurb_foundation_top_bar_enable] = 1
-settings[zurb_foundation_top_bar_animate] = 'fadeInDown'
+settings[zurb_foundation_top_bar_grid] = 0
+settings[zurb_foundation_top_bar_sticky] = 0
+settings[zurb_foundation_top_bar_menu_text] = 'Menu'
+settings[zurb_foundation_top_bar_custom_back_text] = 1
+settings[zurb_foundation_top_bar_back_text] = 'Back'
+settings[zurb_foundation_top_bar_is_hover] = 1
+settings[zurb_foundation_top_bar_scrolltop] = 1
+
+; Status messages.
+settings[zurb_foundation_messages_modal] = 1

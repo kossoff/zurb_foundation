@@ -87,46 +87,6 @@
 //}
 
 /**
- * Status messages in reveal modal
- *
- */
-//function STARTER_status_messages($variables) {
-//  $display = $variables['display'];
-//  $output = '';
-//
-//  $status_heading = array(
-//    'status' => t('Status message'),
-//    'error' => t('Error message'),
-//    'warning' => t('Warning message'),
-//  );
-//  foreach (drupal_get_messages($display) as $type => $messages) {
-//    $output .= "<div class=\"messages $type\">\n";
-//    if (!empty($status_heading[$type])) {
-//      $output .= '<h2 class="element-invisible">' . $status_heading[$type] . "</h2>\n";
-//    }
-//    if (count($messages) > 1) {
-//      $output .= " <ul>\n";
-//      foreach ($messages as $message) {
-//        $output .= '  <li>' . $message . "</li>\n";
-//      }
-//      $output .= " </ul>\n";
-//    }
-//    else {
-//      $output .= $messages[0];
-//    }
-//    $output .= "</div>\n";
-//  }
-//  if ($output != '') {
-//    drupal_add_js("jQuery(document).ready(function() { jQuery('#status-messages').foundation('reveal','open');
-//            });", array('type' => 'inline', 'scope' => 'footer'));
-//    $output = '<div id="status-messages" class="reveal-modal" >'. $output;
-//    $output .= '<a class="close-reveal-modal">&#215;</a>';
-//    $output .= "</div>";
-//  }
-//  return $output;
-//}
-
-/**
  * Implements theme_form_element_label()
  * Use foundation tooltips
  */

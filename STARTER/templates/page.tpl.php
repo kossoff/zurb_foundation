@@ -1,7 +1,9 @@
 <!-- Top bar -->
 <?php if ($top_bar): ?>
+  <?php if ($top_bar_classes): ?>
   <div class="<?php print $top_bar_classes; ?>">
-    <nav class="top-bar">
+  <?php endif; ?>
+    <nav class="top-bar"<?php print $top_bar_options; ?>>
       <ul class="title-area">
         <li class="name"><h1><?php print $linked_site_name; ?></h1></li>
         <li class="toggle-topbar menu-icon"><a href="#"><span><?php print $top_bar_menu_text; ?></span></a></li>
@@ -15,7 +17,9 @@
         <?php endif; ?>
       </section>
     </nav>
+  <?php if ($top_bar_classes): ?>
   </div>
+  <?php endif; ?>
 <?php endif; ?>
 <!-- End top bar -->
 
@@ -84,7 +88,9 @@
   </div>
 <?php endif; ?>
 <div class="row">
-  <?php if ($messages): print $messages; endif; ?>
+
+  <?php if ($messages && !$zurb_foundation_messages_modal): print $messages; endif; ?>
+
   <?php if (!empty($page['help'])): print render($page['help']); endif; ?>
   <div id="main" class="<?php print $main_grid; ?> columns">
     <?php if (!empty($page['highlighted'])): ?>
@@ -183,3 +189,5 @@
     </div>
   </div>
 </div>
+
+<?php if ($messages && $zurb_foundation_messages_modal): print $messages; endif; ?>

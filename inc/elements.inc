@@ -14,11 +14,13 @@ function zurb_foundation_status_messages($variables) {
     'status' => t('Status message'),
     'warning' => t('Warning message'),
   );
+
   $status_mapping = array(
     'error' => 'alert',
     'status' => 'success',
     'warning' => 'secondary'
   );
+
   foreach (drupal_get_messages($display) as $type => $messages) {
     if (isset($status_mapping[$type])) {
       $output .= "<div class=\"large-12 columns alert-box $status_mapping[$type]\">\n";
@@ -31,7 +33,7 @@ function zurb_foundation_status_messages($variables) {
       $output .= '<h2 class="element-invisible">' . $status_heading[$type] . "</h2>\n";
     }
     if (count($messages) > 1) {
-      $output .= " <ul>\n";
+      $output .= " <ul class=\"no-bullet\">\n";
       foreach ($messages as $message) {
         $output .= '  <li>' . $message . "</li>\n";
       }
@@ -42,16 +44,20 @@ function zurb_foundation_status_messages($variables) {
     }
     $output .= "</div>\n";
   }
-  // Enable Modal Status Messages
-  ///*
-  // if ($output != '') {
-  //   drupal_add_js("jQuery(document).ready(function() { jQuery('#status-messages').foundation('reveal','open');
-  //           });", array('type' => 'inline', 'scope' => 'footer'));
-  //   $output = '<div id="status-messages" class="reveal-modal">'. $output;
-  //   $output .= '<a class="close-reveal-modal">&#215;</a>';
-  //   $output .= "</div>\n";
-  //   $output .= '<div class="reveal-modal-bg"></div>';
-  // }
-  //*/
+
+  if ($output != '' && theme_get_setting('zurb_foundation_messages_modal')) {
+    $js = <<<EOL
+jQuery(document).ready(function() {
+  jQuery('#status-messages').foundation('reveal','open');
+});
+EOL;
+
+    drupal_add_js($js, array('type' => 'inline', 'scope' => 'footer'));
+
+    $output = '<div id="status-messages" class="reveal-modal" role="alertdialog">'. $output;
+    $output .= '<a class="close-reveal-modal">&#215;</a>';
+    $output .= "</div>";
+  }
+
   return $output;
 }

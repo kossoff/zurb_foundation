@@ -205,11 +205,11 @@ function _zurb_foundation_render_link($link) {
 
   // Render top level and make sure we have an actual link.
   if (!empty($link['#href'])) {
-    $output .= '<li' . drupal_attributes($link['#attributes']) . '>' . l($link['#title'], $link['#href']);
+    $output .= '<li' . drupal_attributes($link['#attributes']) . '>' . l($link['#title'], $link['#href'], $link['#localized_options']);
 
     // Add repeated link under the dropdown for small-screen.
     $small_link['#attributes']['class'][] = 'show-for-small';
-    $sub_menu = '<li' . drupal_attributes($small_link['#attributes']) . '>' . l($link['#title'], $link['#href']);
+    $sub_menu = '<li' . drupal_attributes($small_link['#attributes']) . '>' . l($link['#title'], $link['#href'], $link['#localized_options']);
 
     // Build sub nav recursively.
     foreach ($link['#below'] as $sub_link) {
@@ -515,11 +515,6 @@ function zurb_foundation_preprocess_page(&$variables) {
   if ($variables['top_bar'] = theme_get_setting('zurb_foundation_top_bar_enable')) {
     $top_bar_classes = array();
 
-    if ($top_bar_animate = theme_get_setting('zurb_foundation_top_bar_animate')) {
-      $top_bar_classes[] = 'animated';
-      $top_bar_classes[] = $top_bar_animate;
-    }
-
     if (theme_get_setting('zurb_foundation_top_bar_grid')) {
       $top_bar_classes[] = 'contain-to-grid';
     }
@@ -534,6 +529,28 @@ function zurb_foundation_preprocess_page(&$variables) {
 
     $variables['top_bar_classes'] = implode(' ', $top_bar_classes);
     $variables['top_bar_menu_text'] = theme_get_setting('zurb_foundation_top_bar_menu_text');
+
+    $top_bar_options = array();
+
+    if (!theme_get_setting('zurb_foundation_top_bar_custom_back_text')) {
+      $top_bar_options[] = 'custom_back_text:false';
+    }
+
+    if ($back_text = theme_get_setting('zurb_foundation_top_bar_back_text')) {
+      $top_bar_options[] = "back_text:'{$back_text}'";
+    }
+
+    if (!theme_get_setting('zurb_foundation_top_bar_is_hover')) {
+      $top_bar_options[] = 'is_hover:false';
+    }
+
+    if (!theme_get_setting('zurb_foundation_top_bar_scrolltop')) {
+      $top_bar_options[] = 'scrolltop:false';
+    }
+
+    if (!empty($top_bar_options)) {
+      $variables['top_bar_options'] = ' data-options="' . implode('; ', $top_bar_options) . '"';
+    }
   }
 
   // Alternative header.
@@ -575,6 +592,9 @@ function zurb_foundation_preprocess_page(&$variables) {
       ),
     ));
   }
+
+  // Messages in modal.
+  $variables['zurb_foundation_messages_modal'] = theme_get_setting('zurb_foundation_messages_modal');
 
   // Convenience variables
   $left = $variables['page']['sidebar_first'];
@@ -772,5 +792,119 @@ function zurb_foundation_pager($variables) {
       'items' => $items,
       'attributes' => array('class' => array('pagination')),
     ));
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function zurb_foundation_theme() {
+  $return = array();
+
+  $return['zurb_foundation_reveal'] = array(
+    'variables' => array(
+      // The text to display in the link.
+      'text' => '',
+      // Whether the text uses HTML.
+      'html' => FALSE,
+      // The content for the reveal modal.
+      'reveal' => '',
+      // Extra classes to add to the link.
+      'link_classes_array' => array('zurb-foundation-reveal'),
+      // Extra classes to add to the reveal modal.
+      'reveal_classes_array' => array('expand'),
+    ),
+    'function' => 'theme_zurb_foundation_reveal',
+  );
+
+  return $return;
+}
+
+/**
+ * Helper function to store and return markup for reveal modals on the page.
+ * This is necessary because we need to add all of the reveals to the bottom of
+ * the page to avoid unexpected behavior. For more information please refer to
+ * the official Zurb Foundation documentation.
+ *
+ * @param array
+ *   A render array for a reveal modal to store.
+ * @return array
+ *   An array of all reveal render arrays.
+ *
+ * @see theme_zurb_foundation_reveal()
+ * @see zurb_foundation_preprocess_region()
+ */
+function _zurb_foundation_reveal($reveal = NULL) {
+  $reveals = &drupal_static(__FUNCTION__);
+
+  if (!isset($reveals)) {
+    $reveals = array();
+  }
+
+  if (isset($reveal)) {
+    $reveals[] = $reveal;
+  }
+
+  return $reveals;
+}
+
+
+/**
+ * Theme function to create Zurb Foundation reveal modals.
+ *
+ * @see zurb_foundation_theme()
+ * @see zurb_foundation_preprocess_region()
+ * @see _zurb_foundation_reveal()
+ */
+function theme_zurb_foundation_reveal($variables) {
+  // Generate unique IDs.
+  static $counter = 0;
+
+  // Prepare reveal markup.
+  $reveal_id = 'zf-reveal-' . ++$counter;
+  $variables['reveal_classes_array'][] = 'reveal-modal';
+  $reveal_classes = implode(' ', $variables['reveal_classes_array']);
+  $reveal = array(
+    '#markup' => $variables['reveal'],
+    '#prefix' => '<div id="' . $reveal_id . '" class="' . $reveal_classes . '">',
+    '#suffix' => '<a class="close-reveal-modal">&#215;</a></div>',
+  );
+
+  // Add reveal markup to static storage.
+  _zurb_foundation_reveal($reveal);
+
+  $build = array(
+    '#theme' => 'link',
+    '#text' => $variables['text'],
+    '#path' => 'javascript:',
+    '#options' => array(
+      'attributes' => array(
+        'id' => 'zf-reveal-link-' . $counter,
+        'class' => $variables['link_classes_array'],
+        'data-reveal-id' => $reveal_id,
+      ),
+      'html' => $variables['html'],
+      'external' => TRUE,
+    ),
+  );
+
+  return drupal_render($build);
+}
+
+/**
+ * Implements hook_page_alter().
+ *
+ * Add the reveal modal markup (if any) to the page_bottom region.
+ */
+function zurb_foundation_page_alter(&$page) {
+  $markup = '';
+
+  // Retrieve reveal markup from static storage.
+  foreach (_zurb_foundation_reveal() as $reveal) {
+    $markup .= "\n" . drupal_render($reveal);
+  }
+
+  if (!empty($markup)) {
+    $page['page_bottom']['zurb_foundation_reveal'] = array('#markup' => $markup);
   }
 }

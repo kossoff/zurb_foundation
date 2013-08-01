@@ -26,7 +26,6 @@ stylesheets[all][] = css/app.css
 scripts[] = js/vendor/custom.modernizr.js
 
 ; Foundation framework scripts.
-scripts[] = js/vendor/custom.modernizr.js
 scripts[] = js/foundation.min.js
 
 ; Source order:
@@ -34,20 +33,20 @@ scripts[] = js/foundation.min.js
 ;
 ; Uncompressed uncomment for development or as a reference
 
-scripts[] = js/foundation/foundation.js
-scripts[] = js/foundation/foundation.alerts.js
-scripts[] = js/foundation/foundation.clearing.js
-scripts[] = js/foundation/foundation.cookie.js
-scripts[] = js/foundation/foundation.dropdown.js
-scripts[] = js/foundation/foundation.forms.js
-scripts[] = js/foundation/foundation.joyride.js
-scripts[] = js/foundation/foundation.magellan.js
-scripts[] = js/foundation/foundation.orbit.js
-scripts[] = js/foundation/foundation.placeholder.js
-scripts[] = js/foundation/foundation.reveal.js
-scripts[] = js/foundation/foundation.section.js
-scripts[] = js/foundation/foundation.tooltips.js
-scripts[] = js/foundation/foundation.topbar.js
+;scripts[] = js/foundation/foundation.js
+;scripts[] = js/foundation/foundation.alerts.js
+;scripts[] = js/foundation/foundation.clearing.js
+;scripts[] = js/foundation/foundation.cookie.js
+;scripts[] = js/foundation/foundation.dropdown.js
+;scripts[] = js/foundation/foundation.forms.js
+;scripts[] = js/foundation/foundation.joyride.js
+;scripts[] = js/foundation/foundation.magellan.js
+;scripts[] = js/foundation/foundation.orbit.js
+;scripts[] = js/foundation/foundation.placeholder.js
+;scripts[] = js/foundation/foundation.reveal.js
+;scripts[] = js/foundation/foundation.section.js
+;scripts[] = js/foundation/foundation.tooltips.js
+;scripts[] = js/foundation/foundation.topbar.js
 
 ; Regions are output in the page.tpl.php
 regions[header]         = Header
@@ -60,10 +59,6 @@ regions[sidebar_second] = Right Sidebar
 regions[footer_first]   = Footer first
 regions[footer_middle]  = Footer middle
 regions[footer_last]    = Footer last
-
-; Hidden regions
-regions_hidden[] = Page top
-regions_hidden[] = Page bottom
 
 ; Panel Layouts
 plugins[panels][layouts] = layouts
@@ -78,8 +73,15 @@ plugins[panels][layouts] = layouts
 ; settings[foundation_zurb_font_fallback] = 'sans-serif'
 ; settings[foundation_zurb_font_selectors] = 'body'
 
+; Top Bar.
 settings[zurb_foundation_top_bar_enable] = 1
-settings[zurb_foundation_top_bar_animate] = 'fadeInDown'
 settings[zurb_foundation_top_bar_grid] = 0
 settings[zurb_foundation_top_bar_sticky] = 0
 settings[zurb_foundation_top_bar_menu_text] = 'Menu'
+settings[zurb_foundation_top_bar_custom_back_text] = 1
+settings[zurb_foundation_top_bar_back_text] = 'Back'
+settings[zurb_foundation_top_bar_is_hover] = 1
+settings[zurb_foundation_top_bar_scrolltop] = 1
+
+; Status messages.
+settings[zurb_foundation_messages_modal] = 1
