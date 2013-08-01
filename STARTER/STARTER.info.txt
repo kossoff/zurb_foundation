@@ -89,4 +89,4 @@ settings[zurb_foundation_top_bar_is_hover] = 1
 settings[zurb_foundation_top_bar_scrolltop] = 1
 
 ; Status messages.
-settings[zurb_foundation_messages_modal] = 1
+settings[zurb_foundation_messages_modal] = 0
