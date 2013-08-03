@@ -40,15 +40,17 @@ function drush_zurb_foundation_foundation_sub_theme($name = NULL, $machine_name 
     drush_set_error(dt("Please provide a name for the sub-theme.\nUSAGE:\tdrush fst [name] [machine_name !OPTIONAL] [description !OPTIONAL]\n"));
     return;
   }
-
-  $machine_name = !empty($machine_name) ? preg_replace('/[^a-z0-9_]+/', '', strtolower($machine_name)) : preg_replace('/[^a-z0-9_]+/', '', strtolower($name));
+  //Filter everything but letters, numbers, underscores, and hyphens
+  $machine_name = !empty($machine_name) ? preg_replace('/[^a-z0-9_-]+/', '', strtolower($machine_name)) : preg_replace('/[^a-z0-9_-]+/', '', strtolower($name));
+  // Eliminate hyphens
+  $machine_name = str_replace('-', '_', $machine_name);
 
   // @TODO file path
   $subtheme_path = $theme_dir . '/' . $machine_name;
   $zurb_path = drush_locate_root() . '/' . drupal_get_path('theme', 'zurb_foundation');
   $subtheme_path = explode('/', $zurb_path);
   array_pop($subtheme_path);
-  $subtheme_path = implode('/', $subtheme_path) . '/' . str_replace('_', '-', $machine_name);
+  $subtheme_path = implode('/', $subtheme_path) . '/' . $machine_name;
 
   // Make a fresh copy of the subtheme.
   $s = drush_copy_dir("$zurb_path/STARTER/", $subtheme_path);
