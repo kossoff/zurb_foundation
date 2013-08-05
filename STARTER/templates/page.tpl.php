@@ -25,7 +25,7 @@
 
 <!-- Title, slogan and menu -->
 <?php if ($alt_header): ?>
-  <div class="row<?php print $alt_header_classes; ?>">
+  <div class="row <?php print $alt_header_classes; ?>">
 
     <?php if ($logo): ?>
       <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo">
