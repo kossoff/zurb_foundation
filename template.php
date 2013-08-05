@@ -207,9 +207,9 @@ function _zurb_foundation_render_link($link) {
   if (!empty($link['#href'])) {
     $rendered_link = NULL;
 
-// Foundation offers some of the same functionality as Special Menu Items;
-// ie: Dividers and Labels in the top bar. So let's make sure that we
-// render them the Foundation way.
+    // Foundation offers some of the same functionality as Special Menu Items;
+    // ie: Dividers and Labels in the top bar. So let's make sure that we
+    // render them the Foundation way.
     if (module_exists('special_menu_items')) {
       if ($link['#href'] === '<nolink>') {
         $rendered_link = '<label>' . $link['#title'] . '</label>';
