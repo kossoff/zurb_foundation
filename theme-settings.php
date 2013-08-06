@@ -139,7 +139,7 @@ function zurb_foundation_form_system_theme_settings_alter(&$form, &$form_state) 
       '#collapsible' => TRUE,
     );
 
-    $form['zurb_foundation']['messages']['modal'] = array(
+    $form['zurb_foundation']['messages']['zurb_foundation_messages_modal'] = array(
       '#type' => 'checkbox',
       '#title' => t('Display status messages in a modal'),
       '#description' => t('Check this to display Drupal status messages in a Zurb Foundation reveal modal.'),
