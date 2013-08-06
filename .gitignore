@@ -1,5 +1,6 @@
 *.html
 humans.txt
 robots.txt
-js/foundation/jquery.js
+js/vendor/jquery.js
+js/vendor/zepto.js
 MIT-LICENSE.txt
