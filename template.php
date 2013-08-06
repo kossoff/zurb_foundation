@@ -833,6 +833,14 @@ function zurb_foundation_theme() {
       'text' => '',
       // Whether the text uses HTML.
       'html' => FALSE,
+      // Whether the reveal uses AJAX content.
+      // This can either be set to true, to use the link's href property or be
+      // a URL to load the content from. Note that setting this parameter will
+      // override the contents of the "reveal" variable.
+      'ajax' => FALSE,
+      // The path for the link's href property. This is only really useful if
+      // you want to set 'ajax' to TRUE (see above).
+      'path' => FALSE,
       // The content for the reveal modal.
       'reveal' => '',
       // Extra classes to add to the link.
@@ -902,7 +910,7 @@ function theme_zurb_foundation_reveal($variables) {
   $build = array(
     '#theme' => 'link',
     '#text' => $variables['text'],
-    '#path' => 'javascript:',
+    '#path' => $variables['path'] ? $variables['path'] : 'javascript:',
     '#options' => array(
       'attributes' => array(
         'id' => 'zf-reveal-link-' . $counter,
@@ -913,6 +921,14 @@ function theme_zurb_foundation_reveal($variables) {
       'external' => TRUE,
     ),
   );
+
+  // Check for AJAX.
+  if ($variables['ajax']) {
+    if ($variables['ajax'] === TRUE) {
+      $variables['ajax'] = 'true';
+    }
+    $build['#options']['attributes']['data-reveal-ajax'] = $variables['ajax'];
+  }
 
   return drupal_render($build);
 }
