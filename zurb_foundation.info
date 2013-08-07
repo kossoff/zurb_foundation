@@ -12,9 +12,6 @@ stylesheets[all][] = css/normalize.css
 ; Foundation framework stylesheets
 stylesheets[all][] = css/foundation.min.css
 
-; Uncompressed uncomment for dev or as a reference
-;stylesheets[all][] = css/foundation.css
-
 ; Base theme specific CSS
 stylesheets[all][] = css/base.css
 
@@ -30,23 +27,6 @@ scripts[] = js/foundation.min.js
 
 ; Source order:
 ; http://foundation.zurb.com/docs/index.html#basicHTMLMarkup
-;
-; Uncompressed uncomment for development or as a reference
-
-;scripts[] = js/foundation/foundation.js
-;scripts[] = js/foundation/foundation.alerts.js
-;scripts[] = js/foundation/foundation.clearing.js
-;scripts[] = js/foundation/foundation.cookie.js
-;scripts[] = js/foundation/foundation.dropdown.js
-;scripts[] = js/foundation/foundation.forms.js
-;scripts[] = js/foundation/foundation.joyride.js
-;scripts[] = js/foundation/foundation.magellan.js
-;scripts[] = js/foundation/foundation.orbit.js
-;scripts[] = js/foundation/foundation.placeholder.js
-;scripts[] = js/foundation/foundation.reveal.js
-;scripts[] = js/foundation/foundation.section.js
-;scripts[] = js/foundation/foundation.tooltips.js
-;scripts[] = js/foundation/foundation.topbar.js
 
 ; Regions are output in the page.tpl.php
 regions[header]         = Header
