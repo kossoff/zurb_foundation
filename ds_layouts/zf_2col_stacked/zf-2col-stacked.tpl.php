@@ -6,16 +6,10 @@
 
 // Set up default classes so that layouts look decent if no classes are applied
 // in the Display Suite UI.
-if (empty($header_classes)) {
+if (empty($header_classes) && empty($left_classes) && empty($right_classes) && empty($footer_classes)) {
   $header_classes = ' large-12';
-}
-if (empty($left_classes)) {
   $left_classes = ' large-6';
-}
-if (empty($right_classes)) {
   $right_classes = ' large-6';
-}
-if (empty($footer_classes)) {
   $footer_classes = ' large-12';
 }
 ?>

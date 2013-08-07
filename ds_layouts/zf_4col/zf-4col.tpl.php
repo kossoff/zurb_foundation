@@ -6,16 +6,11 @@
 
 // Set up default classes so that layouts look decent if no classes are applied
 // in the Display Suite UI.
-if (empty($first_classes)) {
+if (empty($first_classes) && empty($second_classes) && empty($third_classes)
+  && empty($fourth_classes)) {
   $first_classes = ' large-3';
-}
-if (empty($second_classes)) {
   $second_classes = ' large-3';
-}
-if (empty($third_classes)) {
   $third_classes = ' large-3';
-}
-if (empty($fourth_classes)) {
   $fourth_classes = ' large-3';
 }
 ?>
