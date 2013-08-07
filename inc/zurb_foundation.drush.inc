@@ -58,6 +58,12 @@ function drush_zurb_foundation_foundation_sub_theme($name = NULL, $machine_name 
     return;
   }
 
+  // Copy JS files from base theme to sub-theme. We copy them now instead of
+  // including them by default to keep the base theme small and also to avoid
+  // having to update the Foundation JS in two places every time a new version
+  // is released.
+  drush_copy_dir("{$zurb_path}/js/", "{$subtheme_path}/js/", FILE_EXISTS_MERGE);
+
   // Rename files and fill in the theme machine name
   drush_op('rename', "$subtheme_path/STARTER.info.txt", "$subtheme_path/$machine_name.info");
   drush_op('rename', "$subtheme_path/css/custom.css", "$subtheme_path/css/$machine_name.css");

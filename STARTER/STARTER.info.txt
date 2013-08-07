@@ -29,7 +29,42 @@ base theme = zurb_foundation
 ; Base theme specific CSS
 stylesheets[all][] = css/custom.css
 
-; An empty JavaScript file ready to be used just uncomment and add JavaScript
+; Foundation JavaScript.
+;
+; These files are all commented out. If you choose to disable the default
+; base theme JS, you will need to uncomment them.
+; If you choose to do this, please make sure that you are either uncommenting
+; the minified foundation.min.js OR the desired uncompressed components, but
+; not both.
+
+; Modernizr acts as a shim for HTML5 elements for older browsers
+; as well as detection for mobile devices.
+;scripts[] = js/vendor/custom.modernizr.js
+
+; Foundation framework scripts (minified).
+;scripts[] = js/foundation.min.js
+
+; Foundation framework scripts (uncompressed).
+; Either uncomment these OR uncomment the minified file above.
+;scripts[] = js/foundation/foundation.js
+;scripts[] = js/foundation/foundation.abide.js
+;scripts[] = js/foundation/foundation.alerts.js
+;scripts[] = js/foundation/foundation.clearing.js
+;scripts[] = js/foundation/foundation.cookie.js
+;scripts[] = js/foundation/foundation.dropdown.js
+;scripts[] = js/foundation/foundation.forms.js
+;scripts[] = js/foundation/foundation.interchange.js
+;scripts[] = js/foundation/foundation.joyride.js
+;scripts[] = js/foundation/foundation.magellan.js
+;scripts[] = js/foundation/foundation.orbit.js
+;scripts[] = js/foundation/foundation.placeholder.js
+;scripts[] = js/foundation/foundation.reveal.js
+;scripts[] = js/foundation/foundation.section.js
+;scripts[] = js/foundation/foundation.tooltips.js
+;scripts[] = js/foundation/foundation.topbar.js
+
+; Theme scripts.
+; This file is empty, just uncomment this line and start editing!
 ; scripts[] = js/scripts.js
 
 ; This section lists the regions defined in the page.tpl.php. The name in
