@@ -10,7 +10,6 @@ if (empty($ds_content_classes)) {
   $ds_content_classes = ' large-12';
 }
 ?>
-?>
 <<?php print $layout_wrapper; print $layout_attributes; ?> class="row zf-1col <?php print $classes;?> clearfix">
 
   <?php if (isset($title_suffix['contextual_links'])): ?>
