@@ -57,3 +57,7 @@ settings[zurb_foundation_top_bar_scrolltop] = 1
 
 ; Status messages.
 settings[zurb_foundation_messages_modal] = 0
+
+; Styles and Scripts
+settings[zurb_foundation_disable_base_css] = 0
+settings[zurb_foundation_disable_base_js] = 0

@@ -145,5 +145,28 @@ function zurb_foundation_form_system_theme_settings_alter(&$form, &$form_state) 
       '#description' => t('Check this to display Drupal status messages in a Zurb Foundation reveal modal.'),
       '#default_value' => theme_get_setting('zurb_foundation_messages_modal'),
     );
+
+    /*
+     * Styles and Scripts
+     */
+    $form['zurb_foundation']['styles_scripts'] = array(
+      '#type' => 'fieldset',
+      '#title' => t('Styles and Scripts'),
+      '#collapsible' => TRUE,
+    );
+
+    $form['zurb_foundation']['styles_scripts']['zurb_foundation_disable_base_css'] = array(
+      '#type' => 'checkbox',
+      '#title' => t('Disable Base Theme CSS'),
+      '#description' => t('Disabling the base theme CSS is useful for using SASS in a sub-theme.<br><strong>If you select this option, uncomment the relevant CSS includes in your sub-theme\'s .info file.</strong>'),
+      '#default_value' => theme_get_setting('zurb_foundation_disable_base_css'),
+    );
+
+    $form['zurb_foundation']['styles_scripts']['zurb_foundation_disable_base_js'] = array(
+      '#type' => 'checkbox',
+      '#title' => t('Disable Base Theme JavaScript'),
+      '#description' => t('Disabling the base theme JavaScript when using a sub-theme is also recommended for more flexibility over which components get included.<br><strong>If you select this option, uncomment the relevant JS includes in your sub-theme\'s .info file.</strong>'),
+      '#default_value' => theme_get_setting('zurb_foundation_disable_base_js'),
+    );
   }
 }
