@@ -6,4 +6,6 @@ js/foundation/jquery.js
 js/vendor/jquery.js
 js/vendor/zepto.js
 
+.sass-cache
+
 MIT-LICENSE.txt
