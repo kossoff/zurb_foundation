@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * Definition of zf_3row display suite layout.
+ * Definition of Zurb Foundation Three row Display Suite layout.
  */
 
 function ds_zf_3row() {

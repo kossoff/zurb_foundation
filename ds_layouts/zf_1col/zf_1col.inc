@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * Definition of zf_1col display suite layout.
+ * Definition of Zurb Foundation One column Display Suite layout.
  */
 
 function ds_zf_1col() {

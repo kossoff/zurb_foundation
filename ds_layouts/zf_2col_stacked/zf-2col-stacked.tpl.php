@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * Display Suite Zurb Foundation Two column stacked layout template.
+ * Template for Zurb Foundation Two column stacked Display Suite layout.
  */
 ?>
 <<?php print $layout_wrapper; print $layout_attributes; ?> class="row zf-2col-stacked <?php print $classes;?> clearfix">

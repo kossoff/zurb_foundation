@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * Definition of zf_2col_stacked display suite layout.
+ * Definition of Zurb Foundation Two column stacked Display Suite layout.
  */
 
 function ds_zf_2col_stacked() {

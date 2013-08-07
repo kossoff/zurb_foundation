@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * Display Suite Zurb Foundation Three row layout template.
+ * Template for Zurb Foundation Three row Display Suite layout.
  */
 ?>
 <<?php print $layout_wrapper; print $layout_attributes; ?> class="row zf-3row <?php print $classes;?> clearfix">

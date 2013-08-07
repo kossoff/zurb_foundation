@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * Display Suite Zurb Foundation One column layout template.
+ * Template for Zurb Foundation One column Display Suite layout.
  */
 ?>
 <<?php print $layout_wrapper; print $layout_attributes; ?> class="row zf-1col <?php print $classes;?> clearfix">
