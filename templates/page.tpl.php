@@ -9,11 +9,11 @@
         <li class="toggle-topbar menu-icon"><a href="#"><span><?php print $top_bar_menu_text; ?></span></a></li>
       </ul>
       <section class="top-bar-section">
-        <?php if ($main_menu_links) :?>
-          <?php print $main_menu_links; ?>
+        <?php if ($top_bar_main_menu) :?>
+          <?php print $top_bar_main_menu; ?>
         <?php endif; ?>
-        <?php if ($secondary_menu_links) :?>
-          <?php print $secondary_menu_links; ?>
+        <?php if ($top_bar_secondary_menu) :?>
+          <?php print $top_bar_secondary_menu; ?>
         <?php endif; ?>
       </section>
     </nav>
@@ -43,37 +43,15 @@
       <h2 title="<?php print $site_slogan; ?>" id="site-slogan" class="site-slogan"><?php print $site_slogan; ?></h2>
     <?php endif; ?>
 
-    <?php if ($main_menu): ?>
+    <?php if ($alt_main_menu): ?>
       <nav id="main-menu" class="navigation" role="navigation">
-        <?php print theme('links__system_main_menu', array(
-          'links' => $main_menu,
-          'attributes' => array(
-            'id' => 'main-menu-links',
-            'class' => array('links', 'clearfix'),
-          ),
-          'heading' => array(
-            'text' => t('Main menu'),
-            'level' => 'h2',
-            'class' => array('element-invisible'),
-          ),
-        )); ?>
+        <?php print ($alt_main_menu); ?>
       </nav> <!-- /#main-menu -->
     <?php endif; ?>
 
-    <?php if ($secondary_menu): ?>
+    <?php if ($alt_secondary_menu): ?>
       <nav id="secondary-menu" class="navigation" role="navigation">
-        <?php print theme('links__system_secondary_menu', array(
-          'links' => $secondary_menu,
-          'attributes' => array(
-            'id' => 'secondary-menu-links',
-            'class' => array('links', 'inline', 'clearfix'),
-          ),
-          'heading' => array(
-            'text' => t('Secondary menu'),
-            'level' => 'h2',
-            'class' => array('element-invisible'),
-          ),
-        )); ?>
+        <?php print $alt_secondary_menu; ?>
       </nav> <!-- /#secondary-menu -->
     <?php endif; ?>
   </div>
