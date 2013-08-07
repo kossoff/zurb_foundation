@@ -224,6 +224,10 @@ function _zurb_foundation_render_link($link) {
       $rendered_link = l($link['#title'], $link['#href'], $link['#localized_options']);
     }
 
+    // Test for localization options and apply them if they exist.
+    if (is_array($link['#localized_options']['attributes'])) {
+      $link['#attributes'] = array_merge($link['#attributes'], $link['#localized_options']['attributes']);
+    }
     $output .= '<li' . drupal_attributes($link['#attributes']) . '>' . $rendered_link;
 
     if (!empty($link['#below'])) {
