@@ -3,14 +3,6 @@
  * @file
  * Template for Zurb Foundation Three column Display Suite layout.
  */
-
-// Set up default classes so that layouts look decent if no classes are applied
-// in the Display Suite UI.
-if (empty($left_classes) && empty($middle_classes) && empty($right_classes)) {
-  $left_classes = ' large-4';
-  $middle_classes = ' large-4';
-  $right_classes = ' large-4';
-}
 ?>
 <<?php print $layout_wrapper; print $layout_attributes; ?> class="row zf-3col <?php print $classes;?> clearfix">
 

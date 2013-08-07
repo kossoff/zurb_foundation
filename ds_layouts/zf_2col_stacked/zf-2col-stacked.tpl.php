@@ -3,15 +3,6 @@
  * @file
  * Template for Zurb Foundation Two column stacked Display Suite layout.
  */
-
-// Set up default classes so that layouts look decent if no classes are applied
-// in the Display Suite UI.
-if (empty($header_classes) && empty($left_classes) && empty($right_classes) && empty($footer_classes)) {
-  $header_classes = ' large-12';
-  $left_classes = ' large-6';
-  $right_classes = ' large-6';
-  $footer_classes = ' large-12';
-}
 ?>
 <<?php print $layout_wrapper; print $layout_attributes; ?> class="row zf-2col-stacked <?php print $classes;?> clearfix">
 

@@ -985,3 +985,115 @@ function zurb_foundation_page_alter(&$page) {
     $page['page_bottom']['zurb_foundation_reveal'] = array('#markup' => $markup);
   }
 }
+
+/**
+ * Implements hook_theme_registry_alter().
+ */
+function zurb_foundation_theme_registry_alter(&$theme_registry) {
+  // Add our own preprocess function to entities so we can add default classes
+  // to our custom Display Suite layouts.
+  $entity_info = entity_get_info();
+  foreach ($entity_info as $entity => $info) {
+    if (isset($entity_info[$entity]['fieldable']) && $entity_info[$entity]['fieldable']) {
+
+      // User uses user_profile for theming.
+      if ($entity == 'user') $entity = 'user_profile';
+
+      // Only add preprocess functions if entity exposes theme function.
+      if (isset($theme_registry[$entity])) {
+        $theme_registry[$entity]['preprocess functions'][] = 'zurb_foundation_entity_variables';
+      }
+    }
+  }
+
+  // Support for File Entity.
+  if (isset($theme_registry['file_entity'])) {
+    $theme_registry['file_entity']['preprocess functions'][] = 'zurb_foundation_entity_variables';
+  }
+
+  // Support for Entity API.
+  if (isset($theme_registry['entity'])) {
+    $theme_registry['entity']['preprocess functions'][] = 'zurb_foundation_entity_variables';
+  }
+}
+
+/**
+ * Add default classes to Display Suite regions if none are set.
+ *
+ * This approach was taken from Display Suite.
+ *
+ * @see zurb_foundation_theme_registry_alter()
+ */
+function zurb_foundation_entity_variables(&$vars) {
+  // Only alter entities that have been rendered by Display Suite.
+  if (isset($vars['rendered_by_ds'])) {
+    // If Display Suite rendered this, it's safe to assume we have the arguments
+    // necessary to grab the layout.
+    $layout = ds_get_layout($vars['elements']['#entity_type'], $vars['elements']['#bundle'], $vars['elements']['#view_mode']);
+
+    // Each layout has different regions, only set default classes if none of
+    // them have custom classes.
+    switch ($layout['layout']) {
+      case 'zf_1col':
+        if (empty($vars['ds_content_classes'])) {
+          $vars['ds_content_classes'] = ' large-12';
+        }
+        break;
+      case 'zf_2col':
+        if (empty($vars['left_classes']) && empty($vars['right_classes'])) {
+          $vars['left_classes'] = ' large-6';
+          $vars['right_classes'] = ' large-6';
+        }
+        break;
+      case 'zf_2col_stacked':
+        if (
+          empty($vars['header_classes']) && empty($vars['left_classes'])
+            && empty($vars['right_classes']) && empty($vars['footer_classes'])) {
+          $vars['header_classes'] = ' large-12';
+          $vars['left_classes'] = ' large-6';
+          $vars['right_classes'] = ' large-6';
+          $vars['footer_classes'] = ' large-12';
+        }
+        break;
+      case 'zf_2col_bricks':
+        if (empty($vars['top_classes']) && empty($vars['left_above_classes'])
+            && empty($vars['right_above_classes']) && empty($vars['middle_classes'])
+            && empty($vars['left_below_classes']) && empty($vars['right_below_classes'])
+            && empty($vars['bottom_classes'])) {
+          $vars['top_classes'] = ' large-12';
+          $vars['left_above_classes'] = ' large-6';
+          $vars['right_above_classes'] = ' large-6';
+          $vars['middle_classes'] = ' large-12';
+          $vars['left_below_classes'] = ' large-6';
+          $vars['right_below_classes'] = ' large-6';
+          $vars['bottom_classes'] = ' large-12';
+        }
+        break;
+      case 'zf_3col':
+        if (empty($vars['left_classes']) && empty($vars['middle_classes'])
+            && empty($vars['right_classes'])) {
+          $vars['left_classes'] = ' large-4';
+          $vars['middle_classes'] = ' large-4';
+          $vars['right_classes'] = ' large-4';
+        }
+        break;
+      case 'zf_3row':
+        if (empty($vars['header_classes']) && empty($vars['ds_content_classes'])
+            && empty($vars['footer_classes'])) {
+          $vars['header_classes'] = ' large-12';
+          $vars['ds_content_classes'] = ' large-12';
+          $vars['footer_classes'] = ' large-12';
+        }
+        break;
+      case 'zf_4col':
+        if (empty($vars['first_classes']) && empty($vars['second_classes'])
+            && empty($vars['third_classes']) && empty($vars['fourth_classes'])) {
+          $vars['first_classes'] = ' large-3';
+          $vars['second_classes'] = ' large-3';
+          $vars['third_classes'] = ' large-3';
+          $vars['fourth_classes'] = ' large-3';
+        }
+        break;
+    }
+  }
+}
