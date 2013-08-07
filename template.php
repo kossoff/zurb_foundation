@@ -623,7 +623,7 @@ function zurb_foundation_preprocess_page(&$variables) {
 
   // Top bar menus.
   $variables['top_bar_main_menu'] = '';
-  if (isset($variables['main_menu'])) {
+  if (!empty($variables['main_menu'])) {
     $variables['top_bar_main_menu'] = theme('links__topbar_main_menu', array(
       'links' => $variables['main_menu'],
       'attributes' => array(
@@ -639,7 +639,7 @@ function zurb_foundation_preprocess_page(&$variables) {
   }
 
   $variables['top_bar_secondary_menu'] = '';
-  if (isset($variables['secondary_menu'])) {
+  if (!empty($variables['secondary_menu'])) {
     $variables['top_bar_secondary_menu'] = theme('links__topbar_secondary_menu', array(
       'links' => $variables['secondary_menu'],
       'attributes' => array(
