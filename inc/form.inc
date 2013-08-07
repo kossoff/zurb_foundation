@@ -5,7 +5,7 @@
  */
 function zurb_foundation_form_alter(&$form, &$form_state, $form_id) {
   // Id's of forms that should be ignored
-  // Make this configurable?
+  // @TODO Make this configurable?
   $form_ids = array(
     'node_form',
     'system_site_information_settings',
