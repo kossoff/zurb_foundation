@@ -738,11 +738,7 @@ function zurb_foundation_css_alter(&$css) {
  * Implements hook_js_alter()
  */
 function zurb_foundation_js_alter(&$js) {
-  if (!module_exists('jquery_update')) {
-    // Swap out jQuery to use an updated version of the library.
-    // $js['misc/jquery.js']['data'] = drupal_get_path('theme', 'zurb_foundation') . '/js/vendor/jquery.js';
-    $js['misc/jquery.js']['version'] = '1.8.2';
-  }
+
 
   // @TODO moving scripts to footer possibly remove?
   // foreach ($js as $key => $js_script) {
