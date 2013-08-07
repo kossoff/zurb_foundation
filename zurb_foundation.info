@@ -43,15 +43,7 @@ regions[footer_last]    = Footer last
 ; Panel Layouts
 plugins[panels][layouts] = layouts
 
-;
-; settings[foundation_zurb_zepto] = 1
-;
-; Possible theme settings
-;
-; settings[foundation_zurb_copyright] = 1
-; settings[foundation_zurb_credit] = ''
-; settings[foundation_zurb_font_fallback] = 'sans-serif'
-; settings[foundation_zurb_font_selectors] = 'body'
+; Theme settings:
 
 ; Top Bar.
 settings[zurb_foundation_top_bar_enable] = 1
