@@ -1,6 +1,5 @@
 name = ZURB Foundation Sub-theme Starter
-description = Custom sub-theme, inherits from the Foundation base theme
-read <a href="http://foundation.zurb.com/docs/index.php">framework documentation</a>
+description = Custom sub-theme based on the the Zurb Foundation base theme.
 screenshot = images/screenshot.png
 
 core = 7.x
