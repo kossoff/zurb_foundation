@@ -67,7 +67,7 @@ function drush_zurb_foundation_foundation_sub_theme($name = NULL, $machine_name 
   // Rename files and fill in the theme machine name
   drush_op('rename', "$subtheme_path/STARTER.info.txt", "$subtheme_path/$machine_name.info");
   drush_op('rename', "$subtheme_path/css/custom.css", "$subtheme_path/css/$machine_name.css");
-  drush_op('rename', "$subtheme_path/sass/custom.scss", "$subtheme_path/sass/$machine_name.scss");
+  drush_op('rename', "$subtheme_path/scss/custom.scss", "$subtheme_path/scss/$machine_name.scss");
   drush_op('rename', "$subtheme_path/js/scripts.js", "$subtheme_path/js/$machine_name.js");
   // Update the .info file
   drush_op('zurb_foundation_file_str_replace', "$subtheme_path/$machine_name.info", 'ZURB Foundation Sub-theme Starter', "$name");
