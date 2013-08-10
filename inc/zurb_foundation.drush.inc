@@ -45,12 +45,9 @@ function drush_zurb_foundation_foundation_sub_theme($name = NULL, $machine_name 
   // Eliminate hyphens
   $machine_name = str_replace('-', '_', $machine_name);
 
-  // @TODO file path
-  $subtheme_path = $theme_dir . '/' . $machine_name;
+  // Find theme paths.
   $zurb_path = drush_locate_root() . '/' . drupal_get_path('theme', 'zurb_foundation');
-  $subtheme_path = explode('/', $zurb_path);
-  array_pop($subtheme_path);
-  $subtheme_path = implode('/', $subtheme_path) . '/' . $machine_name;
+  $subtheme_path = dirname($zurb_path) . '/' . $machine_name;
 
   // Make a fresh copy of the subtheme.
   $s = drush_copy_dir("$zurb_path/STARTER/", $subtheme_path);
