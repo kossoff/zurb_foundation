@@ -131,23 +131,7 @@ function zurb_foundation_form_system_theme_settings_alter(&$form, &$form_state) 
     );
 
     /*
-     * Status Messages.
-     */
-    $form['zurb_foundation']['messages'] = array(
-      '#type' => 'fieldset',
-      '#title' => t('Status Messages'),
-      '#collapsible' => TRUE,
-    );
-
-    $form['zurb_foundation']['messages']['zurb_foundation_messages_modal'] = array(
-      '#type' => 'checkbox',
-      '#title' => t('Display status messages in a modal'),
-      '#description' => t('Check this to display Drupal status messages in a Zurb Foundation reveal modal.'),
-      '#default_value' => theme_get_setting('zurb_foundation_messages_modal'),
-    );
-
-    /*
-     * Styles and Scripts
+     * Styles and Scripts.
      */
     $form['zurb_foundation']['styles_scripts'] = array(
       '#type' => 'fieldset',
@@ -167,6 +151,23 @@ function zurb_foundation_form_system_theme_settings_alter(&$form, &$form_state) 
       '#title' => t('Disable Base Theme JavaScript'),
       '#description' => t('Disabling the base theme JavaScript when using a sub-theme is also recommended for more flexibility over which components get included.<br><strong>If you select this option, uncomment the relevant JS includes in your sub-theme\'s .info file.</strong>'),
       '#default_value' => theme_get_setting('zurb_foundation_disable_base_js'),
+    );
+
+
+    /*
+     * Misc Settings.
+     */
+    $form['zurb_foundation']['misc'] = array(
+      '#type' => 'fieldset',
+      '#title' => t('Misc Settings'),
+      '#collapsible' => TRUE,
+    );
+
+    $form['zurb_foundation']['misc']['zurb_foundation_messages_modal'] = array(
+      '#type' => 'checkbox',
+      '#title' => t('Display status messages in a modal'),
+      '#description' => t('Check this to display Drupal status messages in a Zurb Foundation reveal modal.'),
+      '#default_value' => theme_get_setting('zurb_foundation_messages_modal'),
     );
   }
 }
