@@ -61,3 +61,4 @@ settings[zurb_foundation_disable_base_js] = 0
 
 ; Misc.
 settings[zurb_foundation_messages_modal] = 0
+settings[zurb_foundation_pager_center] = 1

@@ -891,10 +891,21 @@ function zurb_foundation_pager($variables) {
         'data' => $li_last,
       );
     }
-    return '<h2 class="element-invisible">' . t('Pages') . '</h2>' . theme('item_list', array(
-      'items' => $items,
-      'attributes' => array('class' => array('pagination')),
-    ));
+
+    $pager_links = array(
+      '#theme' => 'item_list',
+      '#items' => $items,
+      '#attributes' => array('class' => array('pagination')),
+    );
+
+    if (theme_get_setting('zurb_foundation_pager_center')) {
+      $pager_links['#prefix'] = '<div class="pagination-centered">';
+      $pager_links['#suffix'] = '</div>';
+    }
+
+    $pager_links = drupal_render($pager_links);
+
+    return '<h2 class="element-invisible">' . t('Pages') . '</h2>' . $pager_links;
   }
 }
 

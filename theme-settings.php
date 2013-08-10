@@ -169,5 +169,12 @@ function zurb_foundation_form_system_theme_settings_alter(&$form, &$form_state) 
       '#description' => t('Check this to display Drupal status messages in a Zurb Foundation reveal modal.'),
       '#default_value' => theme_get_setting('zurb_foundation_messages_modal'),
     );
+
+    $form['zurb_foundation']['misc']['zurb_foundation_pager_center'] = array(
+      '#type' => 'checkbox',
+      '#title' => t('Center pager on screen'),
+      '#description' => t('Uncheck this option to align the pager to the left.'),
+      '#default_value' => theme_get_setting('zurb_foundation_pager_center'),
+    );
   }
 }
