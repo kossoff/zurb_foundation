@@ -101,8 +101,19 @@ function zurb_foundation_field($variables) {
     $output .= '<div ' . $variables['title_attributes'] . '>' . $variables['label'] . ':&nbsp;</div>';
   }
 
-  foreach ($variables['items'] as $delta => $item) {
-    $output .= drupal_render($item);
+  // Edit module requires some extra wrappers to work.
+  if (module_exists('edit')) {
+    $output .= '<div class="field-items"' . $variables['content_attributes'] . '>';
+    foreach ($variables['items'] as $delta => $item) {
+      $classes = 'field-item ' . ($delta % 2 ? 'odd' : 'even');
+      $output .= '<div class="' . $classes . '"' . $variables['item_attributes'][$delta] . '>' . drupal_render($item) . '</div>';
+    }
+    $output .= '</div>';
+  }
+  else {
+    foreach ($variables['items'] as $item) {
+      $output .= drupal_render($item);
+    }
   }
 
   // Render the top-level DIV.

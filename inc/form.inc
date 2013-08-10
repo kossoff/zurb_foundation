@@ -27,7 +27,12 @@ function zurb_foundation_form_alter(&$form, &$form_state, $form_id) {
   if (isset($form['#form_id']) && ($form['#form_id'] == 'search_block_form')) {
     $form['search_block_form']['#attributes']['class'] = array('small-8', 'columns');
     $form['actions']['submit']['#attributes']['class'] = array('postfix', 'small-4', 'columns');
-   }
+  }
+
+  // Mantain compatibility with Edit module.
+  if ($form_id === 'edit_field_form') {
+    $form['actions']['submit']['#attributes']['class'][] = 'edit-form-submit';
+  }
 }
 /**
  * Implements theme_form_element_label()
