@@ -23,10 +23,10 @@ function zurb_foundation_status_messages($variables) {
 
   foreach (drupal_get_messages($display) as $type => $messages) {
     if (isset($status_mapping[$type])) {
-      $output .= "<div class=\"large-12 columns alert-box $status_mapping[$type]\">\n";
+      $output .= "<div data-alert class=\"alert-box $status_mapping[$type]\">\n";
     }
     else {
-      $output .= "<div class=\"large-12 columns alert-box\">\n";
+      $output .= "<div data-alert class=\"alert-box\">\n";
     }
 
     if (!empty($status_heading[$type])) {
@@ -42,6 +42,10 @@ function zurb_foundation_status_messages($variables) {
     else {
       $output .= $messages[0];
     }
+
+    if(!theme_get_setting('zurb_foundation_messages_modal')) 
+      $output .= '<a href="#" class="close">&times;</a>';
+    
     $output .= "</div>\n";
   }
 

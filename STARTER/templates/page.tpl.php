@@ -66,10 +66,18 @@
     <!--/.l-featured -->
   <?php endif; ?>
 
-  <main role="main" class="row l-main">
-    <?php if ($messages && !$zurb_foundation_messages_modal): print $messages; endif; ?>
+  <?php if (($messages && !$zurb_foundation_messages_modal) || !empty($page['help'])): ?>
+    <!--/.l-messages -->
+    <section class="l-messages row">
+      <div class="large-12 columns">
+        <?php if ($messages): print $messages; endif; ?>
+        <?php if (!empty($page['help'])): print render($page['help']); endif; ?>
+      </div>
+    </section>
+    <!--/.l-messages -->
+  <?php endif; ?>
 
-    <?php if (!empty($page['help'])): print render($page['help']); endif; ?>
+  <main role="main" class="row l-main">
     <div class="<?php print $main_grid; ?> main columns">
       <?php if (!empty($page['highlighted'])): ?>
         <div class="highlight panel callout">
