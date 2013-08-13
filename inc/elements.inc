@@ -1,7 +1,7 @@
 <?php
 /**
  * Override drupal core messages with zurb foundation alert-box messages.
- * Customize the colors within the _settings.scss file
+ * Customize the colors within the _settings.scss file.
  *
  * http://foundation.zurb.com/docs/elements.php#panelEx
  */
