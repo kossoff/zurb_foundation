@@ -10,17 +10,23 @@
   <?php print render($title_suffix['contextual_links']); ?>
   <?php endif; ?>
 
-  <<?php print $header_wrapper ?> class="group-header columns<?php print $header_classes; ?>">
-    <?php print $header; ?>
-  </<?php print $header_wrapper ?>>
+  <div class="row">
+    <<?php print $header_wrapper ?> class="group-header columns<?php print $header_classes; ?>">
+      <?php print $header; ?>
+    </<?php print $header_wrapper ?>>
+  </div>
 
-  <<?php print $ds_content_wrapper ?> class="group-content columns<?php print $ds_content_classes; ?>">
-    <?php print $ds_content; ?>
-  </<?php print $ds_content_wrapper ?>>
+  <div class="row">
+    <<?php print $ds_content_wrapper ?> class="group-content columns<?php print $ds_content_classes; ?>">
+      <?php print $ds_content; ?>
+    </<?php print $ds_content_wrapper ?>>
+  </div>
 
-  <<?php print $footer_wrapper ?> class="group-footer columns<?php print $footer_classes; ?>">
-    <?php print $footer; ?>
-  </<?php print $footer_wrapper ?>>
+  <div class="row">
+    <<?php print $footer_wrapper ?> class="group-footer columns<?php print $footer_classes; ?>">
+      <?php print $footer; ?>
+    </<?php print $footer_wrapper ?>>
+  </div>
 
 </<?php print $layout_wrapper ?>>
 
