@@ -4,7 +4,7 @@
  * Template for Zurb Foundation Two column bricks Display Suite layout.
  */
 ?>
-<<?php print $layout_wrapper; print $layout_attributes; ?> class="row zf-2col-stacked <?php print $classes;?> clearfix">
+<<?php print $layout_wrapper; print $layout_attributes; ?> class="row zf-2col-bricks <?php print $classes;?> clearfix">
 
   <?php if (isset($title_suffix['contextual_links'])): ?>
     <?php print render($title_suffix['contextual_links']); ?>
