@@ -1130,6 +1130,35 @@ function zurb_foundation_entity_variables(&$vars) {
           $vars['right_classes'] = ' large-4';
         }
         break;
+      case 'zf_3col_stacked':
+        if (
+          empty($vars['header_classes']) && empty($vars['left_classes'])
+          && empty($vars['middle_classes']) && empty($vars['right_classes'])
+          && empty($vars['footer_classes'])) {
+          $vars['header_classes'] = ' large-12';
+          $vars['left_classes'] = ' large-4';
+          $vars['middle_classes'] = ' large-4';
+          $vars['right_classes'] = ' large-4';
+          $vars['footer_classes'] = ' large-12';
+        }
+        break;
+      case 'zf_3col_bricks':
+        if (empty($vars['top_classes']) && empty($vars['left_above_classes'])
+          && empty($vars['middle_above_classes']) && empty($vars['right_above_classes'])
+          && empty($vars['middle_classes']) && empty($vars['left_below_classes'])
+          && empty($vars['middle_below_classes']) && empty($vars['right_below_classes'])
+          && empty($vars['bottom_classes'])) {
+          $vars['top_classes'] = ' large-12';
+          $vars['left_above_classes'] = ' large-4';
+          $vars['middle_above_classes'] = ' large-4';
+          $vars['right_above_classes'] = ' large-4';
+          $vars['middle_classes'] = ' large-12';
+          $vars['left_below_classes'] = ' large-4';
+          $vars['middle_below_classes'] = ' large-4';
+          $vars['right_below_classes'] = ' large-4';
+          $vars['bottom_classes'] = ' large-12';
+        }
+        break;
       case 'zf_3row':
         if (empty($vars['header_classes']) && empty($vars['ds_content_classes'])
             && empty($vars['footer_classes'])) {
