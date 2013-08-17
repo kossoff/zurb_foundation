@@ -310,7 +310,7 @@ function zurb_foundation_preprocess_field(&$variables) {
     $variables['content_attributes_array']['class'][] = 'comma-separated';
   }
 
-  // Convinence variables
+  // Convenience variables
   $name = $variables['element']['#field_name'];
   $bundle = $variables['element']['#bundle'];
   $mode = $variables['element']['#view_mode'];
