@@ -310,7 +310,7 @@ function zurb_foundation_preprocess_field(&$variables) {
     $variables['content_attributes_array']['class'][] = 'comma-separated';
   }
 
-  // Convenience variables
+  // Convenience variables.
   $name = $variables['element']['#field_name'];
   $bundle = $variables['element']['#bundle'];
   $mode = $variables['element']['#view_mode'];
@@ -319,27 +319,27 @@ function zurb_foundation_preprocess_field(&$variables) {
   $content_classes = &$variables['content_attributes_array']['class'];
   $item_classes = array();
 
-  // Global field classes
+  // Global field classes.
   $classes[] = 'field-wrapper';
   $content_classes[] = 'field-items';
   $item_classes[] = 'field-item';
 
-  // Uncomment the lines below to see variables you can use to target a field
+  // Uncomment the lines below to see variables you can use to target a field.
   // print '<strong>Name:</strong> ' . $name . '<br/>';
   // print '<strong>Bundle:</strong> ' . $bundle  . '<br/>';
   // print '<strong>Mode:</strong> ' . $mode .'<br/>';
 
-  // Add specific classes to targeted fields
+  // Add specific classes to targeted fields.
   if(isset($field)) {
     switch ($mode) {
-      // All teasers
+      // All teasers.
       case 'teaser':
         switch ($field) {
-          // Teaser read more links
+          // Teaser read more links.
           case 'node_link':
             $item_classes[] = 'more-link';
             break;
-          // Teaser descriptions
+          // Teaser descriptions.
           case 'body':
           case 'field_description':
             $item_classes[] = 'description';
@@ -348,7 +348,8 @@ function zurb_foundation_preprocess_field(&$variables) {
       break;
     }
   }
- // Check if exists
+
+// Check if exists
 //  switch ($field) {
 //    case 'field_authors':
 //      $title_classes[] = 'inline';
@@ -357,7 +358,7 @@ function zurb_foundation_preprocess_field(&$variables) {
 //      break;
 //  }
 
-  // Apply odd or even classes along with our custom classes to each item
+  // Apply odd or even classes along with our custom classes to each item.
   foreach ($variables['items'] as $delta => $item) {
     $item_classes[] = $delta % 2 ? 'odd' : 'even';
     $variables['item_attributes_array'][$delta]['class'] = $item_classes;
@@ -409,7 +410,7 @@ function zurb_foundation_preprocess_field(&$variables) {
 /**
  * Implements template_preprocess_html().
  *
- * Adds additional classes
+ * Adds additional classes.
  */
 function zurb_foundation_preprocess_html(&$variables) {
   global $language;
@@ -430,8 +431,10 @@ function zurb_foundation_preprocess_html(&$variables) {
 
   // Classes for body element. Allows advanced theming based on context
   if (!$variables['is_front']) {
+
     // Add unique class for each page.
     $path = drupal_get_path_alias($_GET['q']);
+
     // Add unique class for each website section.
     list($section, ) = explode('/', $path, 2);
     $arg = explode('/', $_GET['q']);
@@ -462,7 +465,7 @@ function zurb_foundation_preprocess_html(&$variables) {
   }
   /*
    * Zepto Fallback
-   *   Use with caution
+   *   Use with caution.
    */
   // drupal_add_js('document.write(\'<script src=/' . drupal_get_path('theme', 'zurb_foundation') .'/js/vendor/\'
   //       + (\'__proto__\' in {} ? \'zepto\' : \'jquery\')
@@ -473,13 +476,13 @@ function zurb_foundation_preprocess_html(&$variables) {
 /**
  * Implements template_preprocess_node
  *
- * Add template suggestions and classes
+ * Add template suggestions and classes.
  */
 function zurb_foundation_preprocess_node(&$variables) {
-  // Add node--node_type--view_mode.tpl.php suggestions
+  // Add node--node_type--view_mode.tpl.php suggestions.
   $variables['theme_hook_suggestions'][] = 'node__' . $variables['type'] . '__' . $variables['view_mode'];
 
-  // Add node--view_mode.tpl.php suggestions
+  // Add node--view_mode.tpl.php suggestions.
   $variables['theme_hook_suggestions'][] = 'node__' . $variables['view_mode'];
 
   // Add a class for the view mode.
@@ -511,7 +514,7 @@ function zurb_foundation_preprocess_node(&$variables) {
 /**
  * Implements template_preprocess_page
  *
- * Add convenience variables and template suggestions
+ * Add convenience variables and template suggestions.
  */
 function zurb_foundation_preprocess_page(&$variables) {
   // Add page--node_type.tpl.php suggestions
@@ -595,7 +598,8 @@ function zurb_foundation_preprocess_page(&$variables) {
   }
 
   // Alternative header.
-  // This is what will show up if the top bar is disabled or enabled only for mobile.
+  // This is what will show up if the top bar is disabled or enabled only for
+  // mobile.
   if ($variables['alt_header'] = ($variables['top_bar'] != 1)) {
     // Hide alt header on mobile if using top bar in mobile.
     $variables['alt_header_classes'] = $variables['top_bar'] == 2 ? ' hide-for-small' : '';
@@ -698,10 +702,9 @@ function zurb_foundation_preprocess_page(&$variables) {
 
 /**
  * Implements template_preprocess_panels_pane().
- *
  */
-function zurb_foundation_preprocess_panels_pane(&$variables) {
-}
+// function zurb_foundation_preprocess_panels_pane(&$variables) {
+// }
 
 /**
 * Implements template_preprocess_views_views_fields().
@@ -728,6 +731,7 @@ function THEMENAME_preprocess_views_view_fields(&$variables) {
    }
  }
 }
+
 // */
 /**
  * Implements template_preprocess_views_view().
@@ -801,13 +805,13 @@ function zurb_foundation_pager($variables) {
   // Calculate various markers within this pager piece:
   // Middle is used to "center" pages around the current page.
   $pager_middle = ceil($quantity / 2);
-  // current is the page we are currently paged to
+  // Current is the page we are currently paged to.
   $pager_current = $pager_page_array[$element] + 1;
-  // first is the first page listed by this pager piece (re quantity)
+  // First is the first page listed by this pager piece (re-quantify).
   $pager_first = $pager_current - $pager_middle + 1;
-  // last is the last page listed by this pager piece (re quantity)
+  // Last is the last page listed by this pager piece (re-quantify)
   $pager_last = $pager_current + $quantity - $pager_middle;
-  // max is the maximum page number
+  // Max is the maximum page number.
   $pager_max = $pager_total[$element];
   // End of marker calculations.
 
