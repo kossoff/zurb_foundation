@@ -125,3 +125,38 @@
 //function STARTER_form_comment_form_alter(&$form, &$form_state) {
 //  $form['actions']['preview']['#attributes']['class'][] = array('class' => array('secondary', 'button', 'radius'));
 //}
+
+
+/**
+ * Implements template_preprocess_panels_pane().
+ */
+// function zurb_foundation_preprocess_panels_pane(&$variables) {
+// }
+
+/**
+* Implements template_preprocess_views_views_fields().
+*/
+/* Delete me to enable
+function THEMENAME_preprocess_views_view_fields(&$variables) {
+ if ($variables['view']->name == 'nodequeue_1') {
+
+   // Check if we have both an image and a summary
+   if (isset($variables['fields']['field_image'])) {
+
+     // If a combined field has been created, unset it and just show image
+     if (isset($variables['fields']['nothing'])) {
+       unset($variables['fields']['nothing']);
+     }
+
+   } elseif (isset($variables['fields']['title'])) {
+     unset ($variables['fields']['title']);
+   }
+
+   // Always unset the separate summary if set
+   if (isset($variables['fields']['field_summary'])) {
+     unset($variables['fields']['field_summary']);
+   }
+ }
+}
+
+// */
