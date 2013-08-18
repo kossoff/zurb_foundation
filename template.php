@@ -18,7 +18,7 @@ function _zurb_foundation_load($files) {
   // Check file path and '.inc' extension
   foreach($files as $file) {
     $file_path = $dir . '/inc/' . $file;
-    if ( strpos($file,'.inc') > 0 && file_exists($file_path)) {
+    if (strpos($file,'.inc') > 0 && file_exists($file_path)) {
       require_once($file_path);
     }
   }
@@ -232,7 +232,7 @@ function _zurb_foundation_render_link($link) {
     }
 
     if (!isset($rendered_link)) {
-      $rendered_link = l($link['#title'], $link['#href'], $link['#localized_options']);
+      $rendered_link = theme('zurb_foundation_menu_link', array('link' => $link));
     }
 
     // Test for localization options and apply them if they exist.
@@ -263,6 +263,13 @@ function _zurb_foundation_render_link($link) {
 }
 
 /**
+ * Theme function to render a single top bar menu link.
+ */
+  function theme_zurb_foundation_menu_link($variables) {
+    $link = $variables['link'];
+    return l($link['#title'], $link['#href'], $link['#localized_options']);
+  }
+/*
  * Implements hook_preprocess_block()
  */
 function zurb_foundation_preprocess_block(&$variables) {
@@ -910,6 +917,10 @@ function zurb_foundation_theme() {
     'function' => 'theme_zurb_foundation_reveal',
   );
 
+  $return['zurb_foundation_menu_link'] = array(
+    'variables' => array('link' => NULL),
+    'function' => 'theme_zurb_foundation_menu_link',
+  );
   return $return;
 }
 
