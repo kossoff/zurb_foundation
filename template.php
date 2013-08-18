@@ -1083,7 +1083,8 @@ function zurb_foundation_entity_variables(&$vars) {
       case 'zf_2col_stacked':
         if (
           empty($vars['header_classes']) && empty($vars['left_classes'])
-            && empty($vars['right_classes']) && empty($vars['footer_classes'])) {
+            && empty($vars['right_classes']) && empty($vars['footer_classes'])
+        ) {
           $vars['header_classes'] = ' large-12';
           $vars['left_classes'] = ' large-6';
           $vars['right_classes'] = ' large-6';
@@ -1094,7 +1095,8 @@ function zurb_foundation_entity_variables(&$vars) {
         if (empty($vars['top_classes']) && empty($vars['left_above_classes'])
             && empty($vars['right_above_classes']) && empty($vars['middle_classes'])
             && empty($vars['left_below_classes']) && empty($vars['right_below_classes'])
-            && empty($vars['bottom_classes'])) {
+            && empty($vars['bottom_classes'])
+        ) {
           $vars['top_classes'] = ' large-12';
           $vars['left_above_classes'] = ' large-6';
           $vars['right_above_classes'] = ' large-6';
@@ -1106,7 +1108,8 @@ function zurb_foundation_entity_variables(&$vars) {
         break;
       case 'zf_3col':
         if (empty($vars['left_classes']) && empty($vars['middle_classes'])
-            && empty($vars['right_classes'])) {
+            && empty($vars['right_classes'])
+        ) {
           $vars['left_classes'] = ' large-4';
           $vars['middle_classes'] = ' large-4';
           $vars['right_classes'] = ' large-4';
@@ -1116,7 +1119,8 @@ function zurb_foundation_entity_variables(&$vars) {
         if (
           empty($vars['header_classes']) && empty($vars['left_classes'])
           && empty($vars['middle_classes']) && empty($vars['right_classes'])
-          && empty($vars['footer_classes'])) {
+          && empty($vars['footer_classes'])
+        ) {
           $vars['header_classes'] = ' large-12';
           $vars['left_classes'] = ' large-4';
           $vars['middle_classes'] = ' large-4';
@@ -1129,7 +1133,8 @@ function zurb_foundation_entity_variables(&$vars) {
           && empty($vars['middle_above_classes']) && empty($vars['right_above_classes'])
           && empty($vars['middle_classes']) && empty($vars['left_below_classes'])
           && empty($vars['middle_below_classes']) && empty($vars['right_below_classes'])
-          && empty($vars['bottom_classes'])) {
+          && empty($vars['bottom_classes'])
+        ) {
           $vars['top_classes'] = ' large-12';
           $vars['left_above_classes'] = ' large-4';
           $vars['middle_above_classes'] = ' large-4';
@@ -1143,7 +1148,8 @@ function zurb_foundation_entity_variables(&$vars) {
         break;
       case 'zf_3row':
         if (empty($vars['header_classes']) && empty($vars['ds_content_classes'])
-            && empty($vars['footer_classes'])) {
+            && empty($vars['footer_classes'])
+        ) {
           $vars['header_classes'] = ' large-12';
           $vars['ds_content_classes'] = ' large-12';
           $vars['footer_classes'] = ' large-12';
@@ -1151,7 +1157,14 @@ function zurb_foundation_entity_variables(&$vars) {
         break;
       case 'zf_4col':
         if (empty($vars['first_classes']) && empty($vars['second_classes'])
-            && empty($vars['third_classes']) && empty($vars['fourth_classes'])) {
+            && empty($vars['third_classes']) && empty($vars['fourth_classes'])
+        ) {
+          $vars['first_classes'] = ' large-3';
+          $vars['second_classes'] = ' large-3';
+          $vars['third_classes'] = ' large-3';
+          $vars['fourth_classes'] = ' large-3';
+        }
+        break;
           $vars['first_classes'] = ' large-3';
           $vars['second_classes'] = ' large-3';
           $vars['third_classes'] = ' large-3';
