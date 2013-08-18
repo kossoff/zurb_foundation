@@ -1165,10 +1165,20 @@ function zurb_foundation_entity_variables(&$vars) {
           $vars['fourth_classes'] = ' large-3';
         }
         break;
+      case 'zf_4col_stacked':
+        if (
+          empty($vars['header_classes']) && empty($vars['first_classes'])
+          && empty($vars['second_classes']) && empty($vars['third_classes'])
+          && empty($vars['fourth_classes']) && empty($vars['footer_classes'])
+        ) {
+          $vars['header_classes'] = ' large-12';
           $vars['first_classes'] = ' large-3';
           $vars['second_classes'] = ' large-3';
           $vars['third_classes'] = ' large-3';
           $vars['fourth_classes'] = ' large-3';
+          $vars['footer_classes'] = ' large-12';
+        }
+        break;
         }
         break;
     }
