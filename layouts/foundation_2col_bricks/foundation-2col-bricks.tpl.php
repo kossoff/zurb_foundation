@@ -13,11 +13,11 @@
  * - $content: An array of content, each item in the array is keyed to one
  *   panel of the layout. This layout supports the following sections:
  *   - $content['top']: Content in the top row.
- *   - $content['left_above']: Content in the left column in row 2.
- *   - $content['right_above']: Content in the right column in row 2.
+ *   - $content['above_left']: Content in the left column in row 2.
+ *   - $content['above_right']: Content in the right column in row 2.
  *   - $content['middle']: Content in the middle row.
- *   - $content['left_below']: Content in the left column in row 4.
- *   - $content['right_below']: Content in the right column in row 4.
+ *   - $content['below_left']: Content in the left column in row 4.
+ *   - $content['below_right']: Content in the right column in row 4.
  *   - $content['right']: Content in the right column.
  *   - $content['bottom']: Content in the bottom row.
  */
@@ -29,10 +29,10 @@
 
   <div class="row">
     <div class="large-6 columns">
-      <?php print $content['left_above']; ?>
+      <?php print $content['above_left']; ?>
     </div>
     <div class="large-6 columns">
-      <?php print $content['right_above']; ?>
+      <?php print $content['above_right']; ?>
     </div>
   </div>
 
@@ -42,11 +42,11 @@
 
   <div class="row">
     <div class="large-6 columns">
-      <?php print $content['left_below']; ?>
+      <?php print $content['below_left']; ?>
     </div>
 
     <div class="large-6 columns">
-      <?php print $content['right_below']; ?>
+      <?php print $content['below_right']; ?>
     </div>
   </div>
 
