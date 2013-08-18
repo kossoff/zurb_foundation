@@ -110,6 +110,9 @@ regions[footer]              = Footer
 ; features[] = main_menu
 ; features[] = secondary_menu
 
+; Panel Layouts
+plugins[panels][layouts] = layouts
+
 ; Theme settings:
 
 ; Top Bar.
