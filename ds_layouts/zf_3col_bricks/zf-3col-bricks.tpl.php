@@ -19,17 +19,17 @@
   </div>
 
   <div class="row">
-    <<?php print $left_above_wrapper ?> class="group-left-above columns<?php print $left_above_classes; ?>">
-    <?php print $left_above; ?>
-    </<?php print $left_above_wrapper ?>>
+    <<?php print $above_left_wrapper ?> class="group-above-left columns<?php print $above_left_classes; ?>">
+    <?php print $above_left; ?>
+    </<?php print $above_left_wrapper ?>>
 
-    <<?php print $middle_above_wrapper ?> class="group-middle-above columns<?php print $middle_above_classes; ?>">
-    <?php print $middle_above; ?>
-    </<?php print $middle_above_wrapper ?>>
+    <<?php print $above_middle_wrapper ?> class="group-above-middle columns<?php print $above_middle_classes; ?>">
+    <?php print $above_middle; ?>
+    </<?php print $above_middle_wrapper ?>>
 
-    <<?php print $right_above_wrapper ?> class="group-right-above columns<?php print $right_above_classes; ?>">
-    <?php print $right_above; ?>
-    </<?php print $right_above_wrapper ?>>
+    <<?php print $above_right_wrapper ?> class="group-above-right columns<?php print $above_right_classes; ?>">
+    <?php print $above_right; ?>
+    </<?php print $above_right_wrapper ?>>
   </div>
 
   <div class="row">
@@ -41,17 +41,17 @@
   </div>
 
   <div class="row">
-    <<?php print $left_below_wrapper ?> class="group-left-below columns<?php print $left_below_classes; ?>">
-    <?php print $left_below; ?>
-    </<?php print $left_below_wrapper ?>>
+    <<?php print $below_left_wrapper ?> class="group-below-left columns<?php print $below_left_classes; ?>">
+    <?php print $below_left; ?>
+    </<?php print $below_left_wrapper ?>>
 
-    <<?php print $middle_below_wrapper ?> class="group-middle-below columns<?php print $middle_below_classes; ?>">
-    <?php print $middle_below; ?>
-    </<?php print $middle_below_wrapper ?>>
+    <<?php print $below_middle_wrapper ?> class="group-below-middle columns<?php print $below_middle_classes; ?>">
+    <?php print $below_middle; ?>
+    </<?php print $below_middle_wrapper ?>>
 
-    <<?php print $right_below_wrapper ?> class="group-right-below columns<?php print $right_below_classes; ?>">
-    <?php print $right_below; ?>
-    </<?php print $right_below_wrapper ?>>
+    <<?php print $below_right_wrapper ?> class="group-below-right columns<?php print $below_right_classes; ?>">
+    <?php print $below_right; ?>
+    </<?php print $below_right_wrapper ?>>
   </div>
 
   <div class="row">

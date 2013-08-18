@@ -1092,17 +1092,17 @@ function zurb_foundation_entity_variables(&$vars) {
         }
         break;
       case 'zf_2col_bricks':
-        if (empty($vars['top_classes']) && empty($vars['left_above_classes'])
-            && empty($vars['right_above_classes']) && empty($vars['middle_classes'])
-            && empty($vars['left_below_classes']) && empty($vars['right_below_classes'])
+        if (empty($vars['top_classes']) && empty($vars['above_left_classes'])
+            && empty($vars['above_right_classes']) && empty($vars['middle_classes'])
+            && empty($vars['below_left_classes']) && empty($vars['below_right_classes'])
             && empty($vars['bottom_classes'])
         ) {
           $vars['top_classes'] = ' large-12';
-          $vars['left_above_classes'] = ' large-6';
-          $vars['right_above_classes'] = ' large-6';
+          $vars['above_left_classes'] = ' large-6';
+          $vars['above_right_classes'] = ' large-6';
           $vars['middle_classes'] = ' large-12';
-          $vars['left_below_classes'] = ' large-6';
-          $vars['right_below_classes'] = ' large-6';
+          $vars['below_left_classes'] = ' large-6';
+          $vars['below_right_classes'] = ' large-6';
           $vars['bottom_classes'] = ' large-12';
         }
         break;
@@ -1129,20 +1129,20 @@ function zurb_foundation_entity_variables(&$vars) {
         }
         break;
       case 'zf_3col_bricks':
-        if (empty($vars['top_classes']) && empty($vars['left_above_classes'])
-          && empty($vars['middle_above_classes']) && empty($vars['right_above_classes'])
-          && empty($vars['middle_classes']) && empty($vars['left_below_classes'])
-          && empty($vars['middle_below_classes']) && empty($vars['right_below_classes'])
+        if (empty($vars['top_classes']) && empty($vars['above_left_classes'])
+          && empty($vars['above_middle_classes']) && empty($vars['above_right_classes'])
+          && empty($vars['middle_classes']) && empty($vars['below_left_classes'])
+          && empty($vars['below_middle_classes']) && empty($vars['below_right_classes'])
           && empty($vars['bottom_classes'])
         ) {
           $vars['top_classes'] = ' large-12';
-          $vars['left_above_classes'] = ' large-4';
-          $vars['middle_above_classes'] = ' large-4';
-          $vars['right_above_classes'] = ' large-4';
+          $vars['above_left_classes'] = ' large-4';
+          $vars['above_middle_classes'] = ' large-4';
+          $vars['above_right_classes'] = ' large-4';
           $vars['middle_classes'] = ' large-12';
-          $vars['left_below_classes'] = ' large-4';
-          $vars['middle_below_classes'] = ' large-4';
-          $vars['right_below_classes'] = ' large-4';
+          $vars['below_left_classes'] = ' large-4';
+          $vars['below_middle_classes'] = ' large-4';
+          $vars['below_right_classes'] = ' large-4';
           $vars['bottom_classes'] = ' large-12';
         }
         break;
