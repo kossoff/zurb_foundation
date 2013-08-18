@@ -110,7 +110,7 @@ regions[footer]              = Footer
 ; features[] = main_menu
 ; features[] = secondary_menu
 
-; Theme settings.
+; Theme settings:
 
 ; Top Bar.
 settings[zurb_foundation_top_bar_enable] = 1
