@@ -1179,6 +1179,25 @@ function zurb_foundation_entity_variables(&$vars) {
           $vars['footer_classes'] = ' large-12';
         }
         break;
+      case 'zf_4col_bricks':
+        if (empty($vars['top_classes']) && empty($vars['above_first_classes'])
+          && empty($vars['above_second_classes']) && empty($vars['above_third_classes'])
+          && empty($vars['above_fourth_classes']) && empty($vars['middle_classes'])
+          && empty($vars['below_first_classes']) && empty($vars['below_second_classes'])
+          && empty($vars['below_third_classes']) && empty($vars['below_fourth_classes'])
+          && empty($vars['bottom_classes'])
+        ) {
+          $vars['top_classes'] = ' large-12';
+          $vars['above_first_classes'] = ' large-3';
+          $vars['above_second_classes'] = ' large-3';
+          $vars['above_third_classes'] = ' large-3';
+          $vars['above_fourth_classes'] = ' large-3';
+          $vars['middle_classes'] = ' large-12';
+          $vars['below_first_classes'] = ' large-3';
+          $vars['below_second_classes'] = ' large-3';
+          $vars['below_third_classes'] = ' large-3';
+          $vars['below_fourth_classes'] = ' large-3';
+          $vars['bottom_classes'] = ' large-12';
         }
         break;
     }
