@@ -1,6 +1,30 @@
-//
-// Foundation Variables
-//
+/*
+ * Theme specific variables.
+ */
+
+// Optionally, you can add your colors here.
+// ******************************************************
+// $primary-color: #000;
+// $secondary-color: #c00;
+
+
+// Font Families
+// ------------------------------------------------------
+// $ff-arial: Arial, Helvetica, Sans-serif;
+// $ff-georgia: Georgia, Times, Times New Roman, Sans-serif;
+
+// Global Variables
+// ------------------------------------------------------
+// $global-font-family: $ff-arial;
+// $global-alt-font-family: $ff-georgia;
+
+
+/*
+ * Foundation Variables
+ *
+ * Source:
+ * https://github.com/zurb/foundation/blob/master/scss/foundation/_variables.scss
+ */
 
 // The default font-size is set to 100% of the browser style sheet (usually 16px)
 // for compatibility with browser-based text zoom or user-set defaults.

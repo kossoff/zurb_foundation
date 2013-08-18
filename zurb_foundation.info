@@ -1,5 +1,5 @@
 name = ZURB Foundation
-description = Drupal implementation of the Foundation 4 framework
+description = Drupal implementation of the Zurb Foundation 4 framework.
 core = 7.x
 engine = phptemplate
 
@@ -11,12 +11,6 @@ stylesheets[all][] = css/normalize.css
 
 ; Foundation framework stylesheets
 stylesheets[all][] = css/foundation.min.css
-
-; Base theme specific CSS
-stylesheets[all][] = css/base.css
-
-; Theme specific CSS
-stylesheets[all][] = css/app.css
 
 ; Modernizr acts as a shim for HTML5 elements for older browsers
 ; as well as detection for mobile devices.
