@@ -7255,3 +7255,7 @@ a.th {
 }
 
 /* Each individual part that can be added in */
+/* line 3, ../scss/base/_drupal.scss */
+.admin-menu .fixed {
+  top: 1.8125em;
+}

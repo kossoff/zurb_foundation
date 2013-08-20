@@ -1,1 +1,5 @@
 // Drupal comes with css quirks (Drupalisms). Unravel or override them here.
+
+.admin-menu .fixed {
+  top: emCalc(29px);
+}
