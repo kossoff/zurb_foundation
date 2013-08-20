@@ -60,7 +60,14 @@
 // @import "components/buttons";
 // @import "components/type";
 // @import "components/forms";
-// @import "components/fonts-zurb-foundicons";
+
+// Note about using Foundation Icons.
+// The "components/icons" partial is required for the icon sets to work.
+//@import "components/icons";
+//@import "components/icons-accessibility";
+//@import "components/icons-general";
+//@import "components/icons-general_enclosed";
+//@import "components/icons-social";
 
 // Themes
 // @import "theme/button-light";
