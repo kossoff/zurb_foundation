@@ -154,8 +154,9 @@ function zurb_foundation_links__topbar_main_menu($variables) {
   // We need to fetch the links ourselves because we need the entire tree.
   $links = menu_tree_output(menu_tree_all_data(variable_get('menu_main_links_source', 'main-menu')));
   $output = _zurb_foundation_links($links);
+  $variables['attributes']['class'][] = 'left';
 
-  return '<ul class="left"' . drupal_attributes($variables['attributes']) . '>' . $output . '</ul>';
+  return '<ul' . drupal_attributes($variables['attributes']) . '>' . $output . '</ul>';
 }
 
 /**
@@ -166,8 +167,9 @@ function zurb_foundation_links__topbar_secondary_menu($variables) {
   // We need to fetch the links ourselves because we need the entire tree.
   $links = menu_tree_output(menu_tree_all_data(variable_get('menu_secondary_links_source', 'user-menu')));
   $output = _zurb_foundation_links($links);
+  $variables['attributes']['class'][] = 'right';
 
-  return '<ul class="right"' . drupal_attributes($variables['attributes']) . '>' . $output . '</ul>';
+  return '<ul' . drupal_attributes($variables['attributes']) . '>' . $output . '</ul>';
 }
 
 /**
