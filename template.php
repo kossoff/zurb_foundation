@@ -616,14 +616,14 @@ function zurb_foundation_preprocess_page(&$variables) {
   $variables['alt_main_menu'] = '';
 
   if (!empty($variables['main_menu'])) {
-    $variables['alt_main_menu'] = theme('links__system_secondary_menu', array(
+    $variables['alt_main_menu'] = theme('links__system_main_menu', array(
       'links' => $variables['main_menu'],
       'attributes' => array(
-        'id' => 'secondary-menu-links',
-        'class' => array('links', 'inline', 'clearfix'),
+        'id' => 'main-menu-links',
+        'class' => array('links', 'inline-list', 'clearfix'),
       ),
       'heading' => array(
-        'text' => t('Secondary menu'),
+        'text' => t('Main menu'),
         'level' => 'h2',
         'class' => array('element-invisible'),
       ),
@@ -633,14 +633,14 @@ function zurb_foundation_preprocess_page(&$variables) {
   $variables['alt_secondary_menu'] = '';
 
   if (!empty($variables['secondary_menu'])) {
-    $variables['alt_secondary_menu'] = theme('links__system_main_menu', array(
+    $variables['alt_secondary_menu'] = theme('links__system_secondary_menu', array(
       'links' => $variables['secondary_menu'],
       'attributes' => array(
-        'id' => 'main-menu-links',
+        'id' => 'secondary-menu-links',
         'class' => array('links', 'clearfix'),
       ),
       'heading' => array(
-        'text' => t('Main menu'),
+        'text' => t('Secondary menu'),
         'level' => 'h2',
         'class' => array('element-invisible'),
       ),
