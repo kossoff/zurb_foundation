@@ -38,8 +38,7 @@
 // parametrics. Optional file.
 @import "base/common";
 //
-// Persist certain Drupal core styles. This is necessary because we're stripping
-// all core CSS and certain things just don't work as expected without it.
+// Fix for some Drupal CSS quirks (Drupalisms).
 @import "base/drupal";
 //
 // Styling for elements.
