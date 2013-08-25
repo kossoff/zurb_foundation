@@ -4,3 +4,11 @@
 .admin-menu .fixed {
   top: emCalc(29px);
 }
+
+// Remove the bottom padding on status messages when displayed inside a Zurb
+// Foundation Reveal modal.
+#status-messages.reveal-modal {
+  .alert-box {
+    margin-bottom: 0;
+  }
+}
