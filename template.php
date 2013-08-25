@@ -883,7 +883,7 @@ function zurb_foundation_pager($variables) {
     $pager_links = array(
       '#theme' => 'item_list',
       '#items' => $items,
-      '#attributes' => array('class' => array('pagination')),
+      '#attributes' => array('class' => array('pagination', 'pager')),
     );
 
     if (theme_get_setting('zurb_foundation_pager_center')) {

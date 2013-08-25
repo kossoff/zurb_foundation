@@ -18,3 +18,14 @@
 .reveal-modal {
   z-index: 999;
 }
+
+// Override Drupal Core pager styles. This is necessary because we need to keep
+// the .pager class on pagers for Views AJAX to work. If you are disabling
+// Drupal Core CSS you can safely comment the following lines.
+.item-list .pager {
+  clear: none;
+}
+
+.item-list .pager li {
+  padding: 0;
+}
