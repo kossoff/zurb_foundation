@@ -169,6 +169,13 @@ function zurb_foundation_form_system_theme_settings_alter(&$form, &$form_state) 
       '#collapsible' => TRUE,
     );
 
+    $form['zurb_foundation']['misc']['zurb_foundation_html_tags'] = array(
+      '#type' => 'checkbox',
+      '#title' => t('Prune HTML Tags'),
+      '#default_value' => theme_get_setting('zurb_foundation_html_tags'),
+      '#description' => t('Prunes your <code>style</code>, <code>link</code>, and <code>script</code> tags as <a href="!link" target="_blank"> suggested by Nathan Smith</a>.', array('!link' => 'http://sonspring.com/journal/html5-in-drupal-7#_pruning')),
+    );
+
     $form['zurb_foundation']['misc']['zurb_foundation_messages_modal'] = array(
       '#type' => 'checkbox',
       '#title' => t('Display status messages in a modal'),
