@@ -32,22 +32,17 @@ stylesheets[all][] = css/app.css
 stylesheets[all][] = css/custom.css
 
 ; Foundation JavaScript.
-;
-; These files are all commented out. If you choose to disable the default
-; base theme JS, you will need to uncomment them.
-; If you choose to do this, please make sure that you are either uncommenting
-; the minified foundation.min.js OR the desired uncompressed components, but
-; not both.
 
 ; Modernizr acts as a shim for HTML5 elements for older browsers
 ; as well as detection for mobile devices.
-;scripts[] = js/vendor/custom.modernizr.js
+scripts[] = js/vendor/custom.modernizr.js
 
 ; Foundation framework scripts (minified).
-;scripts[] = js/foundation.min.js
+; If you prefer to have more control over which components are included you
+; can comment this line and uncomment the ones below you want.
+scripts[] = js/foundation.min.js
 
 ; Foundation framework scripts (uncompressed).
-; Either uncomment these OR uncomment the minified file above.
 ;scripts[] = js/foundation/foundation.js
 ;scripts[] = js/foundation/foundation.abide.js
 ;scripts[] = js/foundation/foundation.alerts.js
@@ -128,8 +123,6 @@ settings[zurb_foundation_top_bar_is_hover] = 1
 settings[zurb_foundation_top_bar_scrolltop] = 1
 
 ; Styles and Scripts.
-settings[zurb_foundation_disable_base_css] = 0
-settings[zurb_foundation_disable_base_js] = 0
 settings[zurb_foundation_disable_core_css] = 0
 
 ; Misc.

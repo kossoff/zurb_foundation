@@ -723,17 +723,7 @@ function zurb_foundation_css_alter(&$css) {
   // Remove defaults.css file.
   unset($css[drupal_get_path('module', 'system') . '/system.menus.css']);
 
-  // Remove base theme CSS.
-  if(theme_get_setting('zurb_foundation_disable_base_css')) {
-    $theme_path = drupal_get_path('theme', 'zurb_foundation');
-
-    foreach($css as $path => $values) {
-      if(strpos($path, $theme_path) === 0) {
-        unset($css[$path]);
-      }
-    }
-  }
-
+  // Remove Drupal core CSS.
   if (theme_get_setting('zurb_foundation_disable_core_css')) {
     foreach($css as $path => $values) {
       if(strpos($path, 'modules/') === 0) {
@@ -757,16 +747,6 @@ function zurb_foundation_js_alter(&$js) {
 
     if (!version_compare($jquery_version, '1.7', '>=')) {
       drupal_set_message(t('Incorrect jQuery version detected. Zurb Foundation requires jQuery 1.7 or higher. Please change your <a href="!settings">jQuery Update settings</a>.', array('!settings' => url('admin/config/development/jquery_update'))), 'error', FALSE);
-    }
-  }
-
-  // Remove base theme CSS.
-  if(theme_get_setting('zurb_foundation_disable_base_js') == TRUE) {
-    $theme_path = drupal_get_path('theme', 'zurb_foundation');
-    foreach($js as $path => $values) {
-      if(strpos($path, $theme_path) === 0) {
-        unset($js[$path]);
-      }
     }
   }
 
