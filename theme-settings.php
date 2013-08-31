@@ -131,6 +131,79 @@ function zurb_foundation_form_system_theme_settings_alter(&$form, &$form_state) 
     );
 
     /*
+     * Tooltips.
+     */
+    $form['zurb_foundation']['tooltips'] = array(
+      '#type' => 'fieldset',
+      '#title' => t('Tooltips'),
+      '#collapsible' => TRUE,
+    );
+
+    $form['zurb_foundation']['tooltips']['zurb_foundation_tooltip_enable'] = array(
+      '#type' => 'checkbox',
+      '#title' => t('Display form element descriptions in a tooltip'),
+      '#default_value' => theme_get_setting('zurb_foundation_tooltip_enable'),
+    );
+
+    $form['zurb_foundation']['tooltips']['zurb_foundation_tooltip_position'] = array(
+      '#type' => 'select',
+      '#title' => t('Tooltip position'),
+      '#options' => array(
+        'tip-top' => t('Top'),
+        'tip-bottom' => t('Bottom'),
+        'tip-right' => t('Right'),
+        'tip-left' => t('Left'),
+      ),
+      '#default_value' => theme_get_setting('zurb_foundation_tooltip_position'),
+      '#states' => array(
+        'visible' => array(
+          'input[name="zurb_foundation_tooltip_enable"]' => array('checked' => TRUE),
+        ),
+      ),
+    );
+
+    $form['zurb_foundation']['tooltips']['zurb_foundation_tooltip_mode'] = array(
+      '#type' => 'select',
+      '#title' => t('Display mode'),
+      '#description' => t('You can either display the tooltip on the form element itself or on a "More information?" link below the element.'),
+      '#options' => array(
+        'element' => t('On the form element'),
+        'text' => t('Below element on "More information?" text'),
+      ),
+      '#default_value' => theme_get_setting('zurb_foundation_tooltip_mode'),
+      '#states' => array(
+        'visible' => array(
+          'input[name="zurb_foundation_tooltip_enable"]' => array('checked' => TRUE),
+        ),
+      ),
+    );
+
+    $form['zurb_foundation']['tooltips']['zurb_foundation_tooltip_text'] = array(
+      '#type' => 'textfield',
+      '#title' => t('More information text'),
+      '#description' => t('Customize the tooltip trigger text.'),
+      '#default_value' => theme_get_setting('zurb_foundation_tooltip_text'),
+      '#states' => array(
+        'visible' => array(
+          'input[name="zurb_foundation_tooltip_enable"]' => array('checked' => TRUE),
+          'select[name="zurb_foundation_tooltip_mode"]' => array('value' => 'text'),
+        ),
+      ),
+    );
+
+    $form['zurb_foundation']['tooltips']['zurb_foundation_tooltip_touch'] = array(
+      '#type' => 'checkbox',
+      '#title' => t('Disable for touch devices'),
+      '#description' => t('If you don\'t want tooltips to interfere with a touch event, you can disable them for those devices.'),
+      '#default_value' => theme_get_setting('zurb_foundation_tooltip_touch'),
+      '#states' => array(
+        'visible' => array(
+          'input[name="zurb_foundation_tooltip_enable"]' => array('checked' => TRUE),
+        ),
+      ),
+    );
+
+    /*
      * Styles and Scripts.
      */
     $form['zurb_foundation']['styles_scripts'] = array(
