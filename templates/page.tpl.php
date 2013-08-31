@@ -33,6 +33,26 @@
     <?php if ($alt_header): ?>
       <section class="row <?php print $alt_header_classes; ?>">
 
+        <?php if ($logo): ?>
+          <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo">
+            <img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" />
+          </a>
+        <?php endif; ?>
+
+        <?php if ($site_name): ?>
+          <?php if ($title): ?>
+            <div id="site-name" class="element-invisible"'>
+              <strong>
+                <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home"><span><?php print $site_name; ?></span></a>
+              </strong>
+            </div>
+          <?php else: /* Use h1 when the content title is empty */ ?>
+            <h1 id="site-name"'>
+              <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home"><span><?php print $site_name; ?></span></a>
+            </h1>
+          <?php endif; ?>
+        <?php endif; ?>
+
         <?php if ($site_slogan): ?>
           <h2 title="<?php print $site_slogan; ?>" class="site-slogan"><?php print $site_slogan; ?></h2>
         <?php endif; ?>
