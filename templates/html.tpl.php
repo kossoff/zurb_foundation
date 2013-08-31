@@ -57,8 +57,6 @@
 		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
 
-  <!-- @todo convert fallback into head alter function -->
-  <!-- Check for Zepto support, load jQuery if necessary -->
 </head>
 <body class="<?php print $classes; ?>" <?php print $attributes;?>>
   <div class="skip-link">
