@@ -267,10 +267,10 @@ function _zurb_foundation_render_link($link) {
 /**
  * Theme function to render a single top bar menu link.
  */
-  function theme_zurb_foundation_menu_link($variables) {
-    $link = $variables['link'];
-    return l($link['#title'], $link['#href'], $link['#localized_options']);
-  }
+function theme_zurb_foundation_menu_link($variables) {
+  $link = $variables['link'];
+  return l($link['#title'], $link['#href'], $link['#localized_options']);
+}
 /*
  * Implements hook_preprocess_block()
  */
@@ -294,16 +294,16 @@ function zurb_foundation_preprocess_block(&$variables) {
     // Clear blocks in this region
     case 'sidebar_first':
       $variables['classes_array'][] = 'clearfix';
-    break;
+      break;
     // Add a striping class & clear blocks in this region
     case 'sidebar_second':
       $variables['classes_array'][] = 'block-' . $variables['zebra'];
       $variables['classes_array'][] = 'clearfix';
-    break;
+      break;
 
     case 'header':
       $variables['classes_array'][] = 'header';
-    break;
+      break;
 
     default;
   }
@@ -354,7 +354,7 @@ function zurb_foundation_preprocess_field(&$variables) {
             $item_classes[] = 'description';
             break;
         }
-      break;
+        break;
     }
   }
 
@@ -537,7 +537,7 @@ function zurb_foundation_preprocess_page(&$variables) {
       'path'  => $variables['logo'],
       'alt'   => strip_tags($variables['site_name']) . ' ' . t('logo'),
       'title' => strip_tags($variables['site_name']) . ' ' . t('Home'),
-            'attributes' => array(
+      'attributes' => array(
         'class' => array('logo'),
       ),
     ));
@@ -1073,7 +1073,7 @@ function zurb_foundation_entity_variables(&$vars) {
       case 'zf_2col_stacked':
         if (
           empty($vars['header_classes']) && empty($vars['left_classes'])
-            && empty($vars['right_classes']) && empty($vars['footer_classes'])
+          && empty($vars['right_classes']) && empty($vars['footer_classes'])
         ) {
           $vars['header_classes'] = ' large-12';
           $vars['left_classes'] = ' large-6';
@@ -1083,9 +1083,9 @@ function zurb_foundation_entity_variables(&$vars) {
         break;
       case 'zf_2col_bricks':
         if (empty($vars['top_classes']) && empty($vars['above_left_classes'])
-            && empty($vars['above_right_classes']) && empty($vars['middle_classes'])
-            && empty($vars['below_left_classes']) && empty($vars['below_right_classes'])
-            && empty($vars['bottom_classes'])
+          && empty($vars['above_right_classes']) && empty($vars['middle_classes'])
+          && empty($vars['below_left_classes']) && empty($vars['below_right_classes'])
+          && empty($vars['bottom_classes'])
         ) {
           $vars['top_classes'] = ' large-12';
           $vars['above_left_classes'] = ' large-6';
@@ -1098,7 +1098,7 @@ function zurb_foundation_entity_variables(&$vars) {
         break;
       case 'zf_3col':
         if (empty($vars['left_classes']) && empty($vars['middle_classes'])
-            && empty($vars['right_classes'])
+          && empty($vars['right_classes'])
         ) {
           $vars['left_classes'] = ' large-4';
           $vars['middle_classes'] = ' large-4';
@@ -1138,7 +1138,7 @@ function zurb_foundation_entity_variables(&$vars) {
         break;
       case 'zf_3row':
         if (empty($vars['header_classes']) && empty($vars['ds_content_classes'])
-            && empty($vars['footer_classes'])
+          && empty($vars['footer_classes'])
         ) {
           $vars['header_classes'] = ' large-12';
           $vars['ds_content_classes'] = ' large-12';
@@ -1147,7 +1147,7 @@ function zurb_foundation_entity_variables(&$vars) {
         break;
       case 'zf_4col':
         if (empty($vars['first_classes']) && empty($vars['second_classes'])
-            && empty($vars['third_classes']) && empty($vars['fourth_classes'])
+          && empty($vars['third_classes']) && empty($vars['fourth_classes'])
         ) {
           $vars['first_classes'] = ' large-3';
           $vars['second_classes'] = ' large-3';
