@@ -710,13 +710,6 @@ function zurb_foundation_preprocess_page(&$variables) {
 }
 
 /**
- * Implements template_preprocess_views_view().
- */
-function zurb_foundation_preprocess_views_view(&$variables) {
-
-}
-
-/**
  * Implements hook_css_alter()
  */
 function zurb_foundation_css_alter(&$css) {
