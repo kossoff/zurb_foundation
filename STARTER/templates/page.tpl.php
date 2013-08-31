@@ -53,6 +53,16 @@
     <?php endif; ?>
     <!-- End title, slogan and menu -->
 
+    <?php if (!empty($page['header'])): ?>
+      <!--.l-header-region -->
+      <section class="l-header-region row">
+        <div class="large-12 columns">
+          <?php print render($page['header']); ?>
+        </div>
+      </section>
+      <!--/.l-header-region -->
+    <?php endif; ?>
+
   </header>
   <!--/.l-header -->
 
