@@ -919,7 +919,6 @@ function zurb_foundation_theme() {
  *   An array of all reveal render arrays.
  *
  * @see theme_zurb_foundation_reveal()
- * @see zurb_foundation_preprocess_region()
  */
 function _zurb_foundation_reveal($reveal = NULL) {
   $reveals = &drupal_static(__FUNCTION__);
@@ -987,11 +986,9 @@ function theme_zurb_foundation_reveal($variables) {
 }
 
 /**
- * Implements hook_page_alter().
- *
  * Add the reveal modal markup (if any) to the page_bottom region.
  */
-function zurb_foundation_page_alter(&$page) {
+function _zurb_foundation_add_reveals() {
   $markup = '';
 
   // Retrieve reveal markup from static storage.
@@ -999,9 +996,7 @@ function zurb_foundation_page_alter(&$page) {
     $markup .= "\n" . drupal_render($reveal);
   }
 
-  if (!empty($markup)) {
-    $page['page_bottom']['zurb_foundation_reveal'] = array('#markup' => $markup);
-  }
+  return $markup;
 }
 
 /**
