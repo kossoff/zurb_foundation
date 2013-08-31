@@ -890,7 +890,8 @@ function zurb_foundation_theme() {
       // The path for the link's href property. This is only really useful if
       // you want to set 'ajax' to TRUE (see above).
       'path' => FALSE,
-      // The content for the reveal modal.
+      // The content for the reveal modal. Can be either a string or a render
+      // array.
       'reveal' => '',
       // Extra classes to add to the link.
       'link_classes_array' => array('zurb-foundation-reveal'),
@@ -950,6 +951,12 @@ function theme_zurb_foundation_reveal($variables) {
   $reveal_id = 'zf-reveal-' . ++$counter;
   $variables['reveal_classes_array'][] = 'reveal-modal';
   $reveal_classes = implode(' ', $variables['reveal_classes_array']);
+
+  // Render reveal contents if applicable.
+  if (is_array($variables['reveal'])) {
+    $variables['reveal'] = drupal_render($variables['reveal']);
+  }
+
   $reveal = array(
     '#markup' => $variables['reveal'],
     '#prefix' => '<div id="' . $reveal_id . '" class="' . $reveal_classes . '">',
