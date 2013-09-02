@@ -603,9 +603,7 @@ function zurb_foundation_preprocess_page(&$variables) {
       $top_bar_options[] = 'scrolltop:false';
     }
 
-    if (!empty($top_bar_options)) {
-      $variables['top_bar_options'] = ' data-options="' . implode('; ', $top_bar_options) . '"';
-    }
+    $variables['top_bar_options'] = ' data-options="' . implode('; ', $top_bar_options) . '"';
   }
 
   // Alternative header.
