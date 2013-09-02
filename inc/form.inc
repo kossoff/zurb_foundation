@@ -118,7 +118,7 @@ function _zurb_foundation_element_whitelist() {
  * from certain modifications made by the bootstrap theme which
  * break core functionality - e.g. ajax.
  */
-  return array(
+  $whitelist = array(
     'edit-refresh',
     'edit-pass-pass1',
     'edit-pass-pass2',
@@ -128,4 +128,9 @@ function _zurb_foundation_element_whitelist() {
     'panelizer-save-default',
     'panelizer-ipe-revert',
   );
+
+  // Allow other modules and themes to alter return value.
+  drupal_alter('zurb_foundation_element_whitelist', $whitelist);
+
+  return $whitelist;
 }
