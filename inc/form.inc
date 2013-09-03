@@ -5,13 +5,16 @@
  */
 function zurb_foundation_form_alter(&$form, &$form_state, $form_id) {
   // Id's of forms that should be ignored
-  // @TODO Make this configurable?
   $form_ids = array(
     'node_form',
     'system_site_information_settings',
     'user_profile_form',
     'node_delete_confirm',
+    'views_ui_edit_form',
   );
+
+  // Allow other modules to alter this.
+  drupal_alter('zurb_foundation_ignored_forms', $form_ids);
 
   // Only wrap in container for certain form
   if (isset($form['#form_id']) && !in_array($form['#form_id'], $form_ids) && !isset($form['#node_edit_form'])) {
