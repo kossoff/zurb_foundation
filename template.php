@@ -1057,12 +1057,14 @@ function zurb_foundation_entity_variables(&$vars) {
       case 'zf_1col':
         if (empty($vars['ds_content_classes'])) {
           $vars['ds_content_classes'] = ' large-12';
+          $vars['classes_array'][] = 'row';
         }
         break;
       case 'zf_2col':
         if (empty($vars['left_classes']) && empty($vars['right_classes'])) {
           $vars['left_classes'] = ' large-6';
           $vars['right_classes'] = ' large-6';
+          $vars['classes_array'][] = 'row';
         }
         break;
       case 'zf_2col_stacked':
@@ -1074,6 +1076,7 @@ function zurb_foundation_entity_variables(&$vars) {
           $vars['left_classes'] = ' large-6';
           $vars['right_classes'] = ' large-6';
           $vars['footer_classes'] = ' large-12';
+          $vars['classes_array'][] = 'row';
         }
         break;
       case 'zf_2col_bricks':
@@ -1089,6 +1092,7 @@ function zurb_foundation_entity_variables(&$vars) {
           $vars['below_left_classes'] = ' large-6';
           $vars['below_right_classes'] = ' large-6';
           $vars['bottom_classes'] = ' large-12';
+          $vars['classes_array'][] = 'row';
         }
         break;
       case 'zf_3col':
@@ -1098,6 +1102,7 @@ function zurb_foundation_entity_variables(&$vars) {
           $vars['left_classes'] = ' large-4';
           $vars['middle_classes'] = ' large-4';
           $vars['right_classes'] = ' large-4';
+          $vars['classes_array'][] = 'row';
         }
         break;
       case 'zf_3col_stacked':
@@ -1111,6 +1116,7 @@ function zurb_foundation_entity_variables(&$vars) {
           $vars['middle_classes'] = ' large-4';
           $vars['right_classes'] = ' large-4';
           $vars['footer_classes'] = ' large-12';
+          $vars['classes_array'][] = 'row';
         }
         break;
       case 'zf_3col_bricks':
@@ -1129,6 +1135,7 @@ function zurb_foundation_entity_variables(&$vars) {
           $vars['below_middle_classes'] = ' large-4';
           $vars['below_right_classes'] = ' large-4';
           $vars['bottom_classes'] = ' large-12';
+          $vars['classes_array'][] = 'row';
         }
         break;
       case 'zf_3row':
@@ -1138,6 +1145,7 @@ function zurb_foundation_entity_variables(&$vars) {
           $vars['header_classes'] = ' large-12';
           $vars['ds_content_classes'] = ' large-12';
           $vars['footer_classes'] = ' large-12';
+          $vars['classes_array'][] = 'row';
         }
         break;
       case 'zf_4col':
@@ -1148,6 +1156,7 @@ function zurb_foundation_entity_variables(&$vars) {
           $vars['second_classes'] = ' large-3';
           $vars['third_classes'] = ' large-3';
           $vars['fourth_classes'] = ' large-3';
+          $vars['classes_array'][] = 'row';
         }
         break;
       case 'zf_4col_stacked':
@@ -1162,6 +1171,7 @@ function zurb_foundation_entity_variables(&$vars) {
           $vars['third_classes'] = ' large-3';
           $vars['fourth_classes'] = ' large-3';
           $vars['footer_classes'] = ' large-12';
+          $vars['classes_array'][] = 'row';
         }
         break;
       case 'zf_4col_bricks':
@@ -1183,6 +1193,7 @@ function zurb_foundation_entity_variables(&$vars) {
           $vars['below_third_classes'] = ' large-3';
           $vars['below_fourth_classes'] = ' large-3';
           $vars['bottom_classes'] = ' large-12';
+          $vars['classes_array'][] = 'row';
         }
         break;
     }
