@@ -4,7 +4,7 @@
  * Template for Zurb Foundation Three column bricks Display Suite layout.
  */
 ?>
-<<?php print $layout_wrapper; print $layout_attributes; ?> class="row zf-3col-bricks <?php print $classes;?> clearfix">
+<<?php print $layout_wrapper; print $layout_attributes; ?> class="zf-3col-bricks <?php print $classes;?>">
 
   <?php if (isset($title_suffix['contextual_links'])): ?>
     <?php print render($title_suffix['contextual_links']); ?>
