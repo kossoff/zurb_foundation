@@ -245,7 +245,7 @@ function zurb_foundation_form_system_theme_settings_alter(&$form, &$form_state) 
     $form['zurb_foundation']['misc']['zurb_foundation_pager_center'] = array(
       '#type' => 'checkbox',
       '#title' => t('Center pagers on screen'),
-      '#description' => t('Uncheck this option to align the pager to the left.'),
+      '#description' => t('Uncheck this option to align pagers to the left. For more information on Foundation Pagers, please refer to the <a href="!link" target="_blank">documentation</a>.', array('!link' => 'http://foundation.zurb.com/docs/components/pagination.html')),
       '#default_value' => theme_get_setting('zurb_foundation_pager_center'),
     );
   }
