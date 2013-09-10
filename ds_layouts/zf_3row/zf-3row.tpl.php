@@ -11,19 +11,19 @@
   <?php endif; ?>
 
   <div class="row">
-    <<?php print $header_wrapper ?> class="group-header columns<?php print $header_classes; ?>">
+    <<?php print $header_wrapper ?> class="group-header<?php print $header_classes; ?>">
       <?php print $header; ?>
     </<?php print $header_wrapper ?>>
   </div>
 
   <div class="row">
-    <<?php print $ds_content_wrapper ?> class="group-content columns<?php print $ds_content_classes; ?>">
+    <<?php print $ds_content_wrapper ?> class="group-content<?php print $ds_content_classes; ?>">
       <?php print $ds_content; ?>
     </<?php print $ds_content_wrapper ?>>
   </div>
 
   <div class="row">
-    <<?php print $footer_wrapper ?> class="group-footer columns<?php print $footer_classes; ?>">
+    <<?php print $footer_wrapper ?> class="group-footer<?php print $footer_classes; ?>">
       <?php print $footer; ?>
     </<?php print $footer_wrapper ?>>
   </div>

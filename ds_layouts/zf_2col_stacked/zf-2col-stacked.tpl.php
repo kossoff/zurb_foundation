@@ -12,25 +12,25 @@
 
   <div class="row">
     <?php if (!empty($header)): ?>
-      <<?php print $header_wrapper ?> class="group-header columns<?php print $header_classes; ?>">
+      <<?php print $header_wrapper ?> class="group-header<?php print $header_classes; ?>">
       <?php print $header; ?>
       </<?php print $header_wrapper ?>>
     <?php endif; ?>
   </div>
 
   <div class="row">
-    <<?php print $left_wrapper ?> class="group-left columns<?php print $left_classes; ?>">
+    <<?php print $left_wrapper ?> class="group-left<?php print $left_classes; ?>">
     <?php print $left; ?>
     </<?php print $left_wrapper ?>>
 
-    <<?php print $right_wrapper ?> class="group-right columns<?php print $right_classes; ?>">
+    <<?php print $right_wrapper ?> class="group-right<?php print $right_classes; ?>">
     <?php print $right; ?>
     </<?php print $right_wrapper ?>>
   </div>
 
   <div class="row">
     <?php if (!empty($footer)): ?>
-      <<?php print $footer_wrapper ?> class="group-footer columns<?php print $footer_classes; ?>">
+      <<?php print $footer_wrapper ?> class="group-footer<?php print $footer_classes; ?>">
       <?php print $footer; ?>
       </<?php print $footer_wrapper ?>>
     <?php endif; ?>

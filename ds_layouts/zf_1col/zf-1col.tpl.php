@@ -10,7 +10,7 @@
   <?php print render($title_suffix['contextual_links']); ?>
   <?php endif; ?>
 
-  <<?php print $ds_content_wrapper ?> class="group-content columns<?php print $ds_content_classes; ?>">
+  <<?php print $ds_content_wrapper ?> class="group-content<?php print $ds_content_classes; ?>">
     <?php print $ds_content; ?>
   </<?php print $ds_content_wrapper ?>>
 
