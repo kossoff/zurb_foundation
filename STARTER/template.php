@@ -164,27 +164,27 @@ function THEMENAME_preprocess_views_view_fields(&$variables) {
 /**
  * Implements hook_css_alter().
  */
-function STARTER_css_alter(&$css) {
-  // Always remove base theme CSS.
-  $theme_path = drupal_get_path('theme', 'zurb_foundation');
-
-  foreach($css as $path => $values) {
-    if(strpos($path, $theme_path) === 0) {
-      unset($css[$path]);
-    }
-  }
-}
+//function STARTER_css_alter(&$css) {
+//  // Always remove base theme CSS.
+//  $theme_path = drupal_get_path('theme', 'zurb_foundation');
+//
+//  foreach($css as $path => $values) {
+//    if(strpos($path, $theme_path) === 0) {
+//      unset($css[$path]);
+//    }
+//  }
+//}
 
 /**
  * Implements hook_js_alter().
  */
-function STARTER_js_alter(&$js) {
-  // Always remove base theme JS.
-  $theme_path = drupal_get_path('theme', 'zurb_foundation');
-
-  foreach($js as $path => $values) {
-    if(strpos($path, $theme_path) === 0) {
-      unset($js[$path]);
-    }
-  }
-}
+//function STARTER_js_alter(&$js) {
+//  // Always remove base theme JS.
+//  $theme_path = drupal_get_path('theme', 'zurb_foundation');
+//
+//  foreach($js as $path => $values) {
+//    if(strpos($path, $theme_path) === 0) {
+//      unset($js[$path]);
+//    }
+//  }
+//}
