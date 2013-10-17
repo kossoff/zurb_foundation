@@ -45,16 +45,6 @@ function zurb_foundation_html_head_alter(&$head_elements) {
     ),
   );
 
-  // Force IE to use Chrome Frame if installed.
-  $head_elements['chrome_frame'] = array(
-    '#type' => 'html_tag',
-    '#tag' => 'meta',
-    '#attributes' => array(
-      'content' => 'ie=edge, chrome=1',
-      'http-equiv' => 'x-ua-compatible',
-    ),
-  );
-
   // Remove image toolbar in IE.
   $head_elements['ie_image_toolbar'] = array(
     '#type' => 'html_tag',

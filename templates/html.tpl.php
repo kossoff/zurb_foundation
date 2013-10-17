@@ -49,6 +49,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 
 <head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <?php print $head; ?>
   <title><?php print $head_title; ?></title>
   <?php print $styles; ?>
