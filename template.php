@@ -699,6 +699,11 @@ function zurb_foundation_preprocess_page(&$variables) {
     $variables['sidebar_first_grid'] = '';
     $variables['sidebar_sec_grid'] = '';
   }
+
+  // Ensure modal reveal behavior if modal messages are enabled.
+  if(theme_get_setting('zurb_foundation_messages_modal')) {
+    drupal_add_js(drupal_get_path('theme', 'zurb_foundation') . '/js/behavior/reveal.js');
+  }
 }
 
 /**
