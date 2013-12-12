@@ -462,14 +462,6 @@ function zurb_foundation_preprocess_html(&$variables) {
         break;
     }
   }
-  /*
-   * Zepto Fallback
-   *   Use with caution.
-   */
-  // drupal_add_js('document.write(\'<script src=/' . drupal_get_path('theme', 'zurb_foundation') .'/js/vendor/\'
-  //       + (\'__proto__\' in {} ? \'zepto\' : \'jquery\')
-  //       + \'.js><\/script>\');',
-  //       'inline', array('group',JS_LIBRARY));
 }
 
 /**
@@ -724,29 +716,6 @@ function zurb_foundation_css_alter(&$css) {
       }
     }
   }
-}
-
-/**
- * Implements hook_js_alter()
- */
-function zurb_foundation_js_alter(&$js) {
-  // Display warning if jQuery Update not present.
-  if (!module_exists('jquery_update')) {
-    drupal_set_message(t('Incorrect jQuery version detected. Zurb Foundation requires jQuery 1.7 or higher. Please install jQuery Update.'), 'error', FALSE);
-  }
-  // If it is present, check for correct jQuery version.
-  else {
-    $jquery_version = variable_get('jquery_update_jquery_version', '1.5');
-
-    if (!version_compare($jquery_version, '1.7', '>=')) {
-      drupal_set_message(t('Incorrect jQuery version detected. Zurb Foundation requires jQuery 1.7 or higher. Please change your <a href="!settings">jQuery Update settings</a>.', array('!settings' => url('admin/config/development/jquery_update'))), 'error', FALSE);
-    }
-  }
-
-  // @TODO moving scripts to footer possibly remove?
-  // foreach ($js as $key => $js_script) {
-  //   $js[$key]['scope'] = 'footer';
-  // }
 }
 
 /**
