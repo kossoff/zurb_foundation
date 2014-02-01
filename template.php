@@ -229,7 +229,7 @@ function _zurb_foundation_render_link($link) {
 
     // Test for localization options and apply them if they exist.
     if (isset($link['#localized_options']['attributes']) && is_array($link['#localized_options']['attributes'])) {
-      $link['#attributes'] = array_merge($link['#attributes'], $link['#localized_options']['attributes']);
+      $link['#attributes'] = array_merge_recursive($link['#attributes'], $link['#localized_options']['attributes']);
     }
     $output .= '<li' . drupal_attributes($link['#attributes']) . '>' . $rendered_link;
 
