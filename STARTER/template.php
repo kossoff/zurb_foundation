@@ -117,13 +117,25 @@
 //function STARTER_form_alter(&$form, &$form_state, $form_id) {
 //  // Sexy submit buttons
 //  if (!empty($form['actions']) && !empty($form['actions']['submit'])) {
-//    $form['actions']['submit']['#attributes'] = array('class' => array('primary', 'button', 'radius'));
+//    $classes = (is_array($form['actions']['submit']['#attributes']['class']))
+//      ? $form['actions']['submit']['#attributes']['class']
+//      : array();
+//    $classes = array_merge($classes, array('secondary', 'button', 'radius'));
+//    $form['actions']['submit']['#attributes']['class'] = $classes;
 //  }
 //}
 
-// Sexy preview buttons
+/**
+ * Implements hook_form_FORM_ID_alter()
+ * Example of using foundation sexy buttons on comment form
+ */
 //function STARTER_form_comment_form_alter(&$form, &$form_state) {
-//  $form['actions']['preview']['#attributes']['class'][] = array('class' => array('secondary', 'button', 'radius'));
+  // Sexy preview buttons
+//  $classes = (is_array($form['actions']['preview']['#attributes']['class']))
+//    ? $form['actions']['preview']['#attributes']['class']
+//    : array();
+//  $classes = array_merge($classes, array('secondary', 'button', 'radius'));
+//  $form['actions']['preview']['#attributes']['class'] = $classes;
 //}
 
 
