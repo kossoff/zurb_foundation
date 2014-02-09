@@ -563,7 +563,7 @@ function zurb_foundation_preprocess_page(&$variables) {
     }
 
     $variables['top_bar_classes'] = implode(' ', $top_bar_classes);
-    $variables['top_bar_menu_text'] = theme_get_setting('zurb_foundation_top_bar_menu_text');
+    $variables['top_bar_menu_text'] = check_plain(theme_get_setting('zurb_foundation_top_bar_menu_text'));
 
     $top_bar_options = array();
 
@@ -571,7 +571,7 @@ function zurb_foundation_preprocess_page(&$variables) {
       $top_bar_options[] = 'custom_back_text:false';
     }
 
-    if ($back_text = theme_get_setting('zurb_foundation_top_bar_back_text')) {
+    if ($back_text = check_plain(theme_get_setting('zurb_foundation_top_bar_back_text'))) {
       if ($back_text !== 'Back') {
         $top_bar_options[] = "back_text:'{$back_text}'";
       }
