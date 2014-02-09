@@ -482,24 +482,6 @@ function zurb_foundation_preprocess_node(&$variables) {
   }
 
   $variables['title_attributes_array']['class'][] = 'node-title';
-
-//  // Add classes based on node type.
-//  switch ($variables['type']) {
-//    case 'news':
-//    case 'pages':
-//      $variables['attributes_array']['class'][] = 'content-wrapper';
-//      $variables['attributes_array']['class'][] = 'text-content';
-//      break;
-//  }
-//
-//  // Add classes & theme hook suggestions based on view mode.
-//  switch ($variables['view_mode']) {
-//    case 'block_display':
-//      $variables['theme_hook_suggestions'][] = 'node__aside';
-//      $variables['title_attributes_array']['class'] = array('title-block');
-//      $variables['attributes_array']['class'][] = 'block-content';
-//      break;
-//  }
 }
 
 /**
@@ -1189,6 +1171,42 @@ function zurb_foundation_process_html_tag(&$vars) {
 }
 
 /**
+ * Helper function to output a single link as button or multiple links as dropdown/split buttons.
+ *
+ * @param $variables
+ * @return string
+ */
+function zurb_foundation_links__magic_button($variables) {
+  if (empty($variables['attributes']['class'])) {
+    $variables['attributes']['class'] = array();
+  }
+
+  if (count($variables['links']) > 1) {
+    switch ($variables['type']) {
+      case 'split':
+        return zurb_foundation_links__split_button($variables);
+        break;
+
+      case 'dropdown':
+      default:
+        return zurb_foundation_links__dropdown_button($variables);
+        break;
+    }
+  }
+
+  $links = $variables['links'];
+  $link = array_shift($links);
+
+  if (!isset($link['#localized_options']['attributes'])) {
+    $link['#localized_options']['attributes'] = array();
+  }
+  $link['#localized_options']['attributes'] = array_merge_recursive($link['#localized_options']['attributes'], $variables['attributes']);
+  $link['#localized_options']['attributes']['class'][] = 'button';
+
+  return l($link['#title'], $link['#href'], $link['#localized_options']);
+}
+
+/**
  * Implements theme_links() with foundations dropdown button markup.
  *
  * @param $variables
@@ -1216,6 +1234,11 @@ function zurb_foundation_links__dropdown_button($variables) {
   if (!isset($variables['attributes']['data-dropdown'])) {
     $variables['attributes']['data-dropdown'] = drupal_html_id('ddb');
   }
+
+  if (!isset($variables['label'])) {
+    $variables['label'] = t('Dropdown button');
+  }
+
   $title = '<a href="#"' . drupal_attributes($variables['attributes']) .'>' . $variables['label'] . '</a>';
 
   $output = _zurb_foundation_links($variables['links']);
@@ -1239,7 +1262,6 @@ function zurb_foundation_links__dropdown_button($variables) {
  */
 function zurb_foundation_links__split_button($variables) {
   $links = $variables['links'];
-  $link = array_shift($links);
 
   if (empty($variables['attributes']['class'])) {
     $variables['attributes']['class'] = array();
@@ -1253,12 +1275,18 @@ function zurb_foundation_links__split_button($variables) {
   $id = $variables['attributes']['data-dropdown'];
   unset($variables['attributes']['data-dropdown']);
 
-  $link['#title'] .= '<span data-dropdown="' . $id . '"></span>';
-  $link['#localized_options']['attributes']['class'][] = 'split';
-  $link['#localized_options']['html'] = TRUE;
+  if (!isset($variables['label'])) {
+    $variables['label'] = t('Split button');
+  }
 
-  $link['#localized_options']['attributes'] = array_merge_recursive($link['#localized_options']['attributes'], $variables['attributes']);
-  $primary_link = l($link['#title'], $link['#href'], $link['#localized_options']);
+  $primary_link = array();
+  $primary_link['#title'] = $variables['label'] . '<span data-dropdown="' . $id . '"></span>';
+  $primary_link['#localized_options']['attributes']['class'][] = 'split';
+  $primary_link['#localized_options']['html'] = TRUE;
+  $primary_link['#localized_options']['fragment'] = $id;
+  $primary_link['#localized_options']['attributes'] = array_merge_recursive($primary_link['#localized_options']['attributes'], $variables['attributes']);
+  $primary_link = l($primary_link['#title'], '', $primary_link['#localized_options']);
+
   $output = _zurb_foundation_links($links);
 
   return $primary_link . '<ul id="' . $id . '" class="f-dropdown" data-dropdown-content>' . $output . '</ul>';
