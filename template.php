@@ -1187,3 +1187,79 @@ function zurb_foundation_process_html_tag(&$vars) {
     }
   }
 }
+
+/**
+ * Implements theme_links() with foundations dropdown button markup.
+ *
+ * @param $variables
+ *   An associative array containing:
+ *   - label
+ *     - Dropdown button label.
+ *   - links
+ *     - An array of menu links.
+ *   - attributes (optional)
+ *     - class: Array of additional classes like large, alert, round
+ *     - data-dropdown: Custom dropdown id.
+ *
+ * @return string
+ *
+ * Formats links for Dropdown Button http://foundation.zurb.com/docs/components/dropdown-buttons.html
+ */
+function zurb_foundation_links__dropdown_button($variables) {
+  if (empty($variables['attributes']['class'])) {
+    $variables['attributes']['class'] = array();
+  }
+
+  $variables['attributes']['class'][] = 'button';
+  $variables['attributes']['class'][] = 'dropdown';
+
+  if (!isset($variables['attributes']['data-dropdown'])) {
+    $variables['attributes']['data-dropdown'] = drupal_html_id('ddb');
+  }
+  $title = '<a href="#"' . drupal_attributes($variables['attributes']) .'>' . $variables['label'] . '</a>';
+
+  $output = _zurb_foundation_links($variables['links']);
+  return $title . '<ul id="' . $variables['attributes']['data-dropdown'] . '" class="f-dropdown" data-dropdown-content>' . $output . '</ul>';
+}
+
+/**
+ * Implements theme_links() with foundations split button markup.
+ *
+ * @param $variables
+ *   An associative array containing:
+ *   - links
+ *     - An array of menu links.
+ *   - attributes (optional)
+ *     - class: Array of additional classes like large, alert, round
+ *     - data-dropdown: Custom dropdown id.
+ *
+ * @return string
+ *
+ * Formats links for Split Button http://foundation.zurb.com/docs/components/split-buttons.html
+ */
+function zurb_foundation_links__split_button($variables) {
+  $links = $variables['links'];
+  $link = array_shift($links);
+
+  if (empty($variables['attributes']['class'])) {
+    $variables['attributes']['class'] = array();
+  }
+
+  $variables['attributes']['class'][] = 'button';
+
+  if (!isset($variables['attributes']['data-dropdown'])) {
+    $variables['attributes']['data-dropdown'] = drupal_html_id('ddb');
+  }
+  $id = $variables['attributes']['data-dropdown'];
+  unset($variables['attributes']['data-dropdown']);
+
+  $link['#title'] .= '<span data-dropdown="' . $id . '"></span>';
+  $link['#localized_options']['attributes']['class'][] = 'split';
+  $link['#localized_options']['html'] = TRUE;
+
+  $link['#localized_options']['attributes'] = array_merge_recursive($link['#localized_options']['attributes'], $variables['attributes']);
+  $primary_link = l($link['#title'], $link['#href'], $link['#localized_options']);
+  $output = _zurb_foundation_links($links);
+
+  return $primary_link . '<ul id="' . $id . '" class="f-dropdown" data-dropdown-content>' . $output . '</ul>';
+}
