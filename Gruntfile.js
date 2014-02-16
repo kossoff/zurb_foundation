@@ -2,26 +2,11 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
 
-    sass: {
-      options: {
-        includePaths: ['scss']
-      },
-      dist: {
-        options: {
-          outputStyle: 'compressed'
-        },
-        files: {
-          'stylesheets/custom.css': 'scss/custom.scss'
-        }
-      }
-    },
-
     watch: {
       grunt: { files: ['Gruntfile.js'] },
 
-      sass: {
-        files: 'scss/**/*.scss',
-        tasks: ['sass'],
+      js: {
+        files: 'js/*.js',
         options: {
           livereload: true
         }
@@ -29,9 +14,6 @@ module.exports = function(grunt) {
     }
   });
 
-  grunt.loadNpmTasks('grunt-sass');
   grunt.loadNpmTasks('grunt-contrib-watch');
-
-  grunt.registerTask('build', ['sass']);
-  grunt.registerTask('default', ['build','watch']);
+  grunt.registerTask('default', ['watch']);
 }

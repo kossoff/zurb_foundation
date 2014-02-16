@@ -83,6 +83,10 @@ function drush_zurb_foundation_foundation_sub_theme($name = NULL, $machine_name 
   drush_op('zurb_foundation_file_str_replace', "$subtheme_path/template.php", 'STARTER', "$machine_name");
   // Rename functions in theme-settings.php
   drush_op('zurb_foundation_file_str_replace', "$subtheme_path/theme-settings.php", 'STARTER', "$machine_name");
+  // Replace STARTER in bower.json
+  drush_op('zurb_foundation_file_str_replace', "$subtheme_path/bower.json", 'STARTER', "$machine_name");
+  // Replace STARTER in package.json
+  drush_op('zurb_foundation_file_str_replace', "$subtheme_path/package.json", 'STARTER', "$machine_name");
 
   // Notify user of the newly created theme.
   drush_print(dt("\n!name sub-theme was created in !path. \n",
