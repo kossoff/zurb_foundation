@@ -131,3 +131,8 @@ settings in [subtheme-name]/scss/_variables.scss.
 If you prefer to do it the standard Foundation way (at your own risk), you can
 rename _variables.scss to _settings.scss in your subtheme and then load
 "settings" instead of "variables" in [subtheme-name]/scss/base/_init.scss.
+
+DEVELOPING A SUBTHEME WITH GRUNT.JS
+-----------------------------------
+
+todo

@@ -1,17 +1,24 @@
 module.exports = function(grunt) {
+  var theme_name = 'STARTER';
+
+  var global_vars = {
+    theme_name: theme_name,
+    theme_css: 'css',
+    theme_scss: 'scss'
+  }
+
   grunt.initConfig({
+    global_vars: global_vars,
     pkg: grunt.file.readJSON('package.json'),
 
     sass: {
-      options: {
-        includePaths: ['scss']
-      },
       dist: {
         options: {
-          outputStyle: 'compressed'
+          outputStyle: 'compressed',
+          includePaths: ['<%= global_vars.theme_scss %>', require('node-bourbon').includePaths]
         },
         files: {
-          'css/custom.css': 'scss/custom.scss'
+          '<%= global_vars.theme_css %>/<%= global_vars.theme_name %>.css': '<%= global_vars.theme_scss %>/<%= global_vars.theme_name %>.scss'
         }
       }
     },
@@ -20,7 +27,7 @@ module.exports = function(grunt) {
       grunt: { files: ['Gruntfile.js'] },
 
       sass: {
-        files: 'scss/**/*.scss',
+        files: '<%= global_vars.theme_scss %>/**/*.scss',
         tasks: ['sass'],
         options: {
           livereload: true

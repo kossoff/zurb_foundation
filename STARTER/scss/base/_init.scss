@@ -1,17 +1,5 @@
-// Make sure the charset is set appropriately
-@charset "UTF-8";
 
-// This init file is a base partial that you can use to bootstrap the theme.
-// The theme will have compilation errors if not imported.
-//
-// This file is forked version of the foundation.scss file:
-// https://github.com/zurb/foundation/blob/master/scss/foundation.scss
 
-// Global Zurb Foundation variables.
-@import "variables";
-// Comment out this import if you don't want to use normalize.
-@import "normalize";
-// You can customize whats imported in _foundation.scss.
-@import "foundation";
-// Comment out this import if you don't want to use Compass.
-@import "compass";
+
+
+
