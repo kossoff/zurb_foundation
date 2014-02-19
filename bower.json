@@ -1,6 +1,0 @@
-{
-  "name": "zurb_foundation",
-  "dependencies": {
-    "foundation": "~5.1.1"
-  }
-}
