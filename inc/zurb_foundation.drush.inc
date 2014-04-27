@@ -80,7 +80,7 @@ function drush_zurb_foundation_foundation_sub_theme($name) {
   // Create the template.php file with replaced theme name
   drush_op('zurb_foundation_file_str_replace', "$subtheme_path/template.php", 'STARTER', "$machine_name");
   // Rename the .info reference to the custom css file
-  drush_op('zurb_foundation_file_str_replace', "$subtheme_path/$machine_name.info", 'custom.css', "$machine_name.css");
+  drush_op('zurb_foundation_file_str_replace', "$subtheme_path/$machine_name.info", 'STARTER.css', "$machine_name.css");
   // Rename the .info reference to the custom js file
   drush_op('zurb_foundation_file_str_replace', "$subtheme_path/$machine_name.info", 'scripts.js', "$machine_name.js");
   // Rename the Drupal behavior name in the custom js file.
