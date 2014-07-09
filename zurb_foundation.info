@@ -14,7 +14,7 @@ stylesheets[all][] = css/foundation.min.css
 
 ; Modernizr acts as a shim for HTML5 elements for older browsers
 ; as well as detection for mobile devices.
-scripts[] = js/vendor/custom.modernizr.js
+scripts[] = js/vendor/modernizr.js
 
 ; Foundation framework scripts.
 scripts[] = js/foundation.min.js
