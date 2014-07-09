@@ -29,7 +29,12 @@ module.exports = function(grunt) {
       dist: {
         files: [
           {expand:true, cwd: 'bower_components/foundation/js', src: ['foundation/*.js'], dest: 'js/', filter: 'isFile'},
-          //{expand:true, cwd: 'bower_components/scss/', src: '**/*.scss', dest: 'scss/vendor', filter: 'isFile'},
+          {expand:true, cwd: 'bower_components/foundation/', src: ['foundation.min.js'], dest: 'js/', filter: 'isFile'},
+          {expand:true, cwd: 'bower_components/foundation/js/vendor', src: ['fastclick.js'], dest: 'js/vendor', filter: 'isFile'},
+          {expand:true, cwd: 'bower_components/foundation/js/vendor', src: ['jquery.cookie.js'], dest: 'js/vendor', filter: 'isFile'},
+          {expand:true, cwd: 'bower_components/foundation/js/vendor', src: ['modernizr.js'], dest: 'js/vendor', filter: 'isFile'},
+          {expand:true, cwd: 'bower_components/foundation/scss/foundation/components', src: '**/*.scss', dest: 'scss/vendor/foundation/components', filter: 'isFile'},
+          {expand:true, cwd: 'bower_components/foundation/scss/foundation', src: '_functions.scss', dest: 'scss/vendor/foundation', filter: 'isFile'},
         ]
       }
     },
