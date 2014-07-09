@@ -1,4 +1,6 @@
 module.exports = function(grunt) {
+  "use strict";
+
   var theme_name = 'STARTER';
 
   var global_vars = {
@@ -23,6 +25,15 @@ module.exports = function(grunt) {
       }
     },
 
+    copy: {
+      dist: {
+        files: [
+          {expand:true, cwd: 'bower_components/foundation/js', src: ['foundation/*.js'], dest: 'js/', filter: 'isFile'},
+          //{expand:true, cwd: 'bower_components/scss/', src: '**/*.scss', dest: 'scss/vendor', filter: 'isFile'},
+        ]
+      }
+    },
+
     watch: {
       grunt: { files: ['Gruntfile.js'] },
 
@@ -32,23 +43,14 @@ module.exports = function(grunt) {
         options: {
           livereload: true
         }
-      },
-
-      copy: {
-        dist: {
-          files: [
-            {expand:true, cwd: 'js/', src: ['foundation/*.js'], dest: 'js/foundation', filter: 'isFile'},
-            {expand:true, cwd: 'scss/', src: '**/*.scss', dest: 'scss/vendor/foundation', filter: 'isFile'},
-            {src: 'bower.json', dest: 'dist/assets/'}
-          ]
-        }
       }
     }
   });
 
   grunt.loadNpmTasks('grunt-sass');
+  grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-watch');
 
-  grunt.registerTask('build', ['sass']);
-  grunt.registerTask('default', ['build','copy','watch']);
+  grunt.registerTask('build', ['sass', 'copy']);
+  grunt.registerTask('default', ['build', 'watch']);
 }
