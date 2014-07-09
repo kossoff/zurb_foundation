@@ -32,6 +32,16 @@ module.exports = function(grunt) {
         options: {
           livereload: true
         }
+      },
+
+      copy: {
+        dist: {
+          files: [
+            {expand:true, cwd: 'js/', src: ['foundation/*.js'], dest: 'js/foundation', filter: 'isFile'},
+            {expand:true, cwd: 'scss/', src: '**/*.scss', dest: 'scss/vendor/foundation', filter: 'isFile'},
+            {src: 'bower.json', dest: 'dist/assets/'}
+          ]
+        }
       }
     }
   });
@@ -40,5 +50,5 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
 
   grunt.registerTask('build', ['sass']);
-  grunt.registerTask('default', ['build','watch']);
+  grunt.registerTask('default', ['build','copy','watch']);
 }
