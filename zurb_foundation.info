@@ -1,5 +1,5 @@
 name = ZURB Foundation
-description = Drupal implementation of the Zurb Foundation 5 framework.
+description = Drupal implementation of the Zurb Foundation 5.x framework.
 core = 7.x
 engine = phptemplate
 
