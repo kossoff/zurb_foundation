@@ -1145,13 +1145,19 @@ function zurb_foundation_entity_variables(&$vars) {
  * Implements hook_process_html_tag()
  *
  * Prunes HTML tags: http://sonspring.com/journal/html5-in-drupal-7#_pruning
+ * Updated per https://www.drupal.org/node/2326309
  */
 function zurb_foundation_process_html_tag(&$vars) {
   if (theme_get_setting('zurb_foundation_html_tags')) {
     $el = &$vars['element'];
 
-    // Remove type="..." and CDATA prefix/suffix.
-    unset($el['#attributes']['type'], $el['#value_prefix'], $el['#value_suffix']);
+    // Remove type="..."
+    unset($el['#attributes']['type']);
+
+    // Remove CDATA from prefix/suffix where necessary.
+    if (isset($el['#value_prefix']) && strpos($el['#value_prefix'],'CDATA') !== false) {
+      unset($el['#value_prefix'], $el['#value_suffix']);
+    }
 
     // Remove media="all" but leave others unaffected.
     if (isset($el['#attributes']['media']) && $el['#attributes']['media'] === 'all') {
