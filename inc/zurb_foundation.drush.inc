@@ -95,7 +95,9 @@ function drush_zurb_foundation_foundation_sub_theme($name) {
   drush_op('zurb_foundation_file_str_replace', "$subtheme_path/Gruntfile.js", 'STARTER', "$machine_name");
   // Replace THEMENAME in STARTER.scss
   drush_op('zurb_foundation_file_str_replace', "$subtheme_path/scss/$machine_name.scss", 'THEMENAME', "$machine_name");
-
+  // Replace STARTER in pie.scss
+  drush_op('zurb_foundation_file_str_replace', "$subtheme_path/scss/vendor/pie.scss", 'STARTER', "$machine_name");
+  
   // Notify user of the newly created theme.
   drush_print(dt("\n!name sub-theme was created in !path. \n",
     array(
