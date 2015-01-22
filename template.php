@@ -81,8 +81,8 @@ function zurb_foundation_field($variables) {
     $output .= '<div ' . $variables['title_attributes'] . '>' . $variables['label'] . ':&nbsp;</div>';
   }
 
-  // Edit module requires some extra wrappers to work.
-  if (module_exists('edit')) {
+  // Quick Edit module requires some extra wrappers to work.
+  if (module_exists('quickedit')) {
     $output .= '<div class="field-items"' . $variables['content_attributes'] . '>';
     foreach ($variables['items'] as $delta => $item) {
       $classes = 'field-item ' . ($delta % 2 ? 'odd' : 'even');

@@ -39,9 +39,9 @@ function zurb_foundation_form_alter(&$form, &$form_state, $form_id) {
     $form['actions']['submit']['#attributes']['class'] = array('postfix', 'expand');
   }
 
-  // Mantain compatibility with Edit module.
-  if ($form_id === 'edit_field_form') {
-    $form['actions']['submit']['#attributes']['class'][] = 'edit-form-submit';
+  // Mantain compatibility with Quick Edit module.
+  if ($form_id === 'quickedit_field_form') {
+    $form['actions']['submit']['#attributes']['class'][] = 'quickedit-form-submit';
   }
 
   // Add tooltips to form elements.
