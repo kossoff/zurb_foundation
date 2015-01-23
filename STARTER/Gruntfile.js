@@ -35,6 +35,9 @@ module.exports = function(grunt) {
           {expand:true, cwd: 'bower_components/foundation/js/vendor', src: ['modernizr.js'], dest: 'js/vendor', filter: 'isFile'},
           {expand:true, cwd: 'bower_components/foundation/scss/foundation/components', src: '**/*.scss', dest: 'scss/vendor/foundation/components', filter: 'isFile'},
           {expand:true, cwd: 'bower_components/foundation/scss/foundation', src: '_functions.scss', dest: 'scss/vendor/foundation', filter: 'isFile'},
+          {expand:true, cwd: 'bower_components/foundation/scss/foundation', src: '_foundation.scss', dest: 'scss/vendor/foundation', filter: 'isFile'},
+          {expand:true, cwd: 'bower_components/foundation/scss/foundation', src: '_normalize.scss', dest: 'scss/vendor/foundation', filter: 'isFile'},
+          {expand:true, cwd: 'bower_components/foundation/scss/foundation', src: '_variables.scss', dest: 'scss/vendor/foundation', filter: 'isFile'},
         ]
       }
     },
