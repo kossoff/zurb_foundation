@@ -48,6 +48,7 @@ settings[zurb_foundation_top_bar_custom_back_text] = 1
 settings[zurb_foundation_top_bar_back_text] = 'Back'
 settings[zurb_foundation_top_bar_is_hover] = 1
 settings[zurb_foundation_top_bar_scrolltop] = 1
+settings[zurb_foundation_top_bar_mobile_show_parent_link] = 1
 
 ; Tooltips.
 settings[zurb_foundation_tooltip_enable] = 1

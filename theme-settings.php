@@ -140,6 +140,15 @@ function zurb_foundation_form_system_theme_settings_alter(&$form, &$form_state) 
       ),
     );
 
+    $form['zurb_foundation']['topbar']['container']['menu']['zurb_foundation_top_bar_mobile_show_parent_link'] = array(
+      '#type' => 'checkbox',
+      '#title' => t('Repeat parent link on mobile'),
+      '#description' => t('This provides an extra link for users to tap on the sub-menu for mobile'),
+      '#default_value' => theme_get_setting('zurb_foundation_top_bar_mobile_show_parent_link'),
+    );
+
+
+
     /*
      * Tooltips.
      */

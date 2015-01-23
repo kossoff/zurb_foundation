@@ -224,10 +224,7 @@ function _zurb_foundation_render_link($link) {
     $output .= '<li' . drupal_attributes($link['#attributes']) . '>' . $rendered_link;
 
     if (!empty($link['#below'])) {
-      // Add repeated link under the dropdown for small-screen.
-      $small_link['#attributes']['class'][] = 'show-for-small';
-      $sub_menu = '<li' . drupal_attributes($small_link['#attributes']) . '>' . l($link['#title'], $link['#href'], $link['#localized_options']);
-
+      $sub_menu = '';
       // Build sub nav recursively.
       foreach ($link['#below'] as $sub_link) {
         if (!empty($sub_link['#href'])) {
@@ -555,6 +552,10 @@ function zurb_foundation_preprocess_page(&$variables) {
 
     if (!theme_get_setting('zurb_foundation_top_bar_scrolltop')) {
       $top_bar_options[] = 'scrolltop:false';
+    }
+
+    if (theme_get_setting('zurb_foundation_top_bar_mobile_show_parent_link')) {
+       $top_bar_options[] = 'mobile_show_parent_link:true';
     }
 
     $variables['top_bar_options'] = ' data-options="' . implode('; ', $top_bar_options) . '"';
