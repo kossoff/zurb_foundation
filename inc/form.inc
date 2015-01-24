@@ -108,16 +108,18 @@ function zurb_foundation_field_multiple_value_form($variables) {
  */
 function _zurb_foundation_add_tooltips(&$variables) {
   if (!empty($variables['element']['#title']) && !empty($variables['element']['#description'])) {
-    $variables['element']['#title'] = '<label>' . $variables['element']['#title'] . '</label>';
     $text = theme_get_setting('zurb_foundation_tooltip_text');
     $position = theme_get_setting('zurb_foundation_tooltip_position');
     $touch = theme_get_setting('zurb_foundation_tooltip_touch') ? 'data-options="disable-for-touch:true"' : '';
-    $variables['element']['#description'] = ' <span data-tooltip ' . $touch . 'class="has-tip ' . $position . '" title="' . check_plain(strip_tags($variables['element']['#description'])) . '">' . t($text) . '</span>';
-  }
-  else {
-    // Hide description field, we add it directly to the form element's
-    // "title" attribute.
-    $variables['element']['#description'] = '';
+    if (theme_get_setting('zurb_foundation_tooltip_mode') === 'element') {
+      // Not sure whats up with the colon. Probably a JSON issue.
+      $safe_text = str_replace(':', '', check_plain(strip_tags($variables['element']['#description'])));
+      $variables['element']['#title'] = '<label>' . ' <span data-tooltip ' . $touch . 'class="has-tip ' . $position . '" title="' . $safe_text . '">' . $variables['element']['#title'] . '</span>' . '</label>';
+      $variables['element']['#description'] = '';
+    } else {
+      $variables['element']['#title'] = '<label>' . $variables['element']['#title'] . '</label>';
+      $variables['element']['#description'] = ' <span data-tooltip ' . $touch . 'class="has-tip ' . $position . '" title="' . check_plain(strip_tags($variables['element']['#description'])) . '">' . t($text) . '</span>';
+    }
   }
 }
 
