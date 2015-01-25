@@ -23,7 +23,9 @@ function zurb_foundation_form_alter(&$form, &$form_state, $form_id) {
 
   // Sexy submit buttons
   if (!empty($form['actions']) && !empty($form['actions']['submit'])) {
-    $form['actions']['submit']['#attributes'] = array('class' => array('secondary', 'button', 'radius'));
+    $form['actions']['submit']['#attributes']['class'] []= 'secondary';
+    $form['actions']['submit']['#attributes']['class'] []=  'button';
+    $form['actions']['submit']['#attributes']['class'] []=  'radius';
   }
 
   // Search Block Fixes
@@ -36,7 +38,8 @@ function zurb_foundation_form_alter(&$form, &$form_state, $form_id) {
       '#prefix' => '<div class="small-4 columns">',
       '#suffix' => '</div></div>',
     );
-    $form['actions']['submit']['#attributes']['class'] = array('postfix', 'expand');
+    $form['actions']['submit']['#attributes']['class'] []= 'postfix';
+    $form['actions']['submit']['#attributes']['class'] []= 'expand';
   }
 
   // Mantain compatibility with Quick Edit module.
