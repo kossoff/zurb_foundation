@@ -512,6 +512,7 @@ function zurb_foundation_preprocess_page(&$variables) {
         'rel'   => 'home',
         'title' => strip_tags($variables['site_name']) . ' ' . t('Home'),
       ),
+      'html' => TRUE
     ));
   }
 
