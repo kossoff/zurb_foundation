@@ -1036,6 +1036,8 @@ function zurb_foundation_entity_variables(&$vars) {
     // If Display Suite rendered this, it's safe to assume we have the arguments
     // necessary to grab the layout.
     $layout = ds_get_layout($vars['elements']['#entity_type'], $vars['elements']['#bundle'], $vars['elements']['#view_mode']);
+    // Set default for zf_wrapper_classes.
+    $vars['zf_wrapper_classes'] = ' row';
 
     // Each layout has different regions, only set default classes if none of
     // them have custom classes.
