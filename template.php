@@ -943,7 +943,7 @@ function theme_zurb_foundation_reveal($variables) {
 
   $reveal = array(
     '#markup' => $variables['reveal'],
-    '#prefix' => '<div id="' . $reveal_id . '" class="' . $reveal_classes . '">',
+    '#prefix' => '<div id="' . $reveal_id . '" class="' . $reveal_classes . '" data-reveal>',
     '#suffix' => '<a class="close-reveal-modal">&#215;</a></div>',
   );
 
@@ -953,7 +953,7 @@ function theme_zurb_foundation_reveal($variables) {
   $build = array(
     '#theme' => 'link',
     '#text' => $variables['text'],
-    '#path' => $variables['path'] ? $variables['path'] : 'javascript:',
+    '#path' => $variables['path'] ? $variables['path'] : '#',
     '#options' => array(
       'attributes' => array(
         'id' => 'zf-reveal-link-' . $counter,
