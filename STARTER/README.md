@@ -129,17 +129,18 @@ Subthemes use the parent theme Foundation settings in scss/foundation/_settings.
 If you want to override these, copy the _settings file from the parent theme into your subtheme,
 and include it in the base/init SCSS file of your subtheme.
 
-DEVELOPING A SUBTHEME WITH GRUNT.JS
+DEVELOPING A SUBTHEME WITH GULP.JS
 -----------------------------------
 
 Overview
-Grunt.js is a javascript library that runs on Node.js that allows tedious tasks to be automated behind the scenes so you can be more efficient with developing code. It is a full on replacement for the Compass/Ruby stack, relieving you from managing
-multiple versions of Ruby and gemsets while providing the benefit of LiveReload, automated Drush, and hundreds of extensible Node.js modules for Grunt to pad your workflow tools.
+Gulp is a toolkit that will help you automate painful or time-consuming tasks in your development workflow. For web development (if that's your thing) it can help you by doing CSS preprocessing, JS transpiling, minification, live reloading, and much more. Integrations are built into all major IDEs and people are loving gulp across PHP, .NET, Node.js, Java, and more. With over 1700 plugins (and plenty you can do without plugins), gulp lets you quit messing with build systems and get back to work.
+
+Gulp.js is a javascript library that runs on Node.js that allows tedious tasks to be automated behind the scenes so you can be more efficient with developing code. It is a full on replacement for the Compass/Ruby stack, relieving you from managing multiple versions of Ruby and gemsets while providing the benefit of LiveReload, automated Drush, and hundreds of extensible Node.js modules for Gulp to pad your workflow tools.
 
 System Requirements (Mac)
  - Homebrew (OSX Package Manager - http://brew.sh/)
  - Node.js
- - Grunt
+ - Gulp (https://github.com/gulpjs/gulp)
 
 It is encouraged to use package managers like Homebrew (mac) and RVM (Ruby manager) so using sudo is not required to install global
 packages.
@@ -154,9 +155,9 @@ Install Homebrew with the docs here: http://brew.sh/
 At the command line, enter the following commands:
 
 brew install node
-npm install -g grunt grunt-cli
+npm install -g gulp
 
-This will install homebrew, nodejs, and grunt at the global level (so npm and grunt are global level commands in terminal).
+This will install homebrew, nodejs, and gulp at the global level (so npm and gulp are global level commands in terminal).
 
 Installation (Linux)
 ====================
@@ -181,8 +182,8 @@ npm install
 This will tell node.js to install the dependencies listed in package.json. Due to the amount of files and file size that is downloaded, we do not commit these to the repositories. If you have a gitignore file,
 make sure ‘node_modules’ is ignored. It only takes seconds to grab the dependencies.
 
-Finally, in terminal, type ‘grunt’ and hit enter. If all went well, Grunt is now running and watching your theme for changes. You can test it by making a simple edit to the theme SASS file and saving. Grunt
-should react and generate a new file, based on the information given to it in the Gruntfile. The drush function automatically fills in placeholders with the real subtheme name, so peeking at Gruntfile.js should have your theme name in it and
+Finally, in terminal, type ‘gulp’ and hit enter. If all went well, Gulp is now running and watching your theme for changes. You can test it by making a simple edit to the theme SASS file and saving. Gulp
+should react and generate a new file, based on the information given to it in the Gulpfile. The drush function automatically fills in placeholders with the real subtheme name, so peeking at Gulpfile.js should have your theme name in it and
 the right paths to the CSS/SCSS folders within it.
 
 When the SASS task fires, so is LiveReload, so any connected browser should instantly refresh with the changes.
@@ -192,8 +193,8 @@ Strange issues on iOS?
 
 You may be seeing issues with the FastClick plugin.
 
-Try disabling FastClick in your subtheme by opening the Gruntfile and commenting out this line:
+Try disabling FastClick in your subtheme by opening the Gulpfile and commenting out this line:
 
-'<%= global_vars.base_theme_path %>/js/vendor/fastclick.js'
+base_theme_path + '/js/vendor/fastclick.js',
 
-Trigger Grunt to recompile your theme, and reload to see if the issue persists.
+Trigger Gulp to recompile your theme, and reload to see if the issue persists.

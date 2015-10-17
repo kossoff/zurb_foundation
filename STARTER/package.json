@@ -1,15 +1,17 @@
 {
   "name": "STARTER",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "devDependencies": {
-    "node-sass": "~2.0.1",
-    "grunt": "~0.4.5",
-    "grunt-contrib-watch": "~0.6.1",
-    "grunt-sass": "^0.18.0",
-    "grunt-drush": "*",
-    "node-bourbon": "1.2.3",
-    "grunt-contrib-jshint": "~0.10.0",
-    "grunt-contrib-uglify": "~0.5.0",
-    "load-grunt-tasks": "~0.6.0"
+    "autoprefixer": "^6.0.3",
+    "css-mqpacker": "^4.0.0",
+    "cssnext": "^1.8.4",
+    "csswring": "^4.0.0",
+    "gulp": "^3.9.0",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-livereload": "^3.8.1",
+    "gulp-postcss": "^6.0.1",
+    "gulp-sass": "^2.0.4",
+    "gulp-uglify": "^1.4.2"
   }
 }
