@@ -29,7 +29,6 @@
 
 // Core
 // The following imports bootstrap the theme.
-// You may comment out bourbon if you don't want to use its library of mixins.
 // The theme will have compilation errors if Foundation is not imported.
 
 // Global Zurb Foundation variable overrides.
@@ -76,9 +75,6 @@
 @import "../../zurb_foundation/scss/foundation/components/type";
 @import "../../zurb_foundation/scss/foundation/components/offcanvas";
 @import "../../zurb_foundation/scss/foundation/components/visibility";
-
-// Comment out this import if you don't want to use Bourbon, a replacement for Compass mixins.
-@import "bourbon";
 
 // Import our mixins early so they can be used by other partials.
 // Optional.

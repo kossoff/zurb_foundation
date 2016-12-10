@@ -3,11 +3,7 @@ var gulp            = require('gulp'),
     concat          = require('gulp-concat'),
     uglify          = require('gulp-uglify'),
     sass            = require('gulp-sass'),
-    postcss         = require('gulp-postcss'),
-    autoprefixer    = require('autoprefixer'),
-    cssnext         = require('cssnext'),
-    mqpacker        = require('css-mqpacker'),
-    csswring        = require('csswring');
+    postcss         = require('gulp-postcss');
 
 var base_theme_path = '../zurb_foundation';
 
@@ -34,14 +30,16 @@ var jsFoundation = [
 
 gulp.task('awesome_css', function () {
     var processors = [
-        autoprefixer(
-                     {browsers: [
+        require("postcss-import")(),
+        require("postcss-url")(),
+        require("postcss-cssnext")({browsers: [
                         'last 2 version',
                         '> 2%'
                         ]}),
-        cssnext,
-        mqpacker,
-        csswring
+        require('css-mqpacker'),
+        require('csswring'),
+        require("postcss-browser-reporter")(),
+        require("postcss-reporter")()
     ];
 
     gulp.src('./scss/**/*.scss')
